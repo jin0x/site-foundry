@@ -12,3 +12,7 @@ Strategic planning and architecture live in the Obsidian vault under:
 
 - [architecture.md](./architecture.md)
 - [cli.md](./cli.md)
+- [getting-started.md](./getting-started.md)
+- [testing.md](./testing.md)
+- [next-sanity-starter.md](./next-sanity-starter.md)
+- [status.md](./status.md)

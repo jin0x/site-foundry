@@ -17,6 +17,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json,yaml,yml}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json,yaml,yml}\" --ignore-path .gitignore",
     "lint": "turbo run lint",
+    "sf": "corepack pnpm --filter @site-foundry/cli exec tsx src/index.ts",
+    "smoke:registry": "corepack pnpm --filter @site-foundry/cli exec tsx src/index.ts registry list",
+    "smoke:generate": "corepack pnpm --filter @site-foundry/cli exec tsx src/index.ts generate figma demo://landing-page",
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
