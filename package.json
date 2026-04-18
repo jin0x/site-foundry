@@ -1,0 +1,28 @@
+{
+  "name": "site-foundry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RSH Studio internal design-to-code-to-CMS platform",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=22.14.0",
+    "pnpm": ">=9.15.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "dev": "turbo run dev --parallel",
+    "dev:api": "turbo run dev --filter=@site-foundry/operator-api",
+    "dev:cli": "turbo run dev --filter=@site-foundry/cli",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,yaml,yml}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json,yaml,yml}\" --ignore-path .gitignore",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "prettier": "catalog:",
+    "turbo": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

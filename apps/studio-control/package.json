@@ -1,0 +1,11 @@
+{
+  "name": "@site-foundry/studio-control",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"console.log('studio-control placeholder')\"",
+    "dev": "node -e \"console.log('studio-control placeholder')\"",
+    "lint": "node -e \"console.log('studio-control lint placeholder')\"",
+    "typecheck": "node -e \"console.log('studio-control typecheck placeholder')\""
+  }
+}

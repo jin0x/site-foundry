@@ -1,0 +1,11 @@
+{
+  "name": "@site-foundry/lab",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"console.log('lab placeholder')\"",
+    "dev": "node -e \"console.log('lab placeholder')\"",
+    "lint": "node -e \"console.log('lab lint placeholder')\"",
+    "typecheck": "node -e \"console.log('lab typecheck placeholder')\""
+  }
+}
