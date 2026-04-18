@@ -50,6 +50,23 @@ Site Foundry operator API listening on http://localhost:4010
 
 Stop it with `Ctrl+C` when finished.
 
+Health check:
+
+```bash
+curl http://localhost:4010/health
+```
+
+Expected result:
+
+```json
+{"ok":true,"service":"operator-api"}
+```
+
+Notes:
+
+- `http://localhost:4010/` returning `404` is expected
+- `POST /runs` currently returns a placeholder run record
+
 ## Not covered yet
 
 - real Figma ingestion

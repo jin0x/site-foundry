@@ -2,12 +2,6 @@
 
 Site Foundry is RSH Studio's internal design-to-code-to-CMS platform.
 
-This repository is the implementation counterpart to the planning pack in the Obsidian vault:
-
-- `Projects/RSH Studio/Site Foundry/MASTER-PLAN.md`
-- `Projects/RSH Studio/Site Foundry/ARCHITECTURE.md`
-- `Projects/RSH Studio/Site Foundry/IMPLEMENTATION-PLAN.md`
-
 ## Initial Scope
 
 The first implementation focuses on:
@@ -20,6 +14,13 @@ The first implementation focuses on:
 6. a `next-sanity-starter` template shaped after the Decisions workspace
 
 The implementation is intentionally lean right now: one target stack, one starter shape, one CLI-first operator path.
+
+If you are new to the repo, start here:
+
+1. [ARCHITECTURE.md](./ARCHITECTURE.md)
+2. [docs/getting-started.md](./docs/getting-started.md)
+3. [docs/testing.md](./docs/testing.md)
+4. [docs/status.md](./docs/status.md)
 
 ## Workspace
 
@@ -82,3 +83,12 @@ corepack pnpm dev:api
 corepack pnpm run sf -- registry list
 corepack pnpm run sf -- generate figma demo://landing-page
 ```
+
+## API Notes
+
+The operator API currently exposes:
+
+- `GET /health`
+- `POST /runs`
+
+A request to `http://localhost:4010/` returning `404` is expected at this stage.

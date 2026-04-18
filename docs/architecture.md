@@ -1,18 +1,23 @@
 # Repository Architecture
 
-This repository implements the first executable version of Site Foundry.
+Use [../ARCHITECTURE.md](../ARCHITECTURE.md) as the main handoff document.
 
-The architecture follows three rules:
+This shorter page is the quick version:
+
+## Core Rules
 
 1. `apps/cli` is the first operator surface.
-2. `apps/operator-api` is the future-stable orchestration boundary.
-3. `templates/next-sanity-starter` mirrors the best consumer-template patterns from `decisions-website`.
+2. `apps/operator-api` is the future stable orchestration boundary.
+3. `templates/next-sanity-starter` is the canonical output shape for the first supported stack.
+4. Keep one narrow end-to-end path working before adding options.
 
-## Layers
+## Core Layers
 
-- `packages/registry-contracts` owns typed contracts.
-- `packages/connector-core` owns integration interfaces.
-- `packages/generator-core` owns generation planning.
-- `packages/generator-next-sanity` owns the first target-specific materialization path.
+- `packages/registry-contracts` owns shared typed contracts.
+- `packages/connector-core` reserves the integration boundary.
+- `packages/generator-core` owns target-agnostic planning.
+- `packages/generator-next-sanity` maps plans to starter artifact surfaces.
 
-The UI and schema libraries are represented as package boundaries now, but the main implementation focus in this first pass is contracts and orchestration.
+## Important Constraint
+
+The repo currently understands `figma` as an input type, but it does not yet contain the real `figma-to-code` implementation. That boundary is still separate and needs an explicit porting step.

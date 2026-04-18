@@ -27,6 +27,20 @@ This file tracks what is real in the repository today versus what is still plann
 - dashboard app
 - registry persistence
 
+## Explicitly not yet integrated
+
+The separate `figma-to-code` pipeline has **not** been copied into this repository.
+
+That means this repo does not yet contain:
+
+- the page seeder
+- image upload helpers
+- markdown-to-portable-text conversion
+- Figma MCP prompt/templates
+- Sanity write/apply execution
+
+The current repo only plans for those surfaces.
+
 ## Current definition of done
 
 Phase 2 is done when:
