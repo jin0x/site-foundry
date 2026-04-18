@@ -1,0 +1,34 @@
+export const pageBySlugQuery = `
+  *[_type == "page" && slug.current == $slug][0]{
+    _id,
+    _type,
+    _createdAt,
+    _updatedAt,
+    title,
+    "slug": slug.current,
+    pageBuilder[]{
+      ...,
+      media{
+        ...,
+        asset->{
+          url
+        }
+      },
+      ctas[]{
+        ...,
+        link{
+          ...,
+          page->{
+            _type,
+            "slug": slug.current
+          },
+          file{
+            asset->{
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`;

@@ -1,0 +1,18 @@
+{
+  "name": "@site-foundry-template/ui",
+  "private": true,
+  "version": "0.1.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./src/styles/globals.css"
+  },
+  "dependencies": {
+    "@portabletext/react": "catalog:",
+    "@site-foundry-template/sanity-types": "workspace:*",
+    "react": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "typescript": "catalog:"
+  }
+}

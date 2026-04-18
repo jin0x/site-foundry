@@ -1,0 +1,23 @@
+{
+  "name": "@site-foundry-template/studio",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "sanity build",
+    "dev": "sanity dev",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@site-foundry-template/sanity-schema": "workspace:*",
+    "@site-foundry-template/ui": "workspace:*",
+    "@sanity/assist": "catalog:",
+    "@sanity/code-input": "catalog:",
+    "@sanity/icons": "catalog:",
+    "@sanity/vision": "catalog:",
+    "sanity": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}
