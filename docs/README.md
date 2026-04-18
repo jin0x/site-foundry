@@ -11,3 +11,7 @@ Local implementation docs for the repository.
 - [testing.md](./testing.md)
 - [next-sanity-starter.md](./next-sanity-starter.md)
 - [status.md](./status.md)
+
+Non-Markdown test artifact:
+
+- [`apps/operator-api/testing.http`](../apps/operator-api/testing.http)

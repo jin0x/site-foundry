@@ -66,6 +66,7 @@ Notes:
 
 - `http://localhost:4010/` returning `404` is expected
 - `POST /runs` currently returns a placeholder run record
+- executable HTTP requests are in `apps/operator-api/testing.http`
 
 ## Not covered yet
 

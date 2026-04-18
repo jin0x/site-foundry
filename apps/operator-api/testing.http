@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:4010
+
+### Health check
+GET {{baseUrl}}/health
+Accept: application/json
+
+### Create placeholder run
+POST {{baseUrl}}/runs
+Accept: application/json
+Content-Type: application/json
+
+{
+  "sourceType": "figma",
+  "sourceRef": "demo://landing-page"
+}
