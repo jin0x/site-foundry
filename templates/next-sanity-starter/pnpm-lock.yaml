@@ -189,6 +189,12 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
+  packages/tokens:
+    devDependencies:
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
   packages/ui:
     dependencies:
       '@portabletext/react':
@@ -197,6 +203,9 @@ importers:
       '@site-foundry-template/sanity-types':
         specifier: workspace:*
         version: link:../sanity-types
+      '@site-foundry-template/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 'catalog:'
         version: 19.2.4

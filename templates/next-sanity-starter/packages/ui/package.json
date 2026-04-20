@@ -9,6 +9,7 @@
   "dependencies": {
     "@portabletext/react": "catalog:",
     "@site-foundry-template/sanity-types": "workspace:*",
+    "@site-foundry-template/tokens": "workspace:*",
     "react": "catalog:"
   },
   "devDependencies": {
