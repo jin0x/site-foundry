@@ -1,5 +1,5 @@
 {
-  "name": "@site-foundry/sanity-kit",
+  "name": "@site-foundry/connector-sanity",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,13 +13,19 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "tsc -p tsconfig.json --noEmit",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "apply": "tsx src/cli.ts",
+    "bootstrap-page": "tsx src/cli-bootstrap.ts"
   },
   "dependencies": {
-    "@sanity/client": "catalog:"
+    "@sanity/client": "catalog:",
+    "@site-foundry/connector-core": "workspace:*",
+    "@site-foundry/registry-contracts": "workspace:*",
+    "@site-foundry/sanity-kit": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:"
   }
 }
