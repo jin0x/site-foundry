@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/react": "catalog:",
+    "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }
 }
