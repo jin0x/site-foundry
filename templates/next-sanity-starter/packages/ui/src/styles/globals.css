@@ -37,3 +37,12 @@ a {
 .sf-page-shell {
   padding: calc(var(--spacing) * 20) 0;
 }
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

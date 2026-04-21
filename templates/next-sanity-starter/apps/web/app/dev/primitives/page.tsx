@@ -1,4 +1,8 @@
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
   Badge,
   Button,
   Card,
@@ -7,6 +11,7 @@ import {
   Grid,
   Heading,
   Image,
+  Marquee,
   Stack,
   Text,
 } from '@site-foundry-template/ui';
@@ -26,6 +31,8 @@ import type {
   HeadingSize,
   ImageAspectRatio,
   ImageRadius,
+  MarqueeGap,
+  MarqueeSpeed,
   StackAlign,
   StackGap,
   TextColor,
@@ -88,6 +95,40 @@ const IMAGE_ROUNDED: ImageRadius[] = ['none', 'sm', 'md', 'lg', 'xl', 'full'];
 const CARD_VARIANTS: CardVariant[] = ['default', 'subtle', 'ghost'];
 const CARD_PADDINGS: CardPadding[] = ['none', 'sm', 'md', 'lg'];
 const CARD_RADII: CardRadius[] = ['none', 'sm', 'md', 'lg', 'xl'];
+
+const MARQUEE_SPEEDS: MarqueeSpeed[] = ['slow', 'medium', 'fast'];
+const MARQUEE_GAPS: MarqueeGap[] = ['sm', 'md', 'lg', 'xl'];
+
+const MARQUEE_ITEMS = [
+  'Figma → Sanity',
+  'Design Tokens',
+  'Primitives',
+  'Composites',
+  'Blocks',
+  'Pages',
+  'Site Foundry',
+];
+
+const ACCORDION_ITEMS = [
+  {
+    value: 'one',
+    question: 'What is Site Foundry?',
+    answer:
+      'Site Foundry is a toolchain that turns Figma designs into production-ready Sanity content models and Next.js code.',
+  },
+  {
+    value: 'two',
+    question: 'How are primitives organized?',
+    answer:
+      'Each primitive lives in its own directory under packages/ui/src/primitives, with a types file, an implementation file, and an index barrel.',
+  },
+  {
+    value: 'three',
+    question: 'Can I customize the theme?',
+    answer:
+      'Yes — themeable tokens live in packages/tokens/src/theme.css and are imported by the UI package globals.',
+  },
+];
 
 const SAMPLE_IMG =
   'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop';
@@ -480,6 +521,87 @@ export default function PrimitivesPage() {
                     </Stack>
                   </Card>
                 </Grid>
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Accordion ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Accordion</DemoHeading>
+
+              <Stack gap="md">
+                <Label>type=&quot;single&quot; (default, defaultValue=&quot;one&quot;)</Label>
+                <Accordion type="single" defaultValue="one">
+                  {ACCORDION_ITEMS.map((item) => (
+                    <AccordionItem key={item.value} value={item.value}>
+                      <AccordionTrigger>{item.question}</AccordionTrigger>
+                      <AccordionContent>{item.answer}</AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </Stack>
+
+              <Stack gap="md">
+                <Label>type=&quot;multiple&quot; (defaultValue=[&quot;one&quot;, &quot;three&quot;])</Label>
+                <Accordion type="multiple" defaultValue={['one', 'three']}>
+                  {ACCORDION_ITEMS.map((item) => (
+                    <AccordionItem key={item.value} value={item.value}>
+                      <AccordionTrigger>{item.question}</AccordionTrigger>
+                      <AccordionContent>{item.answer}</AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Marquee ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Marquee</DemoHeading>
+
+              <Stack gap="md">
+                <Label>speed variants (gap=&quot;lg&quot;, pauseOnHover, fade)</Label>
+                {MARQUEE_SPEEDS.map((speed) => (
+                  <Stack key={speed} gap="xs">
+                    <Label>speed=&quot;{speed}&quot;</Label>
+                    <Marquee speed={speed}>
+                      {MARQUEE_ITEMS.map((item) => (
+                        <Badge key={item} variant="outline" color="light">
+                          {item}
+                        </Badge>
+                      ))}
+                    </Marquee>
+                  </Stack>
+                ))}
+              </Stack>
+
+              <Stack gap="md">
+                <Label>gap variants (speed=&quot;medium&quot;)</Label>
+                {MARQUEE_GAPS.map((gap) => (
+                  <Stack key={gap} gap="xs">
+                    <Label>gap=&quot;{gap}&quot;</Label>
+                    <Marquee gap={gap}>
+                      {MARQUEE_ITEMS.map((item) => (
+                        <Badge key={item} variant="outline" color="light">
+                          {item}
+                        </Badge>
+                      ))}
+                    </Marquee>
+                  </Stack>
+                ))}
+              </Stack>
+
+              <Stack gap="md">
+                <Label>reverse=true, fade=false, pauseOnHover=false</Label>
+                <Marquee reverse fade={false} pauseOnHover={false}>
+                  {MARQUEE_ITEMS.map((item) => (
+                    <Badge key={item} variant="solid" color="primary">
+                      {item}
+                    </Badge>
+                  ))}
+                </Marquee>
               </Stack>
             </Stack>
           </section>

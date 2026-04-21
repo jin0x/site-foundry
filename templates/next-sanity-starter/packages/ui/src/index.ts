@@ -1,3 +1,4 @@
+export * from './primitives/Accordion';
 export * from './primitives/Badge';
 export * from './primitives/Button';
 export * from './primitives/Card';
@@ -6,6 +7,7 @@ export * from './primitives/Eyebrow';
 export * from './primitives/Grid';
 export * from './primitives/Heading';
 export * from './primitives/Image';
+export * from './primitives/Marquee';
 export * from './primitives/Stack';
 export * from './primitives/Text';
 export * from './components/BaseBlock';
