@@ -1,10 +1,31 @@
-import { Container, Grid, Stack } from '@site-foundry-template/ui';
+import {
+  Badge,
+  Button,
+  Container,
+  Eyebrow,
+  Grid,
+  Heading,
+  Image,
+  Stack,
+  Text,
+} from '@site-foundry-template/ui';
 import type {
+  BadgeColor,
+  BadgeVariant,
+  ButtonColor,
+  ButtonSize,
+  ButtonVariant,
   ContainerSize,
   GridCols,
   GridGap,
+  HeadingColor,
+  HeadingSize,
+  ImageAspectRatio,
+  ImageRadius,
   StackAlign,
   StackGap,
+  TextColor,
+  TextSize,
 } from '@site-foundry-template/ui';
 
 const STACK_GAPS: StackGap[] = ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'];
@@ -20,6 +41,49 @@ const GRID_COL_VARIANTS: Array<{ label: string; cols: GridCols }> = [
   { label: 'cols={mobile:2, tablet:3, desktop:6}', cols: { mobile: 2, tablet: 3, desktop: 6 } },
 ];
 
+const HEADING_SIZES: HeadingSize[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const HEADING_COLORS: HeadingColor[] = [
+  'default',
+  'foreground',
+  'white',
+  'primary',
+  'secondary',
+  'gradient',
+  'black',
+  'rose',
+  'gray',
+];
+
+const TEXT_SIZES: TextSize[] = ['caption', 'xs', 'sm', 'base', 'md', 'lg', 'xl'];
+const TEXT_COLORS: TextColor[] = [
+  'default',
+  'muted',
+  'subtle',
+  'foreground',
+  'white',
+  'primary',
+  'secondary',
+  'gradient',
+  'black',
+  'pale-blue',
+  'rose',
+  'gray',
+  'light-gray',
+];
+
+const BUTTON_VARIANTS: ButtonVariant[] = ['solid', 'outline', 'ghost'];
+const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg'];
+const BUTTON_COLORS: ButtonColor[] = ['primary', 'secondary', 'light'];
+
+const BADGE_VARIANTS: BadgeVariant[] = ['outline', 'solid'];
+const BADGE_COLORS: BadgeColor[] = ['dark', 'primary', 'secondary', 'light'];
+
+const IMAGE_ASPECT_RATIOS: ImageAspectRatio[] = ['auto', 'square', 'video', '4/3', '3/2', '21/9'];
+const IMAGE_ROUNDED: ImageRadius[] = ['none', 'sm', 'md', 'lg', 'xl', 'full'];
+
+const SAMPLE_IMG =
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop';
+
 function Tile({ children }: { children: React.ReactNode }) {
   return (
     <div className="rounded-md border border-white/15 bg-white/5 p-4 text-sm">{children}</div>
@@ -28,12 +92,18 @@ function Tile({ children }: { children: React.ReactNode }) {
 
 function DemoHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-h2 font-heading border-b border-white/10 pb-2">{children}</h2>
+    <Heading as="h2" size="h2" className="border-b border-white/10 pb-2">
+      {children}
+    </Heading>
   );
 }
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <p className="text-caption uppercase tracking-widest text-secondary">{children}</p>;
+  return (
+    <Text size="caption" color="muted" className="uppercase tracking-widest">
+      {children}
+    </Text>
+  );
 }
 
 export default function PrimitivesPage() {
@@ -42,10 +112,12 @@ export default function PrimitivesPage() {
       <Container size="lg">
         <Stack gap="2xl">
           <header>
-            <h1 className="text-h1 font-heading">Primitives — dev catalog</h1>
-            <p className="text-body text-secondary mt-2">
+            <Heading as="h1" size="h1">
+              Primitives — dev catalog
+            </Heading>
+            <Text size="base" color="muted" className="mt-2">
               Every variant of every primitive. Updates as new primitives land.
-            </p>
+            </Text>
           </header>
 
           {/* ---------- Stack ---------- */}
@@ -139,6 +211,179 @@ export default function PrimitivesPage() {
                     </Grid>
                   </Stack>
                 ))}
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Heading ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Heading</DemoHeading>
+
+              <Stack gap="md">
+                <Label>size variants (as=&quot;h2&quot;, color=&quot;default&quot;)</Label>
+                {HEADING_SIZES.map((size) => (
+                  <Stack key={size} gap="xs">
+                    <Label>size=&quot;{size}&quot;</Label>
+                    <Heading size={size}>The quick brown fox jumps over the lazy dog</Heading>
+                  </Stack>
+                ))}
+              </Stack>
+
+              <Stack gap="md">
+                <Label>color variants (size=&quot;h3&quot;)</Label>
+                {HEADING_COLORS.map((color) => (
+                  <Stack key={color} gap="xs">
+                    <Label>color=&quot;{color}&quot;</Label>
+                    <Heading color={color}>color=&quot;{color}&quot;</Heading>
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Text ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Text</DemoHeading>
+
+              <Stack gap="md">
+                <Label>size variants (color=&quot;default&quot;)</Label>
+                {TEXT_SIZES.map((size) => (
+                  <Stack key={size} gap="xs">
+                    <Label>size=&quot;{size}&quot;</Label>
+                    <Text size={size}>Pack my box with five dozen liquor jugs.</Text>
+                  </Stack>
+                ))}
+              </Stack>
+
+              <Stack gap="md">
+                <Label>color variants (size=&quot;base&quot;)</Label>
+                {TEXT_COLORS.map((color) => (
+                  <Stack key={color} gap="xs">
+                    <Label>color=&quot;{color}&quot;</Label>
+                    <Text color={color}>color=&quot;{color}&quot;</Text>
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Eyebrow ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Eyebrow</DemoHeading>
+              <Stack gap="md">
+                <Eyebrow>Eyebrow label</Eyebrow>
+                <Stack gap="xs">
+                  <Eyebrow>Announcing</Eyebrow>
+                  <Heading size="h2">Eyebrow + Heading composition</Heading>
+                </Stack>
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Button ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Button</DemoHeading>
+
+              <Stack gap="md">
+                <Label>variant × color (size=&quot;md&quot;)</Label>
+                {BUTTON_VARIANTS.map((variant) => (
+                  <Stack key={variant} gap="xs">
+                    <Label>variant=&quot;{variant}&quot;</Label>
+                    <div className="flex flex-wrap gap-3">
+                      {BUTTON_COLORS.map((color) => (
+                        <Button key={color} variant={variant} color={color}>
+                          {variant} / {color}
+                        </Button>
+                      ))}
+                    </div>
+                  </Stack>
+                ))}
+              </Stack>
+
+              <Stack gap="md">
+                <Label>size variants (variant=&quot;solid&quot;, color=&quot;primary&quot;)</Label>
+                <div className="flex flex-wrap items-center gap-3">
+                  {BUTTON_SIZES.map((size) => (
+                    <Button key={size} size={size}>
+                      size=&quot;{size}&quot;
+                    </Button>
+                  ))}
+                </div>
+              </Stack>
+
+              <Stack gap="md">
+                <Label>anchor (href present) vs button</Label>
+                <div className="flex flex-wrap items-center gap-3">
+                  <Button href="#link-demo">anchor (href)</Button>
+                  <Button>button (no href)</Button>
+                </div>
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Badge ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Badge</DemoHeading>
+              <Stack gap="md">
+                <Label>variant × color</Label>
+                {BADGE_VARIANTS.map((variant) => (
+                  <Stack key={variant} gap="xs">
+                    <Label>variant=&quot;{variant}&quot;</Label>
+                    <div className="flex flex-wrap gap-3">
+                      {BADGE_COLORS.map((color) => (
+                        <Badge key={color} variant={variant} color={color}>
+                          {variant} / {color}
+                        </Badge>
+                      ))}
+                    </div>
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Image ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Image</DemoHeading>
+
+              <Stack gap="md">
+                <Label>aspectRatio variants (fit=&quot;cover&quot;, rounded=&quot;md&quot;)</Label>
+                <Grid cols={3} gap="md">
+                  {IMAGE_ASPECT_RATIOS.map((aspectRatio) => (
+                    <Stack key={aspectRatio} gap="xs">
+                      <Label>aspectRatio=&quot;{aspectRatio}&quot;</Label>
+                      <Image
+                        src={SAMPLE_IMG}
+                        alt="Sample"
+                        aspectRatio={aspectRatio}
+                        rounded="md"
+                      />
+                    </Stack>
+                  ))}
+                </Grid>
+              </Stack>
+
+              <Stack gap="md">
+                <Label>rounded variants (aspectRatio=&quot;square&quot;)</Label>
+                <Grid cols={3} gap="md">
+                  {IMAGE_ROUNDED.map((rounded) => (
+                    <Stack key={rounded} gap="xs">
+                      <Label>rounded=&quot;{rounded}&quot;</Label>
+                      <Image
+                        src={SAMPLE_IMG}
+                        alt="Sample"
+                        aspectRatio="square"
+                        rounded={rounded}
+                      />
+                    </Stack>
+                  ))}
+                </Grid>
               </Stack>
             </Stack>
           </section>
