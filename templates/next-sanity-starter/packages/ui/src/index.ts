@@ -1,4 +1,5 @@
 export * from './primitives/Container';
+export * from './primitives/Grid';
 export * from './primitives/Stack';
 export * from './components/CtaButton';
 export * from './components/HeadingGroup';
