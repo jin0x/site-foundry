@@ -1,10 +1,10 @@
 import type { CtaValue, LinkValue } from '@site-foundry-template/sanity-types';
 import { Button } from '../primitives/Button';
-import type { ButtonColor, ButtonVariant } from '../primitives/Button';
+import { ButtonColor, ButtonSize, ButtonVariant } from '../primitives/Button';
 
 export interface CtaButtonProps {
   value: CtaValue;
-  size?: 'sm' | 'md' | 'lg';
+  size?: ButtonSize;
 }
 
 function resolveHref(link?: LinkValue | null): string {
@@ -29,18 +29,18 @@ function resolveHref(link?: LinkValue | null): string {
 }
 
 const VARIANT_MAP: Record<NonNullable<CtaValue['variant']>, ButtonVariant> = {
-  solid: 'solid',
-  outline: 'outline',
-  transparent: 'ghost',
+  solid: ButtonVariant.SOLID,
+  outline: ButtonVariant.OUTLINE,
+  transparent: ButtonVariant.GHOST,
 };
 
 const COLOR_MAP: Record<NonNullable<CtaValue['color']>, ButtonColor> = {
-  primary: 'primary',
-  accent: 'primary',
-  light: 'light',
+  primary: ButtonColor.PRIMARY,
+  accent: ButtonColor.PRIMARY,
+  light: ButtonColor.LIGHT,
 };
 
-export function CtaButton({ value, size = 'md' }: CtaButtonProps) {
+export function CtaButton({ value, size = ButtonSize.MD }: CtaButtonProps) {
   if (!value.enabled || !value.text) {
     return null;
   }

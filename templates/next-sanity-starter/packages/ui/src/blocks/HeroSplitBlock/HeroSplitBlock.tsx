@@ -4,8 +4,11 @@ import { CtaButton } from '../../components/CtaButton';
 import { HeadingGroup } from '../../components/HeadingGroup';
 import { SectionCta } from '../../components/SectionCta';
 import { Image } from '../../primitives/Image';
+import { ImageAspectRatio, ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
+import { StackGap } from '../../primitives/Stack/stack-types';
 import { Text } from '../../primitives/Text';
+import { TextColor, TextSize } from '../../primitives/Text/text-types';
 import { cx } from '../../lib/cx';
 
 const PLACEHOLDER_STYLE = {
@@ -19,10 +22,10 @@ export function HeroSplitBlock(props: HeroSplitBlockProps) {
   return (
     <BaseBlock block={props} showHeading={false}>
       <div className="grid gap-8 items-center lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)]">
-        <Stack gap="lg" className="max-w-xl">
+        <Stack gap={StackGap.LG} className="max-w-xl">
           <HeadingGroup value={props.sectionHeading} />
           {props.description ? (
-            <Text size="base" color="muted">
+            <Text size={TextSize.BASE} color={TextColor.MUTED}>
               {props.description}
             </Text>
           ) : null}
@@ -38,9 +41,9 @@ export function HeroSplitBlock(props: HeroSplitBlockProps) {
           {props.media?.asset?.url ? (
             <Image
               source={props.media}
-              aspectRatio="4/3"
-              fit="cover"
-              rounded="xl"
+              aspectRatio={ImageAspectRatio.R4_3}
+              fit={ImageFit.COVER}
+              rounded={ImageRadius.XL}
               className="border border-[var(--color-code-border)]"
             />
           ) : (

@@ -7,7 +7,7 @@ import type {
 import { Section } from './Section';
 import { HeadingGroup } from './HeadingGroup';
 import { Stack } from '../primitives/Stack';
-import type { StackGap } from '../primitives/Stack/stack-types';
+import { StackGap } from '../primitives/Stack/stack-types';
 
 export interface BaseBlockProps {
   block: {
@@ -25,7 +25,7 @@ export interface BaseBlockProps {
 export function BaseBlock({
   block,
   showHeading = true,
-  stackGap = 'xl',
+  stackGap = StackGap.XL,
   stackClassName,
   className,
   children,

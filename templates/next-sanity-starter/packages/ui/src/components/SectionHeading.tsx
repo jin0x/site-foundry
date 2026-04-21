@@ -3,9 +3,11 @@ import type { Alignment } from '@site-foundry-template/sanity-types';
 import { cx } from '../lib/cx';
 import { Eyebrow } from '../primitives/Eyebrow';
 import { Heading } from '../primitives/Heading';
-import type { HeadingColor, HeadingSize, HeadingTag } from '../primitives/Heading/heading-types';
+import { HeadingColor, HeadingSize, HeadingTag } from '../primitives/Heading/heading-types';
 import { Stack } from '../primitives/Stack';
+import { StackAlign, StackGap } from '../primitives/Stack/stack-types';
 import { Text } from '../primitives/Text';
+import { TextColor, TextSize } from '../primitives/Text/text-types';
 
 export interface SectionHeadingProps {
   eyebrow?: string | null;
@@ -23,9 +25,9 @@ export function SectionHeading({
   heading,
   subheading,
   align = 'left',
-  headingAs = 'h2',
-  headingSize = 'h2',
-  headingColor = 'default',
+  headingAs = HeadingTag.H2,
+  headingSize = HeadingSize.H2,
+  headingColor = HeadingColor.DEFAULT,
   className,
 }: SectionHeadingProps) {
   if (!eyebrow && !heading && !subheading) {
@@ -36,8 +38,8 @@ export function SectionHeading({
 
   return (
     <Stack
-      gap="sm"
-      align={isCenter ? 'center' : undefined}
+      gap={StackGap.SM}
+      align={isCenter ? StackAlign.CENTER : undefined}
       className={cx(isCenter && 'text-center', className)}
     >
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
@@ -47,7 +49,7 @@ export function SectionHeading({
         </Heading>
       ) : null}
       {subheading ? (
-        <Text as="div" size="md" color="muted">
+        <Text as="div" size={TextSize.MD} color={TextColor.MUTED}>
           {subheading}
         </Text>
       ) : null}

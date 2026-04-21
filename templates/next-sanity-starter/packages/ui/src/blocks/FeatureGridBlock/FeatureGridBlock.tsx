@@ -3,23 +3,27 @@ import { BaseBlock } from '../../components/BaseBlock';
 import { Card } from '../../primitives/Card';
 import { Eyebrow } from '../../primitives/Eyebrow';
 import { Grid } from '../../primitives/Grid';
+import { GridGap } from '../../primitives/Grid/grid-types';
 import { Heading } from '../../primitives/Heading';
+import { HeadingSize } from '../../primitives/Heading/heading-types';
 import { Stack } from '../../primitives/Stack';
+import { StackGap } from '../../primitives/Stack/stack-types';
 import { Text } from '../../primitives/Text';
+import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
 export function FeatureGridBlock(props: FeatureGridBlockProps) {
   return (
     <BaseBlock block={props}>
-      <Grid cols={props.columns ?? 3} gap="sm">
+      <Grid cols={props.columns ?? 3} gap={GridGap.SM}>
         {props.items?.map((item, index) => (
           <Card as="article" key={`${props._key || props._type}-${index}`}>
-            <Stack gap="sm">
+            <Stack gap={StackGap.SM}>
               {item.eyebrow ? <Eyebrow>{item.eyebrow}</Eyebrow> : null}
-              <Heading as="h3" size="h3">
+              <Heading as="h3" size={HeadingSize.H3}>
                 {item.title}
               </Heading>
               {item.description ? (
-                <Text size="base" color="muted">
+                <Text size={TextSize.BASE} color={TextColor.MUTED}>
                   {item.description}
                 </Text>
               ) : null}
