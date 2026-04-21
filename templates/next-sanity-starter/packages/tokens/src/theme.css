@@ -18,19 +18,22 @@
 
 @theme {
   /* --- Brand -------------------------------------------------------- */
-  --color-brand-blue: #4a7dff;
-  --color-brand-fuchsia: #e879b8;
-  --color-brand-purple: #a79cff;
+  /* Single-accent palette: turquoise is the anchor; blue/fuchsia/purple/gold
+   * sit as desaturated dusty variants so the UI reads cohesively on a
+   * dark-navy surface. Friday's real tokens will re-saturate them. */
+  --color-brand-blue: #7fb4cc;
+  --color-brand-fuchsia: #c49ab1;
+  --color-brand-purple: #a59dc5;
   --color-brand-turquoise: #76e4c3;
-  --color-brand-gold: #f4c95a;
+  --color-brand-gold: #d4c386;
   --color-brand-light-bg: #fafbfc;
 
   /* --- Fill (interior color set; typically mirrors brand) ----------- */
-  --color-fill-blue: #4a7dff;
-  --color-fill-fuchsia: #e879b8;
-  --color-fill-purple: #a79cff;
+  --color-fill-blue: #7fb4cc;
+  --color-fill-fuchsia: #c49ab1;
+  --color-fill-purple: #a59dc5;
   --color-fill-turquoise: #76e4c3;
-  --color-fill-gold: #f4c95a;
+  --color-fill-gold: #d4c386;
 
   /* --- Text (foreground semantic roles) ----------------------------- */
   --color-primary: #f4f7ff;

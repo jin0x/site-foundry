@@ -9,20 +9,20 @@
  */
 
 export const brandColors = {
-  blue: '#4A7DFF',
-  fuchsia: '#E879B8',
-  purple: '#A79CFF',
+  blue: '#7FB4CC',
+  fuchsia: '#C49AB1',
+  purple: '#A59DC5',
   turquoise: '#76E4C3',
-  gold: '#F4C95A',
+  gold: '#D4C386',
   lightBg: '#FAFBFC',
 } as const;
 
 export const fillColors = {
-  blue: '#4A7DFF',
-  fuchsia: '#E879B8',
-  purple: '#A79CFF',
+  blue: '#7FB4CC',
+  fuchsia: '#C49AB1',
+  purple: '#A59DC5',
   turquoise: '#76E4C3',
-  gold: '#F4C95A',
+  gold: '#D4C386',
 } as const;
 
 export const textColors = {
