@@ -1,5 +1,6 @@
 export * from './primitives/Badge';
 export * from './primitives/Button';
+export * from './primitives/Card';
 export * from './primitives/Container';
 export * from './primitives/Eyebrow';
 export * from './primitives/Grid';

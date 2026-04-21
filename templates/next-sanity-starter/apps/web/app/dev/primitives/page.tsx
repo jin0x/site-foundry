@@ -1,6 +1,7 @@
 import {
   Badge,
   Button,
+  Card,
   Container,
   Eyebrow,
   Grid,
@@ -15,6 +16,9 @@ import type {
   ButtonColor,
   ButtonSize,
   ButtonVariant,
+  CardPadding,
+  CardRadius,
+  CardVariant,
   ContainerSize,
   GridCols,
   GridGap,
@@ -80,6 +84,10 @@ const BADGE_COLORS: BadgeColor[] = ['dark', 'primary', 'secondary', 'light'];
 
 const IMAGE_ASPECT_RATIOS: ImageAspectRatio[] = ['auto', 'square', 'video', '4/3', '3/2', '21/9'];
 const IMAGE_ROUNDED: ImageRadius[] = ['none', 'sm', 'md', 'lg', 'xl', 'full'];
+
+const CARD_VARIANTS: CardVariant[] = ['default', 'subtle', 'ghost'];
+const CARD_PADDINGS: CardPadding[] = ['none', 'sm', 'md', 'lg'];
+const CARD_RADII: CardRadius[] = ['none', 'sm', 'md', 'lg', 'xl'];
 
 const SAMPLE_IMG =
   'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop';
@@ -383,6 +391,94 @@ export default function PrimitivesPage() {
                       />
                     </Stack>
                   ))}
+                </Grid>
+              </Stack>
+            </Stack>
+          </section>
+
+          {/* ---------- Card ---------- */}
+          <section>
+            <Stack gap="lg">
+              <DemoHeading>Card</DemoHeading>
+
+              <Stack gap="md">
+                <Label>variant variants (padding=&quot;md&quot;, radius=&quot;xl&quot;)</Label>
+                <Grid cols={3} gap="md">
+                  {CARD_VARIANTS.map((variant) => (
+                    <Stack key={variant} gap="xs">
+                      <Label>variant=&quot;{variant}&quot;</Label>
+                      <Card variant={variant}>
+                        <Text size="sm">Card with variant “{variant}”.</Text>
+                      </Card>
+                    </Stack>
+                  ))}
+                </Grid>
+              </Stack>
+
+              <Stack gap="md">
+                <Label>padding variants (variant=&quot;default&quot;)</Label>
+                <Grid cols={4} gap="md">
+                  {CARD_PADDINGS.map((padding) => (
+                    <Stack key={padding} gap="xs">
+                      <Label>padding=&quot;{padding}&quot;</Label>
+                      <Card padding={padding}>
+                        <Text size="sm">p=&quot;{padding}&quot;</Text>
+                      </Card>
+                    </Stack>
+                  ))}
+                </Grid>
+              </Stack>
+
+              <Stack gap="md">
+                <Label>radius variants (variant=&quot;default&quot;)</Label>
+                <Grid cols={5} gap="md">
+                  {CARD_RADII.map((radius) => (
+                    <Stack key={radius} gap="xs">
+                      <Label>radius=&quot;{radius}&quot;</Label>
+                      <Card radius={radius}>
+                        <Text size="sm">r=&quot;{radius}&quot;</Text>
+                      </Card>
+                    </Stack>
+                  ))}
+                </Grid>
+              </Stack>
+
+              <Stack gap="md">
+                <Label>composition sample (Card + Eyebrow + Heading + Text)</Label>
+                <Grid cols={3} gap="md">
+                  <Card as="article">
+                    <Stack gap="sm">
+                      <Eyebrow>Primitive</Eyebrow>
+                      <Heading as="h3" size="h3">
+                        Sample card
+                      </Heading>
+                      <Text size="base" color="muted">
+                        Dropped-in composition of Eyebrow, Heading, and Text inside a Card.
+                      </Text>
+                    </Stack>
+                  </Card>
+                  <Card as="article">
+                    <Stack gap="sm">
+                      <Eyebrow>Primitive</Eyebrow>
+                      <Heading as="h3" size="h3">
+                        Another card
+                      </Heading>
+                      <Text size="base" color="muted">
+                        Same pattern that FeatureGridBlock now uses.
+                      </Text>
+                    </Stack>
+                  </Card>
+                  <Card as="article">
+                    <Stack gap="sm">
+                      <Eyebrow>Primitive</Eyebrow>
+                      <Heading as="h3" size="h3">
+                        Third card
+                      </Heading>
+                      <Text size="base" color="muted">
+                        All variants controlled by the Card prop API.
+                      </Text>
+                    </Stack>
+                  </Card>
                 </Grid>
               </Stack>
             </Stack>
