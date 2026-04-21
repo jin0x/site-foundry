@@ -1,4 +1,4 @@
-import { GridIcon } from '@sanity/icons';
+import { ThLargeIcon } from '@sanity/icons';
 import { defineArrayMember, defineField } from 'sanity';
 import { defineBlockSchema } from '../shared/defineBlockSchema';
 import { featureGridColumnOptions } from '../shared/options';
@@ -7,7 +7,7 @@ export const featureGrid = defineBlockSchema({
   name: 'block.featureGrid',
   title: 'Feature Grid',
   description: 'Grid of concise proof points or capabilities.',
-  icon: GridIcon,
+  icon: ThLargeIcon,
   fields: [
     defineField({
       name: 'items',

@@ -21,7 +21,7 @@ export type GenerationRun = {
   sourceRef: string;
   triggeredBy: string;
   status: 'queued' | 'running' | 'completed' | 'failed';
-  stage: 'ingest' | 'plan' | 'materialize' | 'review';
+  stage: 'ingest' | 'plan' | 'materialize' | 'review' | 'apply';
   startedAt: string;
 };
 
@@ -59,6 +59,43 @@ export function createRunRecord(
     startedAt: new Date().toISOString(),
   };
 }
+
+export type SeedLinkKind = 'page' | 'href' | 'email' | 'file';
+
+export type SeedLink = {
+  kind: SeedLinkKind;
+  page?: string | { _type: 'reference'; _ref: string };
+  href?: string;
+  email?: string;
+  file?: unknown;
+  openInNewTab?: boolean;
+};
+
+export type SeedCtaColor = 'primary' | 'accent' | 'light';
+export type SeedCtaVariant = 'solid' | 'outline' | 'transparent';
+
+export type SeedCta = {
+  _type?: 'cta';
+  enabled?: boolean;
+  text: string;
+  link: SeedLink;
+  color?: SeedCtaColor;
+  variant?: SeedCtaVariant;
+};
+
+export type SeedImageSpec = {
+  topLevel?: string[];
+  nested?: Array<{ arrayField: string; imageFields: string[] }>;
+};
+
+export type SeedArtifact = {
+  figmaNodeId: string;
+  targetPage: string;
+  blockType: string;
+  fields: Record<string, unknown>;
+  images?: SeedImageSpec;
+  richText?: string[];
+};
 
 export const demoRegistry: RegistryItem[] = [
   {

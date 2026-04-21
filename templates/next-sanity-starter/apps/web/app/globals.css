@@ -1,18 +1,1 @@
-@import "@site-foundry-template/ui/styles";
-
-html {
-  background: var(--sf-color-background);
-}
-
-body {
-  margin: 0;
-  color: var(--sf-color-foreground);
-  background:
-    radial-gradient(circle at top, color-mix(in srgb, var(--sf-color-accent) 16%, transparent) 0%, transparent 48%),
-    linear-gradient(180deg, color-mix(in srgb, var(--sf-color-surface) 92%, black 8%) 0%, var(--sf-color-background) 100%);
-  min-height: 100vh;
-}
-
-a {
-  color: inherit;
-}
+@import '@site-foundry-template/ui/styles';

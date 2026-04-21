@@ -1,15 +1,13 @@
 import { PortableText } from '@portabletext/react';
 import type { RichTextBlock as RichTextBlockProps } from '@site-foundry-template/sanity-types';
-import { HeadingGroup } from '../../components/HeadingGroup';
-import { Section } from '../../components/Section';
+import { BaseBlock } from '../../components/BaseBlock';
 
 export function RichTextBlock(props: RichTextBlockProps) {
   return (
-    <Section backgroundTone={props.backgroundTone} spacing={props.spacing}>
-      <div className="sf-rich-text">
-        <HeadingGroup value={props.sectionHeading} />
+    <BaseBlock block={props}>
+      <div className="max-w-[44rem] space-y-4 text-[var(--color-secondary)] leading-[1.7]">
         <PortableText value={props.content as Record<string, unknown>[]} />
       </div>
-    </Section>
+    </BaseBlock>
   );
 }

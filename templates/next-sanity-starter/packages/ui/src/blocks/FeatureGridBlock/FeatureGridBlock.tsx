@@ -1,22 +1,36 @@
 import type { FeatureGridBlock as FeatureGridBlockProps } from '@site-foundry-template/sanity-types';
-import { HeadingGroup } from '../../components/HeadingGroup';
-import { Section } from '../../components/Section';
+import { BaseBlock } from '../../components/BaseBlock';
+import { Card } from '../../primitives/Card';
+import { Eyebrow } from '../../primitives/Eyebrow';
+import { Grid } from '../../primitives/Grid';
+import { GridGap } from '../../primitives/Grid/grid-types';
+import { Heading } from '../../primitives/Heading';
+import { HeadingSize } from '../../primitives/Heading/heading-types';
+import { Stack } from '../../primitives/Stack';
+import { StackGap } from '../../primitives/Stack/stack-types';
+import { Text } from '../../primitives/Text';
+import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
 export function FeatureGridBlock(props: FeatureGridBlockProps) {
   return (
-    <Section backgroundTone={props.backgroundTone} spacing={props.spacing}>
-      <div className="sf-stack sf-stack--lg">
-        <HeadingGroup value={props.sectionHeading} />
-        <div className={['sf-grid', `sf-grid--${props.columns || 3}`].join(' ')}>
-          {props.items?.map((item, index) => (
-            <article key={`${props._key || props._type}-${index}`} className="sf-card">
-              {item.eyebrow ? <p className="sf-card__eyebrow">{item.eyebrow}</p> : null}
-              <h3 className="sf-card__title">{item.title}</h3>
-              {item.description ? <p className="sf-card__copy">{item.description}</p> : null}
-            </article>
-          ))}
-        </div>
-      </div>
-    </Section>
+    <BaseBlock block={props}>
+      <Grid cols={props.columns ?? 3} gap={GridGap.SM}>
+        {props.items?.map((item, index) => (
+          <Card as="article" key={`${props._key || props._type}-${index}`}>
+            <Stack gap={StackGap.SM}>
+              {item.eyebrow ? <Eyebrow>{item.eyebrow}</Eyebrow> : null}
+              <Heading as="h3" size={HeadingSize.H3}>
+                {item.title}
+              </Heading>
+              {item.description ? (
+                <Text size={TextSize.BASE} color={TextColor.MUTED}>
+                  {item.description}
+                </Text>
+              ) : null}
+            </Stack>
+          </Card>
+        ))}
+      </Grid>
+    </BaseBlock>
   );
 }
