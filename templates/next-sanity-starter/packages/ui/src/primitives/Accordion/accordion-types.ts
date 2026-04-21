@@ -1,4 +1,8 @@
-export type AccordionType = 'single' | 'multiple';
+export const AccordionType = {
+  SINGLE: 'single',
+  MULTIPLE: 'multiple',
+} as const;
+export type AccordionType = (typeof AccordionType)[keyof typeof AccordionType];
 
 export interface AccordionContextValue {
   type: AccordionType;

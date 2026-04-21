@@ -1,21 +1,42 @@
-export type TextTag = 'div' | 'p' | 'span' | 'li' | 'ol' | 'ul' | 'code' | 'time';
+export const TextTag = {
+  DIV: 'div',
+  P: 'p',
+  SPAN: 'span',
+  LI: 'li',
+  OL: 'ol',
+  UL: 'ul',
+  CODE: 'code',
+  TIME: 'time',
+} as const;
+export type TextTag = (typeof TextTag)[keyof typeof TextTag];
 
-export type TextSize = 'caption' | 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl';
+export const TextSize = {
+  CAPTION: 'caption',
+  XS: 'xs',
+  SM: 'sm',
+  BASE: 'base',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
+export type TextSize = (typeof TextSize)[keyof typeof TextSize];
 
-export type TextColor =
-  | 'default'
-  | 'muted'
-  | 'subtle'
-  | 'foreground'
-  | 'white'
-  | 'primary'
-  | 'secondary'
-  | 'gradient'
-  | 'black'
-  | 'pale-blue'
-  | 'rose'
-  | 'gray'
-  | 'light-gray';
+export const TextColor = {
+  DEFAULT: 'default',
+  MUTED: 'muted',
+  SUBTLE: 'subtle',
+  FOREGROUND: 'foreground',
+  WHITE: 'white',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  GRADIENT: 'gradient',
+  BLACK: 'black',
+  PALE_BLUE: 'pale-blue',
+  ROSE: 'rose',
+  GRAY: 'gray',
+  LIGHT_GRAY: 'light-gray',
+} as const;
+export type TextColor = (typeof TextColor)[keyof typeof TextColor];
 
 export const TEXT_SIZE_CLASSES: Record<TextSize, string> = {
   caption: 'text-caption',

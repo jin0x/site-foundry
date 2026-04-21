@@ -1,8 +1,23 @@
-export type ButtonVariant = 'solid' | 'outline' | 'ghost';
+export const ButtonVariant = {
+  SOLID: 'solid',
+  OUTLINE: 'outline',
+  GHOST: 'ghost',
+} as const;
+export type ButtonVariant = (typeof ButtonVariant)[keyof typeof ButtonVariant];
 
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export const ButtonSize = {
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+} as const;
+export type ButtonSize = (typeof ButtonSize)[keyof typeof ButtonSize];
 
-export type ButtonColor = 'primary' | 'secondary' | 'light';
+export const ButtonColor = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  LIGHT: 'light',
+} as const;
+export type ButtonColor = (typeof ButtonColor)[keyof typeof ButtonColor];
 
 export const BUTTON_SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: 'min-h-9 text-small px-4',

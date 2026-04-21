@@ -1,6 +1,16 @@
-export type BadgeVariant = 'outline' | 'solid';
+export const BadgeVariant = {
+  OUTLINE: 'outline',
+  SOLID: 'solid',
+} as const;
+export type BadgeVariant = (typeof BadgeVariant)[keyof typeof BadgeVariant];
 
-export type BadgeColor = 'dark' | 'primary' | 'secondary' | 'light';
+export const BadgeColor = {
+  DARK: 'dark',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  LIGHT: 'light',
+} as const;
+export type BadgeColor = (typeof BadgeColor)[keyof typeof BadgeColor];
 
 const outlineColors: Record<BadgeColor, string> = {
   dark: 'border border-[var(--color-code-border)] text-white bg-[var(--color-surface-raised)]',

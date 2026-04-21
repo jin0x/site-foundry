@@ -1,6 +1,26 @@
-export type CardVariant = 'default' | 'subtle' | 'ghost';
-export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
-export type CardRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+export const CardVariant = {
+  DEFAULT: 'default',
+  SUBTLE: 'subtle',
+  GHOST: 'ghost',
+} as const;
+export type CardVariant = (typeof CardVariant)[keyof typeof CardVariant];
+
+export const CardPadding = {
+  NONE: 'none',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+} as const;
+export type CardPadding = (typeof CardPadding)[keyof typeof CardPadding];
+
+export const CardRadius = {
+  NONE: 'none',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
+export type CardRadius = (typeof CardRadius)[keyof typeof CardRadius];
 
 export const CARD_VARIANT_CLASSES: Record<CardVariant, string> = {
   default:

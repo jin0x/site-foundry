@@ -1,8 +1,31 @@
-export type ImageAspectRatio = 'auto' | 'square' | 'video' | '4/3' | '3/2' | '21/9';
+export const ImageAspectRatio = {
+  AUTO: 'auto',
+  SQUARE: 'square',
+  VIDEO: 'video',
+  R4_3: '4/3',
+  R3_2: '3/2',
+  R21_9: '21/9',
+} as const;
+export type ImageAspectRatio = (typeof ImageAspectRatio)[keyof typeof ImageAspectRatio];
 
-export type ImageFit = 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+export const ImageFit = {
+  COVER: 'cover',
+  CONTAIN: 'contain',
+  FILL: 'fill',
+  NONE: 'none',
+  SCALE_DOWN: 'scale-down',
+} as const;
+export type ImageFit = (typeof ImageFit)[keyof typeof ImageFit];
 
-export type ImageRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export const ImageRadius = {
+  NONE: 'none',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+  FULL: 'full',
+} as const;
+export type ImageRadius = (typeof ImageRadius)[keyof typeof ImageRadius];
 
 export const IMAGE_ASPECT_RATIO_CLASSES: Record<ImageAspectRatio, string> = {
   auto: '',

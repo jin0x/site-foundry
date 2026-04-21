@@ -1,6 +1,22 @@
-export type StackGap = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+export const StackGap = {
+  NONE: 'none',
+  XS: 'xs',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+  XL2: '2xl',
+  XL3: '3xl',
+} as const;
+export type StackGap = (typeof StackGap)[keyof typeof StackGap];
 
-export type StackAlign = 'start' | 'center' | 'end' | 'stretch';
+export const StackAlign = {
+  START: 'start',
+  CENTER: 'center',
+  END: 'end',
+  STRETCH: 'stretch',
+} as const;
+export type StackAlign = (typeof StackAlign)[keyof typeof StackAlign];
 
 export const STACK_GAP_CLASSES: Record<StackGap, string> = {
   none: 'gap-0',

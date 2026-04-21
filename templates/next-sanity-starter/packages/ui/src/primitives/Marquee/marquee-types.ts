@@ -1,5 +1,17 @@
-export type MarqueeSpeed = 'slow' | 'medium' | 'fast';
-export type MarqueeGap = 'sm' | 'md' | 'lg' | 'xl';
+export const MarqueeSpeed = {
+  SLOW: 'slow',
+  MEDIUM: 'medium',
+  FAST: 'fast',
+} as const;
+export type MarqueeSpeed = (typeof MarqueeSpeed)[keyof typeof MarqueeSpeed];
+
+export const MarqueeGap = {
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
+export type MarqueeGap = (typeof MarqueeGap)[keyof typeof MarqueeGap];
 
 export const MARQUEE_DURATION: Record<MarqueeSpeed, string> = {
   slow: '100s',

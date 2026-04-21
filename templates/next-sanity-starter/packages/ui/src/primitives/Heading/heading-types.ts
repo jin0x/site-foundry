@@ -1,17 +1,36 @@
-export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+export const HeadingTag = {
+  H1: 'h1',
+  H2: 'h2',
+  H3: 'h3',
+  H4: 'h4',
+  H5: 'h5',
+  H6: 'h6',
+  P: 'p',
+} as const;
+export type HeadingTag = (typeof HeadingTag)[keyof typeof HeadingTag];
 
-export type HeadingSize = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export const HeadingSize = {
+  H1: 'h1',
+  H2: 'h2',
+  H3: 'h3',
+  H4: 'h4',
+  H5: 'h5',
+  H6: 'h6',
+} as const;
+export type HeadingSize = (typeof HeadingSize)[keyof typeof HeadingSize];
 
-export type HeadingColor =
-  | 'default'
-  | 'foreground'
-  | 'white'
-  | 'primary'
-  | 'secondary'
-  | 'gradient'
-  | 'black'
-  | 'rose'
-  | 'gray';
+export const HeadingColor = {
+  DEFAULT: 'default',
+  FOREGROUND: 'foreground',
+  WHITE: 'white',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  GRADIENT: 'gradient',
+  BLACK: 'black',
+  ROSE: 'rose',
+  GRAY: 'gray',
+} as const;
+export type HeadingColor = (typeof HeadingColor)[keyof typeof HeadingColor];
 
 export const HEADING_SIZE_CLASSES: Record<HeadingSize, string> = {
   h1: 'text-h1 font-medium',

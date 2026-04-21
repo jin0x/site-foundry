@@ -10,4 +10,4 @@ export type {
   AccordionProps,
   AccordionTriggerProps,
 } from './Accordion';
-export type { AccordionType } from './accordion-types';
+export { AccordionType } from './accordion-types';

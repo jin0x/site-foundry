@@ -1,4 +1,12 @@
-export type GridGap = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export const GridGap = {
+  NONE: 'none',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+  XL2: '2xl',
+} as const;
+export type GridGap = (typeof GridGap)[keyof typeof GridGap];
 
 export type GridColsNum = 1 | 2 | 3 | 4 | 5 | 6;
 

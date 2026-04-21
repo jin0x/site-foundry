@@ -4,45 +4,76 @@ import {
   AccordionItem,
   AccordionTrigger,
   Badge,
-  Button,
-  Card,
-  Container,
-  Eyebrow,
-  Grid,
-  Heading,
-  Image,
-  Marquee,
-  Stack,
-  Text,
-} from '@site-foundry-template/ui';
-import type {
   BadgeColor,
   BadgeVariant,
+  Button,
   ButtonColor,
   ButtonSize,
   ButtonVariant,
+  Card,
   CardPadding,
   CardRadius,
   CardVariant,
+  Container,
   ContainerSize,
-  GridCols,
+  Eyebrow,
+  Grid,
   GridGap,
+  Heading,
   HeadingColor,
   HeadingSize,
+  Image,
   ImageAspectRatio,
   ImageRadius,
+  Marquee,
   MarqueeGap,
   MarqueeSpeed,
+  Stack,
   StackAlign,
   StackGap,
+  Text,
   TextColor,
   TextSize,
 } from '@site-foundry-template/ui';
+import type { GridCols } from '@site-foundry-template/ui';
+import { DevToc } from '../_components/DevToc';
 
-const STACK_GAPS: StackGap[] = ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'];
-const STACK_ALIGNS: StackAlign[] = ['start', 'center', 'end', 'stretch'];
-const CONTAINER_SIZES: ContainerSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'wide', 'full'];
-const GRID_GAPS: GridGap[] = ['none', 'sm', 'md', 'lg', 'xl', '2xl'];
+const SECTIONS = [
+  { id: 'stack', label: 'Stack' },
+  { id: 'container', label: 'Container' },
+  { id: 'grid', label: 'Grid' },
+  { id: 'heading', label: 'Heading' },
+  { id: 'text', label: 'Text' },
+  { id: 'eyebrow', label: 'Eyebrow' },
+  { id: 'button', label: 'Button' },
+  { id: 'badge', label: 'Badge' },
+  { id: 'image', label: 'Image' },
+  { id: 'card', label: 'Card' },
+  { id: 'accordion', label: 'Accordion' },
+  { id: 'marquee', label: 'Marquee' },
+];
+
+const STACK_GAPS = Object.values(StackGap);
+const STACK_ALIGNS = Object.values(StackAlign);
+const CONTAINER_SIZES = Object.values(ContainerSize);
+const GRID_GAPS = Object.values(GridGap);
+const HEADING_SIZES = Object.values(HeadingSize);
+const HEADING_COLORS = Object.values(HeadingColor);
+const TEXT_SIZES = Object.values(TextSize);
+const TEXT_COLORS = Object.values(TextColor);
+const BUTTON_VARIANTS = Object.values(ButtonVariant);
+const BUTTON_SIZES = Object.values(ButtonSize);
+const BUTTON_COLORS = Object.values(ButtonColor);
+const BADGE_VARIANTS = Object.values(BadgeVariant);
+const BADGE_COLORS = Object.values(BadgeColor);
+const IMAGE_ASPECT_RATIOS = Object.values(ImageAspectRatio);
+const IMAGE_ROUNDED = Object.values(ImageRadius);
+const CARD_VARIANTS = Object.values(CardVariant);
+const CARD_PADDINGS = Object.values(CardPadding);
+const CARD_RADII = Object.values(CardRadius);
+const MARQUEE_SPEEDS = Object.values(MarqueeSpeed);
+const MARQUEE_GAPS = Object.values(MarqueeGap);
+
 const GRID_COL_VARIANTS: Array<{ label: string; cols: GridCols }> = [
   { label: 'cols=2', cols: 2 },
   { label: 'cols=3', cols: 3 },
@@ -51,53 +82,6 @@ const GRID_COL_VARIANTS: Array<{ label: string; cols: GridCols }> = [
   { label: 'cols={mobile:1, tablet:2, desktop:3}', cols: { mobile: 1, tablet: 2, desktop: 3 } },
   { label: 'cols={mobile:2, tablet:3, desktop:6}', cols: { mobile: 2, tablet: 3, desktop: 6 } },
 ];
-
-const HEADING_SIZES: HeadingSize[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-const HEADING_COLORS: HeadingColor[] = [
-  'default',
-  'foreground',
-  'white',
-  'primary',
-  'secondary',
-  'gradient',
-  'black',
-  'rose',
-  'gray',
-];
-
-const TEXT_SIZES: TextSize[] = ['caption', 'xs', 'sm', 'base', 'md', 'lg', 'xl'];
-const TEXT_COLORS: TextColor[] = [
-  'default',
-  'muted',
-  'subtle',
-  'foreground',
-  'white',
-  'primary',
-  'secondary',
-  'gradient',
-  'black',
-  'pale-blue',
-  'rose',
-  'gray',
-  'light-gray',
-];
-
-const BUTTON_VARIANTS: ButtonVariant[] = ['solid', 'outline', 'ghost'];
-const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg'];
-const BUTTON_COLORS: ButtonColor[] = ['primary', 'secondary', 'light'];
-
-const BADGE_VARIANTS: BadgeVariant[] = ['outline', 'solid'];
-const BADGE_COLORS: BadgeColor[] = ['dark', 'primary', 'secondary', 'light'];
-
-const IMAGE_ASPECT_RATIOS: ImageAspectRatio[] = ['auto', 'square', 'video', '4/3', '3/2', '21/9'];
-const IMAGE_ROUNDED: ImageRadius[] = ['none', 'sm', 'md', 'lg', 'xl', 'full'];
-
-const CARD_VARIANTS: CardVariant[] = ['default', 'subtle', 'ghost'];
-const CARD_PADDINGS: CardPadding[] = ['none', 'sm', 'md', 'lg'];
-const CARD_RADII: CardRadius[] = ['none', 'sm', 'md', 'lg', 'xl'];
-
-const MARQUEE_SPEEDS: MarqueeSpeed[] = ['slow', 'medium', 'fast'];
-const MARQUEE_GAPS: MarqueeGap[] = ['sm', 'md', 'lg', 'xl'];
 
 const MARQUEE_ITEMS = [
   'Figma → Sanity',
@@ -141,7 +125,7 @@ function Tile({ children }: { children: React.ReactNode }) {
 
 function DemoHeading({ children }: { children: React.ReactNode }) {
   return (
-    <Heading as="h2" size="h2" className="border-b border-white/10 pb-2">
+    <Heading as="h2" size={HeadingSize.H2} className="border-b border-white/10 pb-2">
       {children}
     </Heading>
   );
@@ -149,7 +133,7 @@ function DemoHeading({ children }: { children: React.ReactNode }) {
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <Text size="caption" color="muted" className="uppercase tracking-widest">
+    <Text size={TextSize.CAPTION} color={TextColor.MUTED} className="uppercase tracking-widest">
       {children}
     </Text>
   );
@@ -158,453 +142,475 @@ function Label({ children }: { children: React.ReactNode }) {
 export default function PrimitivesPage() {
   return (
     <main className="py-16">
-      <Container size="lg">
-        <Stack gap="2xl">
+      <Container size={ContainerSize.LG}>
+        <Stack gap={StackGap.XL2}>
           <header>
-            <Heading as="h1" size="h1">
+            <Heading as="h1" size={HeadingSize.H1}>
               Primitives — dev catalog
             </Heading>
-            <Text size="base" color="muted" className="mt-2">
+            <Text size={TextSize.BASE} color={TextColor.MUTED} className="mt-2">
               Every variant of every primitive. Updates as new primitives land.
             </Text>
           </header>
 
-          {/* ---------- Stack ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Stack</DemoHeading>
+          <div className="grid gap-8 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
+            <DevToc sections={SECTIONS} />
+            <Stack gap={StackGap.XL2}>
+              {/* ---------- Stack ---------- */}
+              <section id="stack">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Stack</DemoHeading>
 
-              <Stack gap="md">
-                <Label>gap variants</Label>
-                {STACK_GAPS.map((gap) => (
-                  <Stack key={gap} gap="xs">
-                    <Label>gap=&quot;{gap}&quot;</Label>
-                    <Stack gap={gap} className="rounded-md border border-white/10 bg-white/[0.03] p-4">
-                      <Tile>Item A</Tile>
-                      <Tile>Item B</Tile>
-                      <Tile>Item C</Tile>
-                    </Stack>
+                  <Stack gap={StackGap.MD}>
+                    <Label>gap variants</Label>
+                    {STACK_GAPS.map((gap) => (
+                      <Stack key={gap} gap={StackGap.XS}>
+                        <Label>gap=&quot;{gap}&quot;</Label>
+                        <Stack
+                          gap={gap}
+                          className="rounded-md border border-white/10 bg-white/[0.03] p-4"
+                        >
+                          <Tile>Item A</Tile>
+                          <Tile>Item B</Tile>
+                          <Tile>Item C</Tile>
+                        </Stack>
+                      </Stack>
+                    ))}
                   </Stack>
-                ))}
-              </Stack>
 
-              <Stack gap="md">
-                <Label>align variants</Label>
-                {STACK_ALIGNS.map((align) => (
-                  <Stack key={align} gap="xs">
-                    <Label>align=&quot;{align}&quot;</Label>
-                    <Stack
-                      gap="sm"
-                      align={align}
-                      className="rounded-md border border-white/10 bg-white/[0.03] p-4"
-                    >
-                      <Tile>short</Tile>
-                      <Tile>a longer item that takes more room</Tile>
-                      <Tile>mid</Tile>
-                    </Stack>
+                  <Stack gap={StackGap.MD}>
+                    <Label>align variants</Label>
+                    {STACK_ALIGNS.map((align) => (
+                      <Stack key={align} gap={StackGap.XS}>
+                        <Label>align=&quot;{align}&quot;</Label>
+                        <Stack
+                          gap={StackGap.SM}
+                          align={align}
+                          className="rounded-md border border-white/10 bg-white/[0.03] p-4"
+                        >
+                          <Tile>short</Tile>
+                          <Tile>a longer item that takes more room</Tile>
+                          <Tile>mid</Tile>
+                        </Stack>
+                      </Stack>
+                    ))}
                   </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </section>
-
-          {/* ---------- Container ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Container</DemoHeading>
-              <Label>size variants (each row is a Container inside the outer LG container)</Label>
-              <Stack gap="md">
-                {CONTAINER_SIZES.map((size) => (
-                  <Stack key={size} gap="xs">
-                    <Label>size=&quot;{size}&quot;</Label>
-                    <Container
-                      size={size}
-                      className="rounded-md border border-white/10 bg-white/[0.03] py-3 text-center text-sm"
-                    >
-                      Container size=&quot;{size}&quot;
-                    </Container>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </section>
-
-          {/* ---------- Grid ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Grid</DemoHeading>
-
-              <Stack gap="md">
-                <Label>cols variants (default gap=&quot;lg&quot;)</Label>
-                {GRID_COL_VARIANTS.map(({ label, cols }) => (
-                  <Stack key={label} gap="xs">
-                    <Label>{label}</Label>
-                    <Grid cols={cols}>
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <Tile key={i}>Cell {i + 1}</Tile>
-                      ))}
-                    </Grid>
-                  </Stack>
-                ))}
-              </Stack>
-
-              <Stack gap="md">
-                <Label>gap variants (cols=3)</Label>
-                {GRID_GAPS.map((gap) => (
-                  <Stack key={gap} gap="xs">
-                    <Label>gap=&quot;{gap}&quot;</Label>
-                    <Grid cols={3} gap={gap}>
-                      <Tile>A</Tile>
-                      <Tile>B</Tile>
-                      <Tile>C</Tile>
-                    </Grid>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </section>
-
-          {/* ---------- Heading ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Heading</DemoHeading>
-
-              <Stack gap="md">
-                <Label>size variants (as=&quot;h2&quot;, color=&quot;default&quot;)</Label>
-                {HEADING_SIZES.map((size) => (
-                  <Stack key={size} gap="xs">
-                    <Label>size=&quot;{size}&quot;</Label>
-                    <Heading size={size}>The quick brown fox jumps over the lazy dog</Heading>
-                  </Stack>
-                ))}
-              </Stack>
-
-              <Stack gap="md">
-                <Label>color variants (size=&quot;h3&quot;)</Label>
-                {HEADING_COLORS.map((color) => (
-                  <Stack key={color} gap="xs">
-                    <Label>color=&quot;{color}&quot;</Label>
-                    <Heading color={color}>color=&quot;{color}&quot;</Heading>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </section>
-
-          {/* ---------- Text ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Text</DemoHeading>
-
-              <Stack gap="md">
-                <Label>size variants (color=&quot;default&quot;)</Label>
-                {TEXT_SIZES.map((size) => (
-                  <Stack key={size} gap="xs">
-                    <Label>size=&quot;{size}&quot;</Label>
-                    <Text size={size}>Pack my box with five dozen liquor jugs.</Text>
-                  </Stack>
-                ))}
-              </Stack>
-
-              <Stack gap="md">
-                <Label>color variants (size=&quot;base&quot;)</Label>
-                {TEXT_COLORS.map((color) => (
-                  <Stack key={color} gap="xs">
-                    <Label>color=&quot;{color}&quot;</Label>
-                    <Text color={color}>color=&quot;{color}&quot;</Text>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </section>
-
-          {/* ---------- Eyebrow ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Eyebrow</DemoHeading>
-              <Stack gap="md">
-                <Eyebrow>Eyebrow label</Eyebrow>
-                <Stack gap="xs">
-                  <Eyebrow>Announcing</Eyebrow>
-                  <Heading size="h2">Eyebrow + Heading composition</Heading>
                 </Stack>
-              </Stack>
-            </Stack>
-          </section>
+              </section>
 
-          {/* ---------- Button ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Button</DemoHeading>
+              {/* ---------- Container ---------- */}
+              <section id="container">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Container</DemoHeading>
+                  <Label>size variants (each row is a Container inside the outer LG container)</Label>
+                  <Stack gap={StackGap.MD}>
+                    {CONTAINER_SIZES.map((size) => (
+                      <Stack key={size} gap={StackGap.XS}>
+                        <Label>size=&quot;{size}&quot;</Label>
+                        <Container
+                          size={size}
+                          className="rounded-md border border-white/10 bg-white/[0.03] py-3 text-center text-sm"
+                        >
+                          Container size=&quot;{size}&quot;
+                        </Container>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Stack>
+              </section>
 
-              <Stack gap="md">
-                <Label>variant × color (size=&quot;md&quot;)</Label>
-                {BUTTON_VARIANTS.map((variant) => (
-                  <Stack key={variant} gap="xs">
-                    <Label>variant=&quot;{variant}&quot;</Label>
-                    <div className="flex flex-wrap gap-3">
-                      {BUTTON_COLORS.map((color) => (
-                        <Button key={color} variant={variant} color={color}>
-                          {variant} / {color}
+              {/* ---------- Grid ---------- */}
+              <section id="grid">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Grid</DemoHeading>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>cols variants (default gap=&quot;lg&quot;)</Label>
+                    {GRID_COL_VARIANTS.map(({ label, cols }) => (
+                      <Stack key={label} gap={StackGap.XS}>
+                        <Label>{label}</Label>
+                        <Grid cols={cols}>
+                          {Array.from({ length: 6 }).map((_, i) => (
+                            <Tile key={i}>Cell {i + 1}</Tile>
+                          ))}
+                        </Grid>
+                      </Stack>
+                    ))}
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>gap variants (cols=3)</Label>
+                    {GRID_GAPS.map((gap) => (
+                      <Stack key={gap} gap={StackGap.XS}>
+                        <Label>gap=&quot;{gap}&quot;</Label>
+                        <Grid cols={3} gap={gap}>
+                          <Tile>A</Tile>
+                          <Tile>B</Tile>
+                          <Tile>C</Tile>
+                        </Grid>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Stack>
+              </section>
+
+              {/* ---------- Heading ---------- */}
+              <section id="heading">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Heading</DemoHeading>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>size variants (as=&quot;h2&quot;, color=&quot;default&quot;)</Label>
+                    {HEADING_SIZES.map((size) => (
+                      <Stack key={size} gap={StackGap.XS}>
+                        <Label>size=&quot;{size}&quot;</Label>
+                        <Heading size={size}>The quick brown fox jumps over the lazy dog</Heading>
+                      </Stack>
+                    ))}
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>color variants (size=&quot;h3&quot;)</Label>
+                    {HEADING_COLORS.map((color) => (
+                      <Stack key={color} gap={StackGap.XS}>
+                        <Label>color=&quot;{color}&quot;</Label>
+                        <Heading color={color}>color=&quot;{color}&quot;</Heading>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Stack>
+              </section>
+
+              {/* ---------- Text ---------- */}
+              <section id="text">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Text</DemoHeading>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>size variants (color=&quot;default&quot;)</Label>
+                    {TEXT_SIZES.map((size) => (
+                      <Stack key={size} gap={StackGap.XS}>
+                        <Label>size=&quot;{size}&quot;</Label>
+                        <Text size={size}>Pack my box with five dozen liquor jugs.</Text>
+                      </Stack>
+                    ))}
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>color variants (size=&quot;base&quot;)</Label>
+                    {TEXT_COLORS.map((color) => (
+                      <Stack key={color} gap={StackGap.XS}>
+                        <Label>color=&quot;{color}&quot;</Label>
+                        <Text color={color}>color=&quot;{color}&quot;</Text>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Stack>
+              </section>
+
+              {/* ---------- Eyebrow ---------- */}
+              <section id="eyebrow">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Eyebrow</DemoHeading>
+                  <Stack gap={StackGap.MD}>
+                    <Eyebrow>Eyebrow label</Eyebrow>
+                    <Stack gap={StackGap.XS}>
+                      <Eyebrow>Announcing</Eyebrow>
+                      <Heading size={HeadingSize.H2}>Eyebrow + Heading composition</Heading>
+                    </Stack>
+                  </Stack>
+                </Stack>
+              </section>
+
+              {/* ---------- Button ---------- */}
+              <section id="button">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Button</DemoHeading>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>variant × color (size=&quot;md&quot;)</Label>
+                    {BUTTON_VARIANTS.map((variant) => (
+                      <Stack key={variant} gap={StackGap.XS}>
+                        <Label>variant=&quot;{variant}&quot;</Label>
+                        <div className="flex flex-wrap gap-3">
+                          {BUTTON_COLORS.map((color) => (
+                            <Button key={color} variant={variant} color={color}>
+                              {variant} / {color}
+                            </Button>
+                          ))}
+                        </div>
+                      </Stack>
+                    ))}
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>size variants (variant=&quot;solid&quot;, color=&quot;primary&quot;)</Label>
+                    <div className="flex flex-wrap items-center gap-3">
+                      {BUTTON_SIZES.map((size) => (
+                        <Button key={size} size={size}>
+                          size=&quot;{size}&quot;
                         </Button>
                       ))}
                     </div>
                   </Stack>
-                ))}
-              </Stack>
 
-              <Stack gap="md">
-                <Label>size variants (variant=&quot;solid&quot;, color=&quot;primary&quot;)</Label>
-                <div className="flex flex-wrap items-center gap-3">
-                  {BUTTON_SIZES.map((size) => (
-                    <Button key={size} size={size}>
-                      size=&quot;{size}&quot;
-                    </Button>
-                  ))}
-                </div>
-              </Stack>
-
-              <Stack gap="md">
-                <Label>anchor (href present) vs button</Label>
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button href="#link-demo">anchor (href)</Button>
-                  <Button>button (no href)</Button>
-                </div>
-              </Stack>
-            </Stack>
-          </section>
-
-          {/* ---------- Badge ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Badge</DemoHeading>
-              <Stack gap="md">
-                <Label>variant × color</Label>
-                {BADGE_VARIANTS.map((variant) => (
-                  <Stack key={variant} gap="xs">
-                    <Label>variant=&quot;{variant}&quot;</Label>
-                    <div className="flex flex-wrap gap-3">
-                      {BADGE_COLORS.map((color) => (
-                        <Badge key={color} variant={variant} color={color}>
-                          {variant} / {color}
-                        </Badge>
-                      ))}
+                  <Stack gap={StackGap.MD}>
+                    <Label>anchor (href present) vs button</Label>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Button href="#link-demo">anchor (href)</Button>
+                      <Button>button (no href)</Button>
                     </div>
                   </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </section>
+                </Stack>
+              </section>
 
-          {/* ---------- Image ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Image</DemoHeading>
+              {/* ---------- Badge ---------- */}
+              <section id="badge">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Badge</DemoHeading>
+                  <Stack gap={StackGap.MD}>
+                    <Label>variant × color</Label>
+                    {BADGE_VARIANTS.map((variant) => (
+                      <Stack key={variant} gap={StackGap.XS}>
+                        <Label>variant=&quot;{variant}&quot;</Label>
+                        <div className="flex flex-wrap gap-3">
+                          {BADGE_COLORS.map((color) => (
+                            <Badge key={color} variant={variant} color={color}>
+                              {variant} / {color}
+                            </Badge>
+                          ))}
+                        </div>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Stack>
+              </section>
 
-              <Stack gap="md">
-                <Label>aspectRatio variants (fit=&quot;cover&quot;, rounded=&quot;md&quot;)</Label>
-                <Grid cols={3} gap="md">
-                  {IMAGE_ASPECT_RATIOS.map((aspectRatio) => (
-                    <Stack key={aspectRatio} gap="xs">
-                      <Label>aspectRatio=&quot;{aspectRatio}&quot;</Label>
-                      <Image
-                        src={SAMPLE_IMG}
-                        alt="Sample"
-                        aspectRatio={aspectRatio}
-                        rounded="md"
-                      />
-                    </Stack>
-                  ))}
-                </Grid>
-              </Stack>
+              {/* ---------- Image ---------- */}
+              <section id="image">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Image</DemoHeading>
 
-              <Stack gap="md">
-                <Label>rounded variants (aspectRatio=&quot;square&quot;)</Label>
-                <Grid cols={3} gap="md">
-                  {IMAGE_ROUNDED.map((rounded) => (
-                    <Stack key={rounded} gap="xs">
-                      <Label>rounded=&quot;{rounded}&quot;</Label>
-                      <Image
-                        src={SAMPLE_IMG}
-                        alt="Sample"
-                        aspectRatio="square"
-                        rounded={rounded}
-                      />
-                    </Stack>
-                  ))}
-                </Grid>
-              </Stack>
-            </Stack>
-          </section>
+                  <Stack gap={StackGap.MD}>
+                    <Label>aspectRatio variants (fit=&quot;cover&quot;, rounded=&quot;md&quot;)</Label>
+                    <Grid cols={3} gap={GridGap.MD}>
+                      {IMAGE_ASPECT_RATIOS.map((aspectRatio) => (
+                        <Stack key={aspectRatio} gap={StackGap.XS}>
+                          <Label>aspectRatio=&quot;{aspectRatio}&quot;</Label>
+                          <Image
+                            src={SAMPLE_IMG}
+                            alt="Sample"
+                            aspectRatio={aspectRatio}
+                            rounded={ImageRadius.MD}
+                          />
+                        </Stack>
+                      ))}
+                    </Grid>
+                  </Stack>
 
-          {/* ---------- Card ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Card</DemoHeading>
+                  <Stack gap={StackGap.MD}>
+                    <Label>rounded variants (aspectRatio=&quot;square&quot;)</Label>
+                    <Grid cols={3} gap={GridGap.MD}>
+                      {IMAGE_ROUNDED.map((rounded) => (
+                        <Stack key={rounded} gap={StackGap.XS}>
+                          <Label>rounded=&quot;{rounded}&quot;</Label>
+                          <Image
+                            src={SAMPLE_IMG}
+                            alt="Sample"
+                            aspectRatio={ImageAspectRatio.SQUARE}
+                            rounded={rounded}
+                          />
+                        </Stack>
+                      ))}
+                    </Grid>
+                  </Stack>
+                </Stack>
+              </section>
 
-              <Stack gap="md">
-                <Label>variant variants (padding=&quot;md&quot;, radius=&quot;xl&quot;)</Label>
-                <Grid cols={3} gap="md">
-                  {CARD_VARIANTS.map((variant) => (
-                    <Stack key={variant} gap="xs">
-                      <Label>variant=&quot;{variant}&quot;</Label>
-                      <Card variant={variant}>
-                        <Text size="sm">Card with variant “{variant}”.</Text>
+              {/* ---------- Card ---------- */}
+              <section id="card">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Card</DemoHeading>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>variant variants (padding=&quot;md&quot;, radius=&quot;xl&quot;)</Label>
+                    <Grid cols={3} gap={GridGap.MD}>
+                      {CARD_VARIANTS.map((variant) => (
+                        <Stack key={variant} gap={StackGap.XS}>
+                          <Label>variant=&quot;{variant}&quot;</Label>
+                          <Card variant={variant}>
+                            <Text size={TextSize.SM}>Card with variant “{variant}”.</Text>
+                          </Card>
+                        </Stack>
+                      ))}
+                    </Grid>
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>padding variants (variant=&quot;default&quot;)</Label>
+                    <Grid cols={4} gap={GridGap.MD}>
+                      {CARD_PADDINGS.map((padding) => (
+                        <Stack key={padding} gap={StackGap.XS}>
+                          <Label>padding=&quot;{padding}&quot;</Label>
+                          <Card padding={padding}>
+                            <Text size={TextSize.SM}>p=&quot;{padding}&quot;</Text>
+                          </Card>
+                        </Stack>
+                      ))}
+                    </Grid>
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>radius variants (variant=&quot;default&quot;)</Label>
+                    <Grid cols={5} gap={GridGap.MD}>
+                      {CARD_RADII.map((radius) => (
+                        <Stack key={radius} gap={StackGap.XS}>
+                          <Label>radius=&quot;{radius}&quot;</Label>
+                          <Card radius={radius}>
+                            <Text size={TextSize.SM}>r=&quot;{radius}&quot;</Text>
+                          </Card>
+                        </Stack>
+                      ))}
+                    </Grid>
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>composition sample (Card + Eyebrow + Heading + Text)</Label>
+                    <Grid cols={3} gap={GridGap.MD}>
+                      <Card as="article">
+                        <Stack gap={StackGap.SM}>
+                          <Eyebrow>Primitive</Eyebrow>
+                          <Heading as="h3" size={HeadingSize.H3}>
+                            Sample card
+                          </Heading>
+                          <Text size={TextSize.BASE} color={TextColor.MUTED}>
+                            Dropped-in composition of Eyebrow, Heading, and Text inside a Card.
+                          </Text>
+                        </Stack>
                       </Card>
-                    </Stack>
-                  ))}
-                </Grid>
-              </Stack>
-
-              <Stack gap="md">
-                <Label>padding variants (variant=&quot;default&quot;)</Label>
-                <Grid cols={4} gap="md">
-                  {CARD_PADDINGS.map((padding) => (
-                    <Stack key={padding} gap="xs">
-                      <Label>padding=&quot;{padding}&quot;</Label>
-                      <Card padding={padding}>
-                        <Text size="sm">p=&quot;{padding}&quot;</Text>
+                      <Card as="article">
+                        <Stack gap={StackGap.SM}>
+                          <Eyebrow>Primitive</Eyebrow>
+                          <Heading as="h3" size={HeadingSize.H3}>
+                            Another card
+                          </Heading>
+                          <Text size={TextSize.BASE} color={TextColor.MUTED}>
+                            Same pattern that FeatureGridBlock now uses.
+                          </Text>
+                        </Stack>
                       </Card>
-                    </Stack>
-                  ))}
-                </Grid>
-              </Stack>
-
-              <Stack gap="md">
-                <Label>radius variants (variant=&quot;default&quot;)</Label>
-                <Grid cols={5} gap="md">
-                  {CARD_RADII.map((radius) => (
-                    <Stack key={radius} gap="xs">
-                      <Label>radius=&quot;{radius}&quot;</Label>
-                      <Card radius={radius}>
-                        <Text size="sm">r=&quot;{radius}&quot;</Text>
+                      <Card as="article">
+                        <Stack gap={StackGap.SM}>
+                          <Eyebrow>Primitive</Eyebrow>
+                          <Heading as="h3" size={HeadingSize.H3}>
+                            Third card
+                          </Heading>
+                          <Text size={TextSize.BASE} color={TextColor.MUTED}>
+                            All variants controlled by the Card prop API.
+                          </Text>
+                        </Stack>
                       </Card>
-                    </Stack>
-                  ))}
-                </Grid>
-              </Stack>
+                    </Grid>
+                  </Stack>
+                </Stack>
+              </section>
 
-              <Stack gap="md">
-                <Label>composition sample (Card + Eyebrow + Heading + Text)</Label>
-                <Grid cols={3} gap="md">
-                  <Card as="article">
-                    <Stack gap="sm">
-                      <Eyebrow>Primitive</Eyebrow>
-                      <Heading as="h3" size="h3">
-                        Sample card
-                      </Heading>
-                      <Text size="base" color="muted">
-                        Dropped-in composition of Eyebrow, Heading, and Text inside a Card.
-                      </Text>
-                    </Stack>
-                  </Card>
-                  <Card as="article">
-                    <Stack gap="sm">
-                      <Eyebrow>Primitive</Eyebrow>
-                      <Heading as="h3" size="h3">
-                        Another card
-                      </Heading>
-                      <Text size="base" color="muted">
-                        Same pattern that FeatureGridBlock now uses.
-                      </Text>
-                    </Stack>
-                  </Card>
-                  <Card as="article">
-                    <Stack gap="sm">
-                      <Eyebrow>Primitive</Eyebrow>
-                      <Heading as="h3" size="h3">
-                        Third card
-                      </Heading>
-                      <Text size="base" color="muted">
-                        All variants controlled by the Card prop API.
-                      </Text>
-                    </Stack>
-                  </Card>
-                </Grid>
-              </Stack>
-            </Stack>
-          </section>
+              {/* ---------- Accordion ---------- */}
+              <section id="accordion">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Accordion</DemoHeading>
 
-          {/* ---------- Accordion ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Accordion</DemoHeading>
+                  <Stack gap={StackGap.MD}>
+                    <Label>type=&quot;single&quot; (default, defaultValue=&quot;one&quot;)</Label>
+                    <Accordion type="single" defaultValue="one">
+                      {ACCORDION_ITEMS.map((item) => (
+                        <AccordionItem key={item.value} value={item.value}>
+                          <AccordionTrigger>{item.question}</AccordionTrigger>
+                          <AccordionContent>{item.answer}</AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </Stack>
 
-              <Stack gap="md">
-                <Label>type=&quot;single&quot; (default, defaultValue=&quot;one&quot;)</Label>
-                <Accordion type="single" defaultValue="one">
-                  {ACCORDION_ITEMS.map((item) => (
-                    <AccordionItem key={item.value} value={item.value}>
-                      <AccordionTrigger>{item.question}</AccordionTrigger>
-                      <AccordionContent>{item.answer}</AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </Stack>
+                  <Stack gap={StackGap.MD}>
+                    <Label>
+                      type=&quot;multiple&quot; (defaultValue=[&quot;one&quot;, &quot;three&quot;])
+                    </Label>
+                    <Accordion type="multiple" defaultValue={['one', 'three']}>
+                      {ACCORDION_ITEMS.map((item) => (
+                        <AccordionItem key={item.value} value={item.value}>
+                          <AccordionTrigger>{item.question}</AccordionTrigger>
+                          <AccordionContent>{item.answer}</AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </Stack>
+                </Stack>
+              </section>
 
-              <Stack gap="md">
-                <Label>type=&quot;multiple&quot; (defaultValue=[&quot;one&quot;, &quot;three&quot;])</Label>
-                <Accordion type="multiple" defaultValue={['one', 'three']}>
-                  {ACCORDION_ITEMS.map((item) => (
-                    <AccordionItem key={item.value} value={item.value}>
-                      <AccordionTrigger>{item.question}</AccordionTrigger>
-                      <AccordionContent>{item.answer}</AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </Stack>
-            </Stack>
-          </section>
+              {/* ---------- Marquee ---------- */}
+              <section id="marquee">
+                <Stack gap={StackGap.LG}>
+                  <DemoHeading>Marquee</DemoHeading>
 
-          {/* ---------- Marquee ---------- */}
-          <section>
-            <Stack gap="lg">
-              <DemoHeading>Marquee</DemoHeading>
+                  <Stack gap={StackGap.MD}>
+                    <Label>speed variants (gap=&quot;lg&quot;, pauseOnHover, fade)</Label>
+                    {MARQUEE_SPEEDS.map((speed) => (
+                      <Stack key={speed} gap={StackGap.XS}>
+                        <Label>speed=&quot;{speed}&quot;</Label>
+                        <Marquee speed={speed}>
+                          {MARQUEE_ITEMS.map((item) => (
+                            <Badge
+                              key={item}
+                              variant={BadgeVariant.OUTLINE}
+                              color={BadgeColor.LIGHT}
+                            >
+                              {item}
+                            </Badge>
+                          ))}
+                        </Marquee>
+                      </Stack>
+                    ))}
+                  </Stack>
 
-              <Stack gap="md">
-                <Label>speed variants (gap=&quot;lg&quot;, pauseOnHover, fade)</Label>
-                {MARQUEE_SPEEDS.map((speed) => (
-                  <Stack key={speed} gap="xs">
-                    <Label>speed=&quot;{speed}&quot;</Label>
-                    <Marquee speed={speed}>
+                  <Stack gap={StackGap.MD}>
+                    <Label>gap variants (speed=&quot;medium&quot;)</Label>
+                    {MARQUEE_GAPS.map((gap) => (
+                      <Stack key={gap} gap={StackGap.XS}>
+                        <Label>gap=&quot;{gap}&quot;</Label>
+                        <Marquee gap={gap}>
+                          {MARQUEE_ITEMS.map((item) => (
+                            <Badge
+                              key={item}
+                              variant={BadgeVariant.OUTLINE}
+                              color={BadgeColor.LIGHT}
+                            >
+                              {item}
+                            </Badge>
+                          ))}
+                        </Marquee>
+                      </Stack>
+                    ))}
+                  </Stack>
+
+                  <Stack gap={StackGap.MD}>
+                    <Label>reverse=true, fade=false, pauseOnHover=false</Label>
+                    <Marquee reverse fade={false} pauseOnHover={false}>
                       {MARQUEE_ITEMS.map((item) => (
-                        <Badge key={item} variant="outline" color="light">
+                        <Badge
+                          key={item}
+                          variant={BadgeVariant.SOLID}
+                          color={BadgeColor.PRIMARY}
+                        >
                           {item}
                         </Badge>
                       ))}
                     </Marquee>
                   </Stack>
-                ))}
-              </Stack>
-
-              <Stack gap="md">
-                <Label>gap variants (speed=&quot;medium&quot;)</Label>
-                {MARQUEE_GAPS.map((gap) => (
-                  <Stack key={gap} gap="xs">
-                    <Label>gap=&quot;{gap}&quot;</Label>
-                    <Marquee gap={gap}>
-                      {MARQUEE_ITEMS.map((item) => (
-                        <Badge key={item} variant="outline" color="light">
-                          {item}
-                        </Badge>
-                      ))}
-                    </Marquee>
-                  </Stack>
-                ))}
-              </Stack>
-
-              <Stack gap="md">
-                <Label>reverse=true, fade=false, pauseOnHover=false</Label>
-                <Marquee reverse fade={false} pauseOnHover={false}>
-                  {MARQUEE_ITEMS.map((item) => (
-                    <Badge key={item} variant="solid" color="primary">
-                      {item}
-                    </Badge>
-                  ))}
-                </Marquee>
-              </Stack>
+                </Stack>
+              </section>
             </Stack>
-          </section>
+          </div>
         </Stack>
       </Container>
     </main>

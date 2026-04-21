@@ -1,4 +1,13 @@
-export type ContainerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'wide' | 'full';
+export const ContainerSize = {
+  XS: 'xs',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+  WIDE: 'wide',
+  FULL: 'full',
+} as const;
+export type ContainerSize = (typeof ContainerSize)[keyof typeof ContainerSize];
 
 /**
  * XL uses `--container-max` (tokens.md default, 1080px).
