@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import '@site-foundry-template/tokens/theme.css';
 
+@source "../**/*.{ts,tsx}";
+@source "../../../../apps/web/app/**/*.{ts,tsx}";
+
 * {
   box-sizing: border-box;
 }
@@ -35,53 +38,6 @@ a {
   padding: calc(var(--spacing) * 20) 0;
 }
 
-.sf-section {
-  position: relative;
-}
-
-.sf-section--spacing-compact {
-  padding: calc(var(--spacing) * 16) 0;
-}
-
-.sf-section--spacing-default {
-  padding: calc(var(--spacing) * 24) 0;
-}
-
-.sf-section--spacing-roomy {
-  padding: calc(var(--spacing) * 32) 0;
-}
-
-.sf-section--tone-subtle {
-  background: color-mix(in srgb, var(--color-surface-raised) 80%, transparent);
-}
-
-.sf-section--tone-accent {
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--color-brand-turquoise) 22%, var(--color-surface-page) 78%),
-    var(--color-surface-raised)
-  );
-}
-
-.sf-section--tone-inverse {
-  color: var(--color-inverse);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--color-surface-inverse) 94%, var(--color-brand-blue) 6%),
-    color-mix(in srgb, var(--color-surface-inverse) 82%, var(--color-brand-blue) 18%)
-  );
-}
-
-.sf-heading-group {
-  display: grid;
-  gap: calc(var(--spacing) * 3);
-}
-
-.sf-heading-group--center {
-  text-align: center;
-}
-
-.sf-eyebrow,
 .sf-card__eyebrow {
   margin: 0;
   color: var(--color-brand-turquoise);
@@ -92,15 +48,6 @@ a {
   font-weight: var(--font-weight-semibold);
 }
 
-.sf-heading {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5vw, 4.75rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-}
-
-.sf-subheading,
 .sf-copy,
 .sf-card__copy,
 .sf-rich-text {
