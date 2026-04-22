@@ -84,10 +84,25 @@ async function downloadImage(url: string): Promise<{ buffer: Buffer; contentType
 }
 
 /**
+ * Threshold (in viewBox units) below which an SVG is treated as icon-sized
+ * and padded to a square. Above this threshold — media-sized SVGs like
+ * screenshots, diagrams, or code-editor exports — the natural aspect is
+ * preserved so a 1044×558 node doesn't become a 1044×1044 square with empty
+ * vertical space.
+ */
+const ICON_PAD_MAX_DIM = 100;
+
+/**
  * Normalize an SVG so Sanity records correct dimensions and downstream renders
- * don't stretch-fill their container. Strips the Figma-MCP-served attributes
- * that break icon grids and pads the viewBox to a square (max of w/h). Returns
- * the original buffer unchanged if the SVG lacks a parseable viewBox.
+ * don't stretch-fill their container. Always strips the Figma-MCP-served
+ * attributes that break grids (`width/height="100%"`, `preserveAspectRatio="none"`,
+ * `style`, `overflow`) and sets numeric width/height matching the viewBox.
+ *
+ * For icon-sized SVGs (both viewBox dims ≤ ICON_PAD_MAX_DIM), the viewBox is
+ * also padded to a square so a grid of icons renders at consistent visual weight.
+ * Larger SVGs keep their natural aspect ratio.
+ *
+ * Returns the original buffer unchanged if the SVG lacks a parseable viewBox.
  */
 export function normalizeSvg(buffer: Buffer): Buffer {
   const text = buffer.toString('utf-8');
@@ -106,10 +121,12 @@ export function normalizeSvg(buffer: Buffer): Buffer {
   const [vbMinX, vbMinY, vbWidth, vbHeight] = parts;
   if (vbWidth <= 0 || vbHeight <= 0) return buffer;
 
-  const side = Math.max(vbWidth, vbHeight);
-  const dx = (side - vbWidth) / 2;
-  const dy = (side - vbHeight) / 2;
-  const newViewBox = `${vbMinX - dx} ${vbMinY - dy} ${side} ${side}`;
+  const shouldPadToSquare = vbWidth <= ICON_PAD_MAX_DIM && vbHeight <= ICON_PAD_MAX_DIM;
+  const targetWidth = shouldPadToSquare ? Math.max(vbWidth, vbHeight) : vbWidth;
+  const targetHeight = shouldPadToSquare ? Math.max(vbWidth, vbHeight) : vbHeight;
+  const dx = (targetWidth - vbWidth) / 2;
+  const dy = (targetHeight - vbHeight) / 2;
+  const newViewBox = `${vbMinX - dx} ${vbMinY - dy} ${targetWidth} ${targetHeight}`;
 
   attrs = attrs
     .replace(/\s*width\s*=\s*"[^"]*"/gi, '')
@@ -120,7 +137,7 @@ export function normalizeSvg(buffer: Buffer): Buffer {
     .replace(/\s*viewBox\s*=\s*"[^"]*"/gi, '')
     .trim();
 
-  const newRootTag = `<svg ${attrs} viewBox="${newViewBox}" width="${side}" height="${side}">`;
+  const newRootTag = `<svg ${attrs} viewBox="${newViewBox}" width="${targetWidth}" height="${targetHeight}">`;
   return Buffer.from(text.replace(originalTag, newRootTag), 'utf-8');
 }
 
