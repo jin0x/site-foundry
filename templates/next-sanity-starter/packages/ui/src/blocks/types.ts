@@ -1,6 +1,7 @@
 import type { JSX } from 'react';
 import type {
   FeatureGridBlock,
+  HeroCenterBlock,
   HeroSplitBlock,
   PageBuilderBlock,
   RichTextBlock,
@@ -8,6 +9,7 @@ import type {
 
 export type BlockMap = {
   'block.featureGrid': FeatureGridBlock;
+  'block.heroCenter': HeroCenterBlock;
   'block.heroSplit': HeroSplitBlock;
   'block.richText': RichTextBlock;
 };

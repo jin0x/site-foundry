@@ -66,6 +66,14 @@ export interface HeroSplitBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
+export interface HeroCenterBlock extends BlockBase {
+  _type: 'block.heroCenter';
+  sectionHeading?: SectionHeadingValue | null;
+  description?: string | null;
+  media?: ImageWithAltValue | null;
+  ctas?: CtaValue[] | null;
+}
+
 export interface FeatureGridItem {
   eyebrow?: string | null;
   title: string;
@@ -88,7 +96,7 @@ export interface RichTextBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
-export type PageBuilderBlock = HeroSplitBlock | FeatureGridBlock | RichTextBlock;
+export type PageBuilderBlock = HeroSplitBlock | HeroCenterBlock | FeatureGridBlock | RichTextBlock;
 
 export interface PageDocument {
   _id: string;

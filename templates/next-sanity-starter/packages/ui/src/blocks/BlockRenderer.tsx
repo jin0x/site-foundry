@@ -1,11 +1,13 @@
 import { Fragment, type ReactNode } from 'react';
 import type { AnyBlock, BlockComponentMap } from './types';
 import { HeroSplitBlock } from './HeroSplitBlock/HeroSplitBlock';
+import { HeroCenterBlock } from './HeroCenterBlock/HeroCenterBlock';
 import { FeatureGridBlock } from './FeatureGridBlock/FeatureGridBlock';
 import { RichTextBlock } from './RichTextBlock/RichTextBlock';
 
 export const REGISTRY: BlockComponentMap = {
   'block.heroSplit': HeroSplitBlock,
+  'block.heroCenter': HeroCenterBlock,
   'block.featureGrid': FeatureGridBlock,
   'block.richText': RichTextBlock,
 };
