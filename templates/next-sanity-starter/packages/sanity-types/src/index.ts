@@ -96,7 +96,48 @@ export interface RichTextBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
-export type PageBuilderBlock = HeroSplitBlock | HeroCenterBlock | FeatureGridBlock | RichTextBlock;
+export interface AccordionItemValue {
+  title: string;
+  body?: string | null;
+  defaultOpen?: boolean | null;
+}
+
+export interface AccordionBlock extends BlockBase {
+  _type: 'block.accordion';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: AccordionItemValue[] | null;
+}
+
+export interface CodeSampleBlock extends BlockBase {
+  _type: 'block.codeSample';
+  sectionHeading?: SectionHeadingValue | null;
+  filename?: string | null;
+  language?: string | null;
+  code?: string | null;
+  caption?: string | null;
+}
+
+export type TabbedFeaturesContent = AccordionBlock | CodeSampleBlock;
+
+export interface TabbedFeaturesGroup {
+  label: string;
+  content?: TabbedFeaturesContent[] | null;
+}
+
+export interface TabbedFeaturesBlock extends BlockBase {
+  _type: 'block.tabbedFeatures';
+  sectionHeading?: SectionHeadingValue | null;
+  groups?: TabbedFeaturesGroup[] | null;
+}
+
+export type PageBuilderBlock =
+  | HeroSplitBlock
+  | HeroCenterBlock
+  | FeatureGridBlock
+  | RichTextBlock
+  | AccordionBlock
+  | CodeSampleBlock
+  | TabbedFeaturesBlock;
 
 export interface PageDocument {
   _id: string;
