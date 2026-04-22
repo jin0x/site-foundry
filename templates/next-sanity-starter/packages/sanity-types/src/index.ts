@@ -130,6 +130,34 @@ export interface TabbedFeaturesBlock extends BlockBase {
   groups?: TabbedFeaturesGroup[] | null;
 }
 
+export type MarqueeSpeedValue = 'slow' | 'medium' | 'fast';
+
+export interface LogoMarqueeItem {
+  logo: ImageWithAltValue;
+  name?: string | null;
+  href?: string | null;
+}
+
+export interface LogoMarqueeBlock extends BlockBase {
+  _type: 'block.logoMarquee';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: LogoMarqueeItem[] | null;
+  speed?: MarqueeSpeedValue | null;
+  pauseOnHover?: boolean | null;
+  fade?: boolean | null;
+}
+
+export type CalloutTone = 'default' | 'frosted' | 'accent';
+
+export interface CalloutBlock extends BlockBase {
+  _type: 'block.callout';
+  sectionHeading?: SectionHeadingValue | null;
+  description?: string | null;
+  icon?: ImageWithAltValue | null;
+  tone?: CalloutTone | null;
+  ctas?: CtaValue[] | null;
+}
+
 export type PageBuilderBlock =
   | HeroSplitBlock
   | HeroCenterBlock
@@ -137,7 +165,9 @@ export type PageBuilderBlock =
   | RichTextBlock
   | AccordionBlock
   | CodeSampleBlock
-  | TabbedFeaturesBlock;
+  | TabbedFeaturesBlock
+  | LogoMarqueeBlock
+  | CalloutBlock;
 
 export interface PageDocument {
   _id: string;

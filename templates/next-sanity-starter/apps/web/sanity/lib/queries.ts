@@ -37,6 +37,12 @@ export const pageBySlugQuery = `
             url
           }
         },
+        logo{
+          ...,
+          asset->{
+            url
+          }
+        },
         cta{
           ...,
           link{

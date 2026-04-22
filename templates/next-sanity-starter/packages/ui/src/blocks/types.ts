@@ -1,10 +1,12 @@
 import type { JSX } from 'react';
 import type {
   AccordionBlock,
+  CalloutBlock,
   CodeSampleBlock,
   FeatureGridBlock,
   HeroCenterBlock,
   HeroSplitBlock,
+  LogoMarqueeBlock,
   PageBuilderBlock,
   RichTextBlock,
   TabbedFeaturesBlock,
@@ -12,10 +14,12 @@ import type {
 
 export type BlockMap = {
   'block.accordion': AccordionBlock;
+  'block.callout': CalloutBlock;
   'block.codeSample': CodeSampleBlock;
   'block.featureGrid': FeatureGridBlock;
   'block.heroCenter': HeroCenterBlock;
   'block.heroSplit': HeroSplitBlock;
+  'block.logoMarquee': LogoMarqueeBlock;
   'block.richText': RichTextBlock;
   'block.tabbedFeatures': TabbedFeaturesBlock;
 };

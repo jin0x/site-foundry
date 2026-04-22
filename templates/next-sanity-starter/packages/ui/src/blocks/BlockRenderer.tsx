@@ -1,19 +1,23 @@
 import { Fragment, type ReactNode } from 'react';
 import type { AnyBlock, BlockComponentMap } from './types';
 import { AccordionBlock } from './AccordionBlock/AccordionBlock';
+import { CalloutBlock } from './CalloutBlock/CalloutBlock';
 import { CodeSampleBlock } from './CodeSampleBlock/CodeSampleBlock';
 import { HeroSplitBlock } from './HeroSplitBlock/HeroSplitBlock';
 import { HeroCenterBlock } from './HeroCenterBlock/HeroCenterBlock';
 import { FeatureGridBlock } from './FeatureGridBlock/FeatureGridBlock';
+import { LogoMarqueeBlock } from './LogoMarqueeBlock/LogoMarqueeBlock';
 import { RichTextBlock } from './RichTextBlock/RichTextBlock';
 import { TabbedFeaturesBlock } from './TabbedFeaturesBlock/TabbedFeaturesBlock';
 
 export const REGISTRY: BlockComponentMap = {
   'block.accordion': AccordionBlock,
+  'block.callout': CalloutBlock,
   'block.codeSample': CodeSampleBlock,
   'block.heroSplit': HeroSplitBlock,
   'block.heroCenter': HeroCenterBlock,
   'block.featureGrid': FeatureGridBlock,
+  'block.logoMarquee': LogoMarqueeBlock,
   'block.richText': RichTextBlock,
   'block.tabbedFeatures': TabbedFeaturesBlock,
 };
