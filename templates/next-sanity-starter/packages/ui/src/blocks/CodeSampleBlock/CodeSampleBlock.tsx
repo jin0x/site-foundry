@@ -13,7 +13,7 @@ export function CodeSampleBlockContent(props: CodeSampleBlockProps) {
   if (!props.code) return null;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 h-full">
       <div className="rounded-xl border border-[var(--color-code-border)] overflow-hidden bg-[var(--color-surface-elevated)]">
         <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-code-border)] bg-[var(--color-surface-raised)]">
           <span className="size-3 rounded-full bg-[#ff5f57]" aria-hidden />
