@@ -301,11 +301,12 @@ export async function applySeedArtifact(opts: ApplySeedOptions): Promise<ApplySe
   await resolveRichTextPaths(seed, seedDir, log);
   autoWrapSectionHeadingSubheading(seed.fields);
 
+  const imageResolveOptions = { figmaFileKey: seed.figmaFileKey };
   if (seed.images?.topLevel?.length) {
     if (opts.dryRun) {
       mockImageFields(seed.fields, seed.images.topLevel);
     } else {
-      await resolveImageFields(client, seed.fields, seed.images.topLevel);
+      await resolveImageFields(client, seed.fields, seed.images.topLevel, imageResolveOptions);
     }
   }
   if (seed.images?.nested) {
@@ -319,6 +320,7 @@ export async function applySeedArtifact(opts: ApplySeedOptions): Promise<ApplySe
             client,
             arr as Record<string, unknown>[],
             nested.imageFields,
+            imageResolveOptions,
           );
         }
       }

@@ -28,6 +28,30 @@ export const pageBySlugQuery = `
             }
           }
         }
+      },
+      items[]{
+        ...,
+        icon{
+          ...,
+          asset->{
+            url
+          }
+        },
+        cta{
+          ...,
+          link{
+            ...,
+            page->{
+              _type,
+              "slug": slug.current
+            },
+            file{
+              asset->{
+                url
+              }
+            }
+          }
+        }
       }
     }
   }

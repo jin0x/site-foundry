@@ -1,13 +1,26 @@
 /**
  * Image upload utility — downloads images from URLs and uploads to Sanity.
  *
+ * Sources:
+ *  - Any direct URL (Figma MCP asset URLs, external URLs) — via `ImageSpecUrl`
+ *  - Figma node via the Figma REST API — via `ImageSpecFigma` (requires FIGMA_API_TOKEN)
+ *
  * Features:
- *  - Downloads from any URL (Figma MCP asset URLs, external URLs)
  *  - Uploads via `client.assets.upload('image', ...)`
  *  - Content-hash cache to avoid re-uploading identical images
+ *  - SVG normalization — strips `width/height="100%"`, `preserveAspectRatio="none"`,
+ *    and pads viewBox to square so Sanity records accurate dimensions and the asset
+ *    renders correctly in fixed-size containers (see note below)
  *  - Returns an `imageWithAlt` shape (alt required by schema)
  *
  * Cache file: `.cache/asset-map.json` in the process cwd.
+ *
+ * SVG normalization note: Figma MCP serves SVGs with no intrinsic size
+ * (`width/height="100%"`) and `preserveAspectRatio="none"`, which causes icons to
+ * stretch-fill any container and makes Sanity record the glyph's tight bounding box
+ * as the asset's dimensions. The normalizer pads the viewBox to a square (max of w/h)
+ * and sets numeric width/height matching the square's side — icons in a grid then
+ * render at consistent size with their natural aspect preserved.
  */
 
 import { createHash } from 'crypto';
@@ -61,7 +74,104 @@ async function downloadImage(url: string): Promise<{ buffer: Buffer; contentType
 
   const contentType = response.headers.get('content-type') || 'image/png';
   const arrayBuffer = await response.arrayBuffer();
-  return { buffer: Buffer.from(arrayBuffer), contentType };
+  let buffer: Buffer = Buffer.from(arrayBuffer);
+
+  if (contentType.startsWith('image/svg')) {
+    buffer = normalizeSvg(buffer);
+  }
+
+  return { buffer, contentType };
+}
+
+/**
+ * Normalize an SVG so Sanity records correct dimensions and downstream renders
+ * don't stretch-fill their container. Strips the Figma-MCP-served attributes
+ * that break icon grids and pads the viewBox to a square (max of w/h). Returns
+ * the original buffer unchanged if the SVG lacks a parseable viewBox.
+ */
+export function normalizeSvg(buffer: Buffer): Buffer {
+  const text = buffer.toString('utf-8');
+  const svgTagMatch = text.match(/<svg\s+([^>]*)>/i);
+  if (!svgTagMatch) return buffer;
+
+  const originalTag = svgTagMatch[0];
+  let attrs = svgTagMatch[1];
+
+  const viewBoxMatch = attrs.match(/viewBox\s*=\s*"([^"]+)"/i);
+  if (!viewBoxMatch) return buffer;
+
+  const parts = viewBoxMatch[1].trim().split(/\s+/).map(Number);
+  if (parts.length !== 4 || parts.some((n) => !Number.isFinite(n))) return buffer;
+
+  const [vbMinX, vbMinY, vbWidth, vbHeight] = parts;
+  if (vbWidth <= 0 || vbHeight <= 0) return buffer;
+
+  const side = Math.max(vbWidth, vbHeight);
+  const dx = (side - vbWidth) / 2;
+  const dy = (side - vbHeight) / 2;
+  const newViewBox = `${vbMinX - dx} ${vbMinY - dy} ${side} ${side}`;
+
+  attrs = attrs
+    .replace(/\s*width\s*=\s*"[^"]*"/gi, '')
+    .replace(/\s*height\s*=\s*"[^"]*"/gi, '')
+    .replace(/\s*preserveAspectRatio\s*=\s*"[^"]*"/gi, '')
+    .replace(/\s*style\s*=\s*"[^"]*"/gi, '')
+    .replace(/\s*overflow\s*=\s*"[^"]*"/gi, '')
+    .replace(/\s*viewBox\s*=\s*"[^"]*"/gi, '')
+    .trim();
+
+  const newRootTag = `<svg ${attrs} viewBox="${newViewBox}" width="${side}" height="${side}">`;
+  return Buffer.from(text.replace(originalTag, newRootTag), 'utf-8');
+}
+
+/**
+ * Fetch an image URL from the Figma REST API for a given file + node.
+ * The API returns a short-lived S3 URL which the caller then downloads.
+ *
+ * Requires `FIGMA_API_TOKEN` in the environment. Exports the node at its
+ * layout bounds — so a 24×24 icon frame exports as 24×24, a composed-graphic
+ * frame exports at its full dimensions (the fix for pipeline gap 1 / T4.2).
+ */
+export async function fetchFromFigmaApi(params: {
+  fileKey: string;
+  nodeId: string;
+  format?: 'svg' | 'png' | 'jpg';
+  scale?: number;
+}): Promise<string> {
+  const token = process.env.FIGMA_API_TOKEN;
+  if (!token) {
+    throw new Error(
+      'FIGMA_API_TOKEN is not set. Add it to .env to fetch images via the Figma REST API.',
+    );
+  }
+
+  const format = params.format ?? 'svg';
+  const query = new URLSearchParams({ ids: params.nodeId, format });
+  if (format !== 'svg' && params.scale) {
+    query.set('scale', String(params.scale));
+  }
+
+  const url = `https://api.figma.com/v1/images/${params.fileKey}?${query.toString()}`;
+  const response = await fetch(url, { headers: { 'X-Figma-Token': token } });
+  if (!response.ok) {
+    throw new Error(
+      `Figma API error ${response.status} ${response.statusText} fetching ${params.nodeId} in ${params.fileKey}`,
+    );
+  }
+
+  const body = (await response.json()) as { err?: string | null; images?: Record<string, string | null> };
+  if (body.err) {
+    throw new Error(`Figma API returned error: ${body.err}`);
+  }
+
+  const imageUrl = body.images?.[params.nodeId];
+  if (!imageUrl) {
+    throw new Error(
+      `Figma API returned no image URL for node ${params.nodeId} in file ${params.fileKey}`,
+    );
+  }
+
+  return imageUrl;
 }
 
 function contentHash(buffer: Buffer): string {
@@ -141,26 +251,76 @@ function buildImageWithAlt(sanityId: string, opts: UploadImageOptions): SanityIm
   return value;
 }
 
-interface ImageSpec {
+/** URL-based image spec — direct download. */
+interface ImageSpecUrl {
   url: string;
   alt: string;
   caption?: string;
 }
 
-function isImageSpec(value: unknown): value is ImageSpec {
+/** Figma-node-based image spec — resolved via the Figma REST API. */
+interface ImageSpecFigma {
+  figmaNodeId: string;
+  /** Optional per-image override; falls back to the seed envelope's figmaFileKey. */
+  figmaFileKey?: string;
+  /** Default 'svg'. */
+  figmaFormat?: 'svg' | 'png' | 'jpg';
+  /** Raster scale (png/jpg only). */
+  figmaScale?: number;
+  alt: string;
+  caption?: string;
+}
+
+type ImageSpec = ImageSpecUrl | ImageSpecFigma;
+
+function isImageSpecUrl(value: unknown): value is ImageSpecUrl {
   if (!value || typeof value !== 'object') return false;
   const v = value as Record<string, unknown>;
   return typeof v.url === 'string';
 }
 
+function isImageSpecFigma(value: unknown): value is ImageSpecFigma {
+  if (!value || typeof value !== 'object') return false;
+  const v = value as Record<string, unknown>;
+  return typeof v.figmaNodeId === 'string';
+}
+
+function isImageSpec(value: unknown): value is ImageSpec {
+  return isImageSpecUrl(value) || isImageSpecFigma(value);
+}
+
+export interface ResolveImageOptions {
+  /** Seed-envelope-level Figma fileKey, used when an ImageSpecFigma omits its own. */
+  figmaFileKey?: string;
+}
+
+async function resolveSpecToUrl(spec: ImageSpec, opts: ResolveImageOptions): Promise<string> {
+  if (isImageSpecUrl(spec)) return spec.url;
+
+  const fileKey = spec.figmaFileKey ?? opts.figmaFileKey;
+  if (!fileKey) {
+    throw new Error(
+      `ImageSpecFigma for node ${spec.figmaNodeId} needs a figmaFileKey — set it on the spec or on the seed envelope.`,
+    );
+  }
+
+  return fetchFromFigmaApi({
+    fileKey,
+    nodeId: spec.figmaNodeId,
+    format: spec.figmaFormat,
+    scale: spec.figmaScale,
+  });
+}
+
 /**
  * Process top-level image fields on a fields object.
- * Every declared field must carry both `url` and `alt` — missing alt throws.
+ * Every declared field must carry a source (`url` or `figmaNodeId`) and `alt` — missing alt throws.
  */
 export async function resolveImageFields(
   client: SanityClient,
   fields: Record<string, unknown>,
   imageFields: string[],
+  options: ResolveImageOptions = {},
 ): Promise<Record<string, unknown>> {
   for (const fieldName of imageFields) {
     const value = fields[fieldName];
@@ -170,8 +330,9 @@ export async function resolveImageFields(
       throw new Error(`Image field "${fieldName}" is missing required alt text.`);
     }
 
+    const url = await resolveSpecToUrl(value, options);
     fields[fieldName] = await uploadImage(client, {
-      url: value.url,
+      url,
       alt: value.alt,
       caption: value.caption,
       filename: fieldName,
@@ -188,6 +349,7 @@ export async function resolveNestedImageFields(
   client: SanityClient,
   items: Record<string, unknown>[],
   imageFields: string[],
+  options: ResolveImageOptions = {},
 ): Promise<Record<string, unknown>[]> {
   for (let i = 0; i < items.length; i++) {
     for (const fieldName of imageFields) {
@@ -198,8 +360,9 @@ export async function resolveNestedImageFields(
         throw new Error(`Image field "${fieldName}" in item ${i} is missing required alt text.`);
       }
 
+      const url = await resolveSpecToUrl(value, options);
       items[i][fieldName] = await uploadImage(client, {
-        url: value.url,
+        url,
         alt: value.alt,
         caption: value.caption,
         filename: `${fieldName}-${i}`,
