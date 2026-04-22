@@ -70,6 +70,8 @@ export interface FeatureGridItem {
   eyebrow?: string | null;
   title: string;
   description?: string | null;
+  icon?: ImageWithAltValue | null;
+  cta?: CtaValue | null;
 }
 
 export interface FeatureGridBlock extends BlockBase {
@@ -83,6 +85,7 @@ export interface RichTextBlock extends BlockBase {
   _type: 'block.richText';
   sectionHeading?: SectionHeadingValue | null;
   content?: PortableTextLike | null;
+  ctas?: CtaValue[] | null;
 }
 
 export type PageBuilderBlock = HeroSplitBlock | FeatureGridBlock | RichTextBlock;

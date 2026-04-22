@@ -7,6 +7,7 @@ export const richText = defineBlockSchema({
   title: 'Rich Text',
   description: 'Long-form editorial content block.',
   icon: DocumentTextIcon,
+  withCtas: true,
   fields: [
     defineField({
       name: 'content',

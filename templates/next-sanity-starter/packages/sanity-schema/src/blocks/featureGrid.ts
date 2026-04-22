@@ -28,6 +28,14 @@ export const featureGrid = defineBlockSchema({
               type: 'text',
               rows: 3,
             }),
+            defineField({
+              name: 'icon',
+              type: 'imageWithAlt',
+            }),
+            defineField({
+              name: 'cta',
+              type: 'cta',
+            }),
           ],
           preview: {
             select: {
