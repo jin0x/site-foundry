@@ -1,0 +1,127 @@
+{
+  "figmaNodeId": "893:7461",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Dive into Documentation",
+      "subheading": "From pip install to production. Guides, API references, and SDKs to start building complex communications flows.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "JSON/YAML Call Flow Markup",
+        "description": "Define complex communication flows declaratively with SWML. The SignalWire Markup Language has built-in methods for voice, video, messaging, and AI - all single events or statically generated or statically served.",
+        "icon": {
+          "url": "https://www.figma.com/api/mcp/asset/eb4b21be-2a73-40a0-ac6d-238d22ca4c06",
+          "alt": "File with code icon"
+        },
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Learn More",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "transparent"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "Protocol-Agnostic API Access",
+        "description": "Connect to SignalWire using whatever fits your architecture. REST for simple requests, WebSockets for real-time events, GraphQL for flexible queries, or direct database/PIs for peer-to-peer data.",
+        "icon": {
+          "url": "https://www.figma.com/api/mcp/asset/f7cbdaa4-b71d-4b26-8fc0-9263416e3e2f",
+          "alt": "Plug icon"
+        },
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Learn More",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "transparent"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "CPaaS Primitives",
+        "description": "Every carrier feature is exposed as simple APIs. Send an SMS with one API call, make a phone call with another. Standard CPaaS functionality you expect to be provided out-of-the-box by the FreeSWITCH team.",
+        "icon": {
+          "url": "https://www.figma.com/api/mcp/asset/d59db2f4-1408-4656-9bfb-44466f450b5d",
+          "alt": "Memory stick icon"
+        },
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Learn More",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "transparent"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "Call Center Infrastructure as Code",
+        "description": "Define complex communication flows declaratively with SWML. The SignalWire Markup Language has built-in methods for voice, video, messaging, and AI - all single events or statically generated or statically served.",
+        "icon": {
+          "url": "https://www.figma.com/api/mcp/asset/bf8b969b-bd51-49d2-84fa-4369af975a90",
+          "alt": "Code brackets icon"
+        },
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Learn More",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "transparent"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "Multi-Protocol Session Management",
+        "description": "Define complex communication flows declaratively with SWML. The SignalWire Markup Language has built-in methods for voice, video, messaging, and AI - all single events or statically generated or statically served.",
+        "icon": {
+          "url": "https://www.figma.com/api/mcp/asset/88359e85-a83d-4edc-92f2-56d70d8e469e",
+          "alt": "Binary digits icon"
+        },
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Learn More",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "transparent"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "WebSocket-Based Realtime API",
+        "description": "Define complex communication flows declaratively with SWML. The SignalWire Markup Language has built-in methods for voice, video, messaging, and AI - all single events or statically generated or statically served.",
+        "icon": {
+          "url": "https://www.figma.com/api/mcp/asset/8c87bde7-a333-4ec4-b773-50309a972755",
+          "alt": "Chat bot icon"
+        },
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Learn More",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "transparent"
+        }
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "images": {
+    "nested": [
+      { "arrayField": "items", "imageFields": ["icon"] }
+    ]
+  },
+  "richText": ["sectionHeading.subheading"]
+}

@@ -1,0 +1,92 @@
+{
+  "figmaNodeId": "893:7147",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.tabbedFeatures",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Everything You Need, Unified.",
+      "subheading": "The platform handles state, timing, coordination, and infrastructure. You build AI agents and call flows on top without ever touching infrastructure complexity.",
+      "align": "center"
+    },
+    "groups": [
+      {
+        "_type": "object",
+        "label": "Contact Center Flows",
+        "content": [
+          {
+            "_type": "block.accordion",
+            "items": [
+              {
+                "_type": "object",
+                "title": "01 Advanced IVR",
+                "body": "Get the DTMF out of here. Build AI powered interactive voice response systems with dynamic routing and intelligent call handling.",
+                "defaultOpen": true
+              },
+              { "_type": "object", "title": "02 AI Call Routing" },
+              { "_type": "object", "title": "03 Call Queuing" },
+              { "_type": "object", "title": "04 Conferencing" },
+              { "_type": "object", "title": "05 Live Transcription" }
+            ]
+          },
+          {
+            "_type": "block.codeSample",
+            "filename": "advanced-ivr.js",
+            "language": "javascript",
+            "code": "// Advanced IVR Example\nconst ivr = await signalwire.create({\n  type: 'ivr',\n  menu: {\n    options: [1, 2, 3],\n    timeout: 5000\n  }\n});"
+          }
+        ]
+      },
+      {
+        "_type": "object",
+        "label": "AI Voice Agents",
+        "content": [
+          {
+            "_type": "block.accordion",
+            "items": [
+              {
+                "_type": "object",
+                "title": "01 Per-tab content pending",
+                "body": "Designer-provided per-tab content for \"AI Voice Agents\" is pending. The schema ships with the tab-switching mechanic; editors fill in real accordion items and code samples in Studio.",
+                "defaultOpen": true
+              }
+            ]
+          },
+          {
+            "_type": "block.codeSample",
+            "filename": "voice-agent.js",
+            "language": "javascript",
+            "code": "// AI Voice Agent example — pending real content from designer."
+          }
+        ]
+      },
+      {
+        "_type": "object",
+        "label": "Carrier Grade APIs",
+        "content": [
+          {
+            "_type": "block.accordion",
+            "items": [
+              {
+                "_type": "object",
+                "title": "01 Per-tab content pending",
+                "body": "Designer-provided per-tab content for \"Carrier Grade APIs\" is pending. The schema ships with the tab-switching mechanic; editors fill in real accordion items and code samples in Studio.",
+                "defaultOpen": true
+              }
+            ]
+          },
+          {
+            "_type": "block.codeSample",
+            "filename": "carrier-api.js",
+            "language": "javascript",
+            "code": "// Carrier-grade API example — pending real content from designer."
+          }
+        ]
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "richText": ["sectionHeading.subheading"]
+}

@@ -1,0 +1,22 @@
+{
+  "figmaNodeId": "893:7173",
+  "figmaFileKey": "ox8M7KAx62v6GmQPriJBmO",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.heroCenter",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "You Write the Logic. Voice AI Follows It.",
+      "align": "center"
+    },
+    "description": "Putting business logic in a prompt means hoping the model stays on script. With a Control Plane, AI Agents can only act on what you explicitly expose at each step.",
+    "media": {
+      "figmaNodeId": "893:7281",
+      "alt": "SignalWire control plane architecture diagram showing channels and developer interfaces connecting through the control plane to the media engine core."
+    },
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "images": { "topLevel": ["media"] }
+}
