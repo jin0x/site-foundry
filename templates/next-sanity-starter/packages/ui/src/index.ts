@@ -1,4 +1,5 @@
 export * from './primitives/Accordion';
+export * from './primitives/Avatar';
 export * from './primitives/Badge';
 export * from './primitives/Button';
 export * from './primitives/Card';
@@ -27,3 +28,4 @@ export * from './blocks/HeroSplitBlock/HeroSplitBlock';
 export * from './blocks/LogoMarqueeBlock/LogoMarqueeBlock';
 export * from './blocks/RichTextBlock/RichTextBlock';
 export * from './blocks/TabbedFeaturesBlock/TabbedFeaturesBlock';
+export * from './blocks/TestimonialsBlock/TestimonialsBlock';

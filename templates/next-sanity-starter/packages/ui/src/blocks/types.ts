@@ -10,6 +10,7 @@ import type {
   PageBuilderBlock,
   RichTextBlock,
   TabbedFeaturesBlock,
+  TestimonialsBlock,
 } from '@site-foundry-template/sanity-types';
 
 export type BlockMap = {
@@ -22,6 +23,7 @@ export type BlockMap = {
   'block.logoMarquee': LogoMarqueeBlock;
   'block.richText': RichTextBlock;
   'block.tabbedFeatures': TabbedFeaturesBlock;
+  'block.testimonials': TestimonialsBlock;
 };
 
 export type BlockComponentMap = {

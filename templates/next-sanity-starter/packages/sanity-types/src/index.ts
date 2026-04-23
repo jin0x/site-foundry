@@ -158,6 +158,23 @@ export interface CalloutBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
+export type TestimonialVariant = 'default' | 'featured';
+
+export interface TestimonialItem {
+  quote: string;
+  name: string;
+  role?: string | null;
+  avatar?: ImageWithAltValue | null;
+  variant?: TestimonialVariant | null;
+}
+
+export interface TestimonialsBlock extends BlockBase {
+  _type: 'block.testimonials';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: TestimonialItem[] | null;
+  columns?: 2 | 3 | null;
+}
+
 export type PageBuilderBlock =
   | HeroSplitBlock
   | HeroCenterBlock
@@ -167,7 +184,8 @@ export type PageBuilderBlock =
   | CodeSampleBlock
   | TabbedFeaturesBlock
   | LogoMarqueeBlock
-  | CalloutBlock;
+  | CalloutBlock
+  | TestimonialsBlock;
 
 export interface PageDocument {
   _id: string;

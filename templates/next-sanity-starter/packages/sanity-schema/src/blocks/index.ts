@@ -9,6 +9,7 @@ export { heroSplit } from './heroSplit';
 export { logoMarquee } from './logoMarquee';
 export { richText } from './richText';
 export { tabbedFeatures } from './tabbedFeatures';
+export { testimonials } from './testimonials';
 
 export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.heroSplit' },
@@ -20,4 +21,5 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.codeSample' },
   { type: 'block.logoMarquee' },
   { type: 'block.callout' },
+  { type: 'block.testimonials' },
 ];

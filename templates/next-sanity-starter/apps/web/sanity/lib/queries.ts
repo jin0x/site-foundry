@@ -43,6 +43,12 @@ export const pageBySlugQuery = `
             url
           }
         },
+        avatar{
+          ...,
+          asset->{
+            url
+          }
+        },
         cta{
           ...,
           link{
