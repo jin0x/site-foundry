@@ -15,7 +15,7 @@ import { HeadingSize } from '../../primitives/Heading/heading-types';
 import { Image } from '../../primitives/Image';
 import { ImageFit } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
-import { StackGap } from '../../primitives/Stack/stack-types';
+import { StackAlign, StackDirection, StackGap } from '../../primitives/Stack/stack-types';
 import { Text } from '../../primitives/Text';
 import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
@@ -66,7 +66,7 @@ function BulletIcon({ state }: { state: ComparisonBulletState }) {
 
 function BulletRow({ state, label }: { state: ComparisonBulletState; label: string }) {
   return (
-    <div className="flex items-start gap-3">
+    <Stack direction={StackDirection.ROW} align={StackAlign.START} gap={StackGap.SM}>
       <span
         className={cx(
           'mt-0.5 shrink-0 inline-flex h-5 w-5 items-center justify-center rounded-full',
@@ -78,7 +78,7 @@ function BulletRow({ state, label }: { state: ComparisonBulletState; label: stri
       <Text size={TextSize.BASE} color={TextColor.MUTED} className="flex-1">
         {label}
       </Text>
-    </div>
+    </Stack>
   );
 }
 

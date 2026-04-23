@@ -2,13 +2,16 @@ import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../lib/cx';
 import {
   STACK_ALIGN_CLASSES,
+  STACK_DIRECTION_CLASSES,
   STACK_GAP_CLASSES,
   type StackAlign,
+  type StackDirection,
   type StackGap,
 } from './stack-types';
 
 export interface StackProps extends HTMLAttributes<HTMLElement> {
   as?: ElementType;
+  direction?: StackDirection;
   gap?: StackGap;
   align?: StackAlign;
   children?: ReactNode;
@@ -16,6 +19,7 @@ export interface StackProps extends HTMLAttributes<HTMLElement> {
 
 export function Stack({
   as: Component = 'div',
+  direction = 'column',
   gap = 'md',
   align,
   className,
@@ -25,7 +29,7 @@ export function Stack({
   return (
     <Component
       className={cx(
-        'flex flex-col',
+        STACK_DIRECTION_CLASSES[direction],
         STACK_GAP_CLASSES[gap],
         align && STACK_ALIGN_CLASSES[align],
         className,

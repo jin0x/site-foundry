@@ -12,7 +12,7 @@ import { CardPadding, CardRadius, CardVariant } from '../../primitives/Card/card
 import { Grid } from '../../primitives/Grid';
 import { GridGap } from '../../primitives/Grid/grid-types';
 import { Stack } from '../../primitives/Stack';
-import { StackGap } from '../../primitives/Stack/stack-types';
+import { StackAlign, StackDirection, StackGap } from '../../primitives/Stack/stack-types';
 import { Text } from '../../primitives/Text';
 import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
@@ -43,7 +43,7 @@ function TestimonialCard({ item, cardKey }: { item: TestimonialItem; cardKey: st
         >
           {`"${item.quote}"`}
         </Text>
-        <div className="flex items-center gap-3">
+        <Stack direction={StackDirection.ROW} align={StackAlign.CENTER} gap={StackGap.SM}>
           <Avatar source={item.avatar} name={item.name} size={AvatarSize.MD} />
           <Stack gap={StackGap.NONE}>
             <Text size={TextSize.BASE} color={TextColor.FOREGROUND}>
@@ -55,7 +55,7 @@ function TestimonialCard({ item, cardKey }: { item: TestimonialItem; cardKey: st
               </Text>
             ) : null}
           </Stack>
-        </div>
+        </Stack>
       </Stack>
     </Card>
   );
