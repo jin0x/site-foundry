@@ -1,0 +1,18 @@
+{
+  "figmaNodeId": "2565:59056",
+  "targetPage": "staging-homepage",
+  "blockType": "block.richText",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "eyebrow": "Legal",
+      "heading": "Privacy Policy",
+      "align": "left"
+    },
+    "content": "file:content/rich-text-sample.md",
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "richText": ["content"]
+}

@@ -1,0 +1,52 @@
+{
+  "figmaNodeId": "757:6704",
+  "targetPage": "staging-homepage",
+  "blockType": "block.heroSplit",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "eyebrow": "Platform",
+      "heading": "Ship Sanity-backed marketing sites from Figma",
+      "subheading": "A Figma frame becomes a **typed** block in Studio, rendered by primitives you already trust. See the [technical overview](https://example.com/overview).",
+      "align": "left"
+    },
+    "description": "Drop a design into the pipeline, review the generated plan, and apply the resulting seed to staging with a single command.",
+    "media": {
+      "url": "https://picsum.photos/seed/heroSplit/1200/800",
+      "alt": "Two teammates reviewing a Sanity Studio pageBuilder on a laptop."
+    },
+    "mediaPlacement": "right",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "See a live example",
+        "link": {
+          "kind": "href",
+          "href": "https://example.com/live-example",
+          "openInNewTab": true
+        },
+        "color": "primary",
+        "variant": "solid"
+      },
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Talk to the team",
+        "link": {
+          "kind": "email",
+          "email": "hello@rshstudio.com"
+        },
+        "color": "primary",
+        "variant": "outline"
+      }
+    ],
+    "backgroundTone": "subtle",
+    "spacing": "default"
+  },
+  "images": {
+    "topLevel": ["media"]
+  },
+  "richText": ["sectionHeading.subheading"]
+}

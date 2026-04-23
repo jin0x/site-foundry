@@ -1,0 +1,39 @@
+{
+  "figmaNodeId": "757:6349",
+  "targetPage": "staging-homepage",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "eyebrow": "Capabilities",
+      "heading": "Everything the pipeline covers today",
+      "subheading": "Three registered blocks, a seed-driven apply, and a working feedback loop from Figma to Studio.",
+      "align": "center"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "eyebrow": "Design source",
+        "title": "Figma MCP ingest",
+        "description": "Pull desktop and mobile frames, extract tokens, and hand the structured output to the seed generator."
+      },
+      {
+        "_type": "object",
+        "eyebrow": "Typed blocks",
+        "title": "Namespaced block.* types",
+        "description": "Every block lives under a `block.*` _type, mapped to a React component by the UI BlockRenderer."
+      },
+      {
+        "_type": "object",
+        "eyebrow": "Idempotent writes",
+        "title": "Apply the same seed safely",
+        "description": "Seed keys derive from the Figma node id, so re-running updates the same block — no duplicates, no drift."
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "subtle",
+    "spacing": "default"
+  },
+  "richText": ["sectionHeading.subheading"]
+}
