@@ -5,4 +5,5 @@ dist
 .sanity
 .env
 .env.local
+.cache
 *.log
