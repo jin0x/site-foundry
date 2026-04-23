@@ -10,6 +10,7 @@
     "@portabletext/react": "catalog:",
     "@site-foundry-template/sanity-types": "workspace:*",
     "@site-foundry-template/tokens": "workspace:*",
+    "prism-react-renderer": "catalog:",
     "react": "catalog:"
   },
   "devDependencies": {
