@@ -175,6 +175,28 @@ export interface TestimonialsBlock extends BlockBase {
   columns?: 2 | 3 | null;
 }
 
+export type ComparisonBulletState = 'positive' | 'negative' | 'neutral';
+
+export interface ComparisonBullet {
+  label: string;
+  state?: ComparisonBulletState | null;
+}
+
+export type ComparisonVariant = 'default' | 'featured';
+
+export interface ComparisonItem {
+  title: string;
+  logo?: ImageWithAltValue | null;
+  bullets?: ComparisonBullet[] | null;
+  variant?: ComparisonVariant | null;
+}
+
+export interface ComparisonBlock extends BlockBase {
+  _type: 'block.comparison';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: ComparisonItem[] | null;
+}
+
 export type PageBuilderBlock =
   | HeroSplitBlock
   | HeroCenterBlock
@@ -185,7 +207,8 @@ export type PageBuilderBlock =
   | TabbedFeaturesBlock
   | LogoMarqueeBlock
   | CalloutBlock
-  | TestimonialsBlock;
+  | TestimonialsBlock
+  | ComparisonBlock;
 
 export interface PageDocument {
   _id: string;

@@ -3,6 +3,7 @@ import type { AnyBlock, BlockComponentMap } from './types';
 import { AccordionBlock } from './AccordionBlock/AccordionBlock';
 import { CalloutBlock } from './CalloutBlock/CalloutBlock';
 import { CodeSampleBlock } from './CodeSampleBlock/CodeSampleBlock';
+import { ComparisonBlock } from './ComparisonBlock/ComparisonBlock';
 import { HeroSplitBlock } from './HeroSplitBlock/HeroSplitBlock';
 import { HeroCenterBlock } from './HeroCenterBlock/HeroCenterBlock';
 import { FeatureGridBlock } from './FeatureGridBlock/FeatureGridBlock';
@@ -15,6 +16,7 @@ export const REGISTRY: BlockComponentMap = {
   'block.accordion': AccordionBlock,
   'block.callout': CalloutBlock,
   'block.codeSample': CodeSampleBlock,
+  'block.comparison': ComparisonBlock,
   'block.heroSplit': HeroSplitBlock,
   'block.heroCenter': HeroCenterBlock,
   'block.featureGrid': FeatureGridBlock,

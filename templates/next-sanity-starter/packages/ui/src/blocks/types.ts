@@ -3,6 +3,7 @@ import type {
   AccordionBlock,
   CalloutBlock,
   CodeSampleBlock,
+  ComparisonBlock,
   FeatureGridBlock,
   HeroCenterBlock,
   HeroSplitBlock,
@@ -17,6 +18,7 @@ export type BlockMap = {
   'block.accordion': AccordionBlock;
   'block.callout': CalloutBlock;
   'block.codeSample': CodeSampleBlock;
+  'block.comparison': ComparisonBlock;
   'block.featureGrid': FeatureGridBlock;
   'block.heroCenter': HeroCenterBlock;
   'block.heroSplit': HeroSplitBlock;

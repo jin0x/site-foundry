@@ -1,6 +1,6 @@
 import type { SchemaTypeDefinition } from 'sanity';
 import { blockContent } from './blockContent';
-import { heroSplit, heroCenter, featureGrid, richText, accordion, codeSample, tabbedFeatures, logoMarquee, callout, testimonials } from './blocks';
+import { heroSplit, heroCenter, featureGrid, richText, accordion, codeSample, tabbedFeatures, logoMarquee, callout, testimonials, comparison } from './blocks';
 import { page } from './documents/page';
 import { cta } from './objects/cta';
 import { imageWithAlt } from './objects/imageWithAlt';
@@ -26,6 +26,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   logoMarquee,
   callout,
   testimonials,
+  comparison,
   page,
   settings,
 ];

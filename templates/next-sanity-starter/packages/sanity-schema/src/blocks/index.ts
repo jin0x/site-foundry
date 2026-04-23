@@ -3,6 +3,7 @@ import type { ArrayOfType } from 'sanity';
 export { accordion } from './accordion';
 export { callout } from './callout';
 export { codeSample } from './codeSample';
+export { comparison } from './comparison';
 export { featureGrid } from './featureGrid';
 export { heroCenter } from './heroCenter';
 export { heroSplit } from './heroSplit';
@@ -22,4 +23,5 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.logoMarquee' },
   { type: 'block.callout' },
   { type: 'block.testimonials' },
+  { type: 'block.comparison' },
 ];
