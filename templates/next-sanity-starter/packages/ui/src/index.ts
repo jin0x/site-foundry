@@ -7,6 +7,7 @@ export * from './primitives/Container';
 export * from './primitives/Eyebrow';
 export * from './primitives/Grid';
 export * from './primitives/Heading';
+export * from './primitives/IconBadge';
 export * from './primitives/Image';
 export * from './primitives/Marquee';
 export * from './primitives/Stack';

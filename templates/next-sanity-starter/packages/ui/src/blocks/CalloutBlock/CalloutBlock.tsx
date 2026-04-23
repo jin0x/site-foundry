@@ -5,8 +5,8 @@ import { HeadingGroup } from '../../components/HeadingGroup';
 import { SectionCta } from '../../components/SectionCta';
 import { Card } from '../../primitives/Card';
 import { CardPadding, CardRadius, CardVariant } from '../../primitives/Card/card-types';
-import { Image } from '../../primitives/Image';
-import { ImageFit } from '../../primitives/Image/image-types';
+import { IconBadge } from '../../primitives/IconBadge';
+import { IconBadgeSize } from '../../primitives/IconBadge/iconbadge-types';
 import { Stack } from '../../primitives/Stack';
 import { StackAlign, StackGap } from '../../primitives/Stack/stack-types';
 import { Text } from '../../primitives/Text';
@@ -34,9 +34,7 @@ export function CalloutBlock(props: CalloutBlockProps) {
       >
         <Stack gap={StackGap.LG} align={StackAlign.CENTER} className="text-center">
           {props.icon?.asset?.url ? (
-            <div className="w-12 h-12">
-              <Image source={props.icon} fit={ImageFit.CONTAIN} />
-            </div>
+            <IconBadge source={props.icon} size={IconBadgeSize.MD} />
           ) : null}
           {props.sectionHeading ? (
             <HeadingGroup value={{ ...props.sectionHeading, align: 'center' }} />

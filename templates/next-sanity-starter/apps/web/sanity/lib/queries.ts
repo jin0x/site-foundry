@@ -14,6 +14,12 @@ export const pageBySlugQuery = `
           url
         }
       },
+      icon{
+        ...,
+        asset->{
+          url
+        }
+      },
       ctas[]{
         ...,
         link{
