@@ -1,10 +1,9 @@
 /*
- * Site Foundry token theme.
+ * Site Foundry token theme — Decisions design system.
  *
- * Values are NEUTRAL PLACEHOLDERS (dark-navy surface, teal accent) — intended
- * to look acceptable out-of-the-box while real project tokens land. Structure
- * matches docs/canonical/tokens.md. Swap the hex values per project; the
- * downstream pipeline (globals.css, primitives, components) stays untouched.
+ * Ingested 2026-04-25 from file `a9We7ZVxDDdUfyIbyRutxs` (Decisions — Rebrand |
+ * Internal) via Figma MCP `get_variable_defs` across 13 design-system nodes.
+ * Full source reference: alpha_v5/PROJECT_DESIGN_NODES.md
  *
  * Tailwind v4 consumes @theme variables and generates utility classes:
  *   --color-*      → bg-*, text-*, border-*, etc.
@@ -14,42 +13,274 @@
  *   --font-*       → font-*
  *   --breakpoint-* → sm:, md:, lg:, xl: responsive prefixes
  *   --z-*          → z-*
+ *
+ * ==============================================================================
+ * DESIGN DECISIONS (see inline comments for per-var reasoning)
+ * ==============================================================================
+ *
+ * 1. LIGHT-MODE-FIRST. Previous theme was dark-navy page bg. Decisions is
+ *    white page bg with navy as inverse/emphasis. Every surface + text token
+ *    flips accordingly.
+ *
+ * 2. SEMANTIC VAR NAMES PRESERVED. Downstream code (Button, Text, Section, etc.)
+ *    reads --color-brand-turquoise / --color-brand-fuchsia / --color-primary / etc.
+ *    NAMES stay the same; values remap to Decisions colors. No code changes
+ *    required downstream. Some names now diverge from values (e.g.
+ *    --color-brand-fuchsia holds lime green) — intentional to preserve compat;
+ *    cosmetic rename could happen in a follow-up refactor PR.
+ *
+ * 3. COLOR RAMPS EXPOSED. The full 10-step design-system ramps
+ *    (--color-navy-10 .. --color-navy-100, etc.) live alongside the semantic
+ *    tokens. Subtle tints, hover backgrounds, and disabled states now have
+ *    real design-system-backed values instead of ad-hoc opacity.
+ *
+ * 4. IBM PLEX SANS. Both --font-heading and --font-body use IBM Plex Sans
+ *    per the Decisions Typography node (full scale, 4 weights). Code font
+ *    stays JetBrains Mono.
+ *
+ * 5. FONT WEIGHT LIGHT (300) ADDED. Decisions design uses Light 300 on big
+ *    display headings (hero + some h1s) even though the canonical scale
+ *    published with the design system only defines Regular 400 / Medium 500 /
+ *    SemiBold 600 / Bold 700. --font-weight-light: 300 extends the canonical
+ *    scale to match actual design usage.
+ *    TODO (raise to designer): confirm whether Light is intended canon or
+ *    should be replaced with Regular across the pages.
+ *
+ * 6. SHADOWS. 7-level drop-shadow scale from the Decisions Effects node.
+ *    Tailwind v4 doesn't auto-generate utility classes from --shadow-*;
+ *    use via arbitrary classes (shadow-[var(--shadow-lg)]) or add a @utility
+ *    block in globals.css if shadow-xs/sm/md/lg/xl/2xl/3xl aliases are
+ *    desired.
+ *
+ * 7. UNCHANGED. Spacing, radius, container sizes (except max), breakpoints,
+ *    z-index, and syntax/code-block colors are NOT in the Decisions design
+ *    system. Kept as-is; update in a separate pass if values are provided.
+ *
+ * ==============================================================================
+ * SEMANTIC → DECISIONS REMAP
+ * ==============================================================================
+ *
+ * Site Foundry var            Value (Decisions)         Notes
+ * ──────────────────────────────────────────────────────────────────────────
+ * --color-brand-turquoise     #0080ff (Bright Blue)    primary CTA color
+ * --color-brand-fuchsia       #b1fc5f (Lime Green)     accent ⚠ name mismatch
+ * --color-brand-blue          #00274d (Dark Navy)      emphasis / inverse
+ * --color-brand-purple        #eaf6ff (Soft Blue)      subtle brand tint ⚠ name mismatch
+ * --color-brand-gold          #eab308 (Warning)        no Decisions gold ⚠ name mismatch
+ * --color-brand-light-bg      #FAFAFA                  subtle light surface
+ *
+ * --color-primary             #0A0A0C (Text/Default)   text on light surfaces
+ * --color-secondary           #1f2937cc (Gray/80)      muted text
+ * --color-tertiary            #1f293799 (Gray/60)      subtle text
+ * --color-disabled            #1f293766 (Gray/40)      disabled state
+ * --color-inverse             #FFFFFF                  text on dark surfaces
+ *
+ * --color-surface-page        #FFFFFF                  white page bg
+ * --color-surface-raised      #FAFAFA                  subtle raised
+ * --color-surface-elevated    #F5F5F7                  more raised (estimated — not in design system)
+ * --color-surface-inverse     #00274d (Dark Navy)      dark inverse bg
  */
 
 @theme {
-  /* --- Brand -------------------------------------------------------- */
-  /* Single-accent palette: turquoise is the anchor; blue/fuchsia/purple/gold
-   * sit as desaturated dusty variants so the UI reads cohesively on a
-   * dark-navy surface. Friday's real tokens will re-saturate them. */
-  --color-brand-blue: #7fb4cc;
-  --color-brand-fuchsia: #c49ab1;
-  --color-brand-purple: #a59dc5;
-  --color-brand-turquoise: #76e4c3;
-  --color-brand-gold: #d4c386;
-  --color-brand-light-bg: #fafbfc;
+  /* ============================================================
+   * PART 1 — Decisions palette ramps
+   * ============================================================
+   * Alpha-tinted 10-90 steps + solid 100. Use these directly for tints,
+   * hover bgs, borders, disabled states. Tailwind v4 auto-generates
+   * bg-navy-20, text-lime-100, border-gray-40, etc.
+   */
 
-  /* --- Fill (interior color set; typically mirrors brand) ----------- */
-  --color-fill-blue: #7fb4cc;
-  --color-fill-fuchsia: #c49ab1;
-  --color-fill-purple: #a59dc5;
-  --color-fill-turquoise: #76e4c3;
-  --color-fill-gold: #d4c386;
+  /* Neutrals — Gray (base #1f2937) */
+  --color-gray-10:  #1f29371a;
+  --color-gray-20:  #1f293733;
+  --color-gray-30:  #1f29374d;
+  --color-gray-40:  #1f293766;
+  --color-gray-50:  #1f293780;
+  --color-gray-60:  #1f293799;
+  --color-gray-70:  #1f2937b2;
+  --color-gray-80:  #1f2937cc;
+  --color-gray-90:  #1f2937e5;
+  --color-gray-100: #1f2937;
 
-  /* --- Text (foreground semantic roles) ----------------------------- */
-  --color-primary: #f4f7ff;
-  --color-secondary: #b7c2e0;
-  --color-tertiary: #8891b0;
-  --color-disabled: rgba(244, 247, 255, 0.3);
-  --color-inverse: #09101f;
+  /* Neutrals — Slate (base #64748b) */
+  --color-slate-10:  #64748b1a;
+  --color-slate-20:  #64748b33;
+  --color-slate-30:  #64748b4d;
+  --color-slate-40:  #64748b66;
+  --color-slate-50:  #64748b80;
+  --color-slate-60:  #64748b99;
+  --color-slate-70:  #64748bb2;
+  --color-slate-80:  #64748bcc;
+  --color-slate-90:  #64748be5;
+  --color-slate-100: #64748b;
 
-  /* --- Surface (background semantic roles) -------------------------- */
-  /* `surface-page` through `surface-inverse` — page, raised card, further-raised, and light-on-dark inverse. */
-  --color-surface-page: #0b1020;
-  --color-surface-raised: #111933;
-  --color-surface-elevated: #17223f;
-  --color-surface-inverse: #fafbfc;
+  /* Neutral anchors */
+  --color-black: #0a0a0c;
+  --color-white: #ffffff;
 
-  /* --- Syntax (code-block token coloring) --------------------------- */
+  /* Brand — Dark Blue / navy (primary brand, base #00274d) */
+  --color-navy-10:  #00274d1a;
+  --color-navy-20:  #00274d33;
+  --color-navy-30:  #00274d4d;
+  --color-navy-40:  #00274d66;
+  --color-navy-50:  #00274d80;
+  --color-navy-60:  #00274d99;
+  --color-navy-70:  #00274db2;
+  --color-navy-80:  #00274dcc;
+  --color-navy-90:  #00274de5;
+  --color-navy-100: #00274d;
+
+  /* Brand — Bright Blue (interactive / CTA, base #0080ff) */
+  --color-bright-blue-10:  #0080ff1a;
+  --color-bright-blue-20:  #0080ff33;
+  --color-bright-blue-30:  #0080ff4d;
+  --color-bright-blue-40:  #0080ff66;
+  --color-bright-blue-50:  #0080ff80;
+  --color-bright-blue-60:  #0080ff99;
+  --color-bright-blue-70:  #0080ffb2;
+  --color-bright-blue-80:  #0080ffcc;
+  --color-bright-blue-90:  #0080ffe5;
+  --color-bright-blue-100: #0080ff;
+
+  /* Brand — Soft Blue (surface tint, base #eaf6ff) */
+  --color-soft-blue-10:  #eaf6ff1a;
+  --color-soft-blue-20:  #eaf6ff33;
+  --color-soft-blue-30:  #eaf6ff4d;
+  --color-soft-blue-40:  #eaf6ff66;
+  --color-soft-blue-50:  #eaf6ff80;
+  --color-soft-blue-60:  #eaf6ff99;
+  --color-soft-blue-70:  #eaf6ffb2;
+  --color-soft-blue-80:  #eaf6ffcc;
+  --color-soft-blue-90:  #eaf6ffe5;
+  --color-soft-blue-100: #eaf6ff;
+
+  /* Brand — Lime Green (accent, base #b1fc5f) */
+  --color-lime-10:  #b1fc5f1a;
+  --color-lime-20:  #b1fc5f33;
+  --color-lime-30:  #b1fc5f4d;
+  --color-lime-40:  #b1fc5f66;
+  --color-lime-50:  #b1fc5f80;
+  --color-lime-60:  #b1fc5f99;
+  --color-lime-70:  #b1fc5fb2;
+  --color-lime-80:  #b1fc5fcc;
+  --color-lime-90:  #b1fc5fe5;
+  --color-lime-100: #b1fc5f;
+
+  /* Status — Success (base #22c55e) */
+  --color-success-10:  #22c55e1a;
+  --color-success-20:  #22c55e33;
+  --color-success-30:  #22c55e4d;
+  --color-success-40:  #22c55e66;
+  --color-success-50:  #22c55e80;
+  --color-success-60:  #22c55e99;
+  --color-success-70:  #22c55eb2;
+  --color-success-80:  #22c55ecc;
+  --color-success-90:  #22c55ee5;
+  --color-success-100: #22c55e;
+
+  /* Status — Success Text (dark green for on-success text, base #14532d) */
+  --color-success-text-10:  #14532d1a;
+  --color-success-text-20:  #14532d33;
+  --color-success-text-30:  #14532d4d;
+  --color-success-text-40:  #14532d66;
+  --color-success-text-50:  #14532d80;
+  --color-success-text-60:  #14532d99;
+  --color-success-text-70:  #14532db2;
+  --color-success-text-80:  #14532dcc;
+  --color-success-text-100: #14532d;
+
+  /* Status — Error (base #ef4444) */
+  --color-error-10:  #ef44441a;
+  --color-error-20:  #ef444433;
+  --color-error-30:  #ef44444d;
+  --color-error-40:  #ef444466;
+  --color-error-50:  #ef444480;
+  --color-error-60:  #ef444499;
+  --color-error-70:  #ef4444b2;
+  --color-error-80:  #ef4444cc;
+  --color-error-90:  #ef4444e5;
+  --color-error-100: #ef4444;
+
+  /* Status — Error Text (dark red for on-error text, base #7f1d1d) */
+  --color-error-text-10:  #7f1d1d1a;
+  --color-error-text-20:  #7f1d1d33;
+  --color-error-text-30:  #7f1d1d4d;
+  --color-error-text-40:  #7f1d1d66;
+  --color-error-text-50:  #7f1d1d80;
+  --color-error-text-60:  #7f1d1d99;
+  --color-error-text-70:  #7f1d1db2;
+  --color-error-text-80:  #7f1d1dcc;
+  --color-error-text-90:  #7f1d1de5;
+  --color-error-text-100: #7f1d1d;
+
+  /* Status — Warning (base #eab308) */
+  --color-warning-10:  #eab3081a;
+  --color-warning-20:  #eab30833;
+  --color-warning-30:  #eab3084d;
+  --color-warning-40:  #eab30866;
+  --color-warning-50:  #eab30880;
+  --color-warning-60:  #eab30899;
+  --color-warning-70:  #eab308b2;
+  --color-warning-80:  #eab308cc;
+  --color-warning-90:  #eab308e5;
+  --color-warning-100: #eab308;
+
+  /* Status — Warning Text (dark amber for on-warning text, base #854d0e) */
+  --color-warning-text-10:  #854d0e1a;
+  --color-warning-text-20:  #854d0e33;
+  --color-warning-text-30:  #854d0e4d;
+  --color-warning-text-40:  #854d0e66;
+  --color-warning-text-50:  #854d0e80;
+  --color-warning-text-60:  #854d0e99;
+  --color-warning-text-70:  #854d0eb2;
+  --color-warning-text-80:  #854d0ecc;
+  --color-warning-text-90:  #854d0ee5;
+  --color-warning-text-100: #854d0e;
+
+  /* ============================================================
+   * PART 2 — Semantic tokens (names preserved; values remapped)
+   * ============================================================
+   * These are the vars downstream code actually reads. Changing names
+   * would require refactoring every primitive / block. Changing values
+   * is transparent to consumers.
+   */
+
+  /* --- Brand (semantic) ---------------------------------------- */
+  /* Names preserved for downstream compat. See header for mismatch notes. */
+  --color-brand-turquoise: var(--color-bright-blue-100); /* primary CTA */
+  --color-brand-fuchsia: var(--color-lime-100);          /* accent (name mismatch — preserved for compat) */
+  --color-brand-blue: var(--color-navy-100);             /* emphasis */
+  --color-brand-purple: var(--color-soft-blue-100);      /* subtle tint (name mismatch) */
+  --color-brand-gold: var(--color-warning-100);          /* no Decisions gold (name mismatch) */
+  --color-brand-light-bg: #fafafa;
+
+  /* --- Fill (interior; mirrors brand) -------------------------- */
+  --color-fill-turquoise: var(--color-bright-blue-100);
+  --color-fill-fuchsia: var(--color-lime-100);
+  --color-fill-blue: var(--color-navy-100);
+  --color-fill-purple: var(--color-soft-blue-100);
+  --color-fill-gold: var(--color-warning-100);
+
+  /* --- Text (foreground, light-mode-first) -------------------- */
+  --color-primary: #0a0a0c;                              /* Light/Text/Default — near-black */
+  --color-secondary: var(--color-gray-80);               /* muted body text */
+  --color-tertiary: var(--color-gray-60);                /* subtle / tertiary text */
+  --color-disabled: var(--color-gray-40);                /* disabled state */
+  --color-inverse: #ffffff;                              /* text on dark/navy surfaces */
+
+  /* --- Surface (background, light-mode-first) ----------------- */
+  --color-surface-page: #ffffff;                         /* white page bg */
+  --color-surface-raised: #fafafa;                       /* subtle raised (card on page) */
+  --color-surface-elevated: #f5f5f7;                     /* more raised (estimated — not in design system) */
+  --color-surface-inverse: var(--color-navy-100);        /* dark navy inverse bg */
+
+  /* ============================================================
+   * PART 3 — Syntax + code-block chrome (unchanged from placeholder)
+   * ============================================================
+   * Decisions design system has no code-block styling tokens. Dev catalog
+   * + any prose code blocks use these. Update in a separate pass if
+   * Decisions publishes code-highlighting tokens.
+   */
   --color-syntax-string: #76e4c3;
   --color-syntax-keyword: #6e9eff;
   --color-syntax-property: #f4f7ff;
@@ -61,7 +292,6 @@
   --color-syntax-decorator: #6e9eff;
   --color-syntax-type: #e879b8;
 
-  /* --- Code-block chrome -------------------------------------------- */
   --color-code-bg: #0d1426;
   --color-code-fg: #d4d8e4;
   --color-code-border: rgba(255, 255, 255, 0.14);
@@ -70,12 +300,114 @@
   --color-code-tab-hover: #e8e8ec;
   --color-code-tab-active: #76e4c3;
 
-  /* --- Spacing base -------------------------------------------------- */
-  /* tokens.md scale: 0,1,2,3,4,5,6,8,10,12,16,18,20. Each step = 4px. */
-  /* Tailwind multiplies: p-1 = 4px, p-4 = 16px, p-20 = 80px. */
+  /* ============================================================
+   * PART 4 — Typography
+   * ============================================================
+   * Family: IBM Plex Sans (per Decisions Typography node, 4 weights:
+   * Regular 400 / Medium 500 / SemiBold 600 / Bold 700). Light 300
+   * added to match design usage on display-scale headings.
+   *
+   * Size mapping: Site Foundry h1-h6 + body sizes → nearest Decisions
+   * Display/Text scale step. Var NAMES preserved; values updated.
+   * Decisions Display sizes have -0.02em letter-spacing; Text sizes have 0.
+   */
+
+  /* --- Families ------------------------------------------------ */
+  --font-heading: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* --- Display headings (Site Foundry h1-h6 mapped to Decisions scale) -- */
+  --text-h1: 48px;                       /* Decisions Display lg 48/60 */
+  --text-h1--line-height: 1.25;
+  --text-h1--letter-spacing: -0.02em;
+
+  --text-h2: 30px;                       /* Decisions Display sm 30/38 */
+  --text-h2--line-height: 1.27;
+
+  --text-h3: 24px;                       /* Decisions Display xs 24/32 */
+  --text-h3--line-height: 1.33;
+
+  --text-h4: 20px;                       /* Decisions Text xl 20/30 */
+  --text-h4--line-height: 1.5;
+
+  --text-h5: 18px;                       /* Decisions Text lg 18/28 */
+  --text-h5--line-height: 1.56;
+
+  --text-h6: 16px;                       /* Decisions Text md 16/24 */
+  --text-h6--line-height: 1.5;
+
+  /* --- Body sizes -------------------------------------------- */
+  --text-body: 16px;                     /* Text md 16/24 */
+  --text-body--line-height: 1.5;
+
+  --text-small: 14px;                    /* Text sm 14/20 */
+  --text-small--line-height: 1.43;
+
+  --text-caption: 12px;                  /* Decisions Text xs 12/18 */
+  --text-caption--line-height: 1.5;
+
+  /* --- Prose sizes (long-form content) ----------------------- */
+  --text-prose-body: 20px;               /* Text xl 20/30 */
+  --text-prose-body--line-height: 1.5;
+
+  --text-prose-small: 18px;              /* Text lg 18/28 */
+  --text-prose-small--line-height: 1.56;
+
+  --text-prose-code: 16px;               /* match Text md */
+  --text-prose-code--line-height: 1.5;
+
+  /* --- Code -------------------------------------------------- */
+  --text-code: 14px;
+  --text-code--line-height: 1.75;
+
+  /* Note: Decisions uses very large display sizes on marketing pages
+   *       (Display 2xl 72px, Display xl 60px). Not mapped to any h1-h6
+   *       here — hero-shaped blocks either hardcode or need a
+   *       sectionHeading size=display variant. Tracked as T6.1 in the
+   *       SignalWire triage. */
+
+  /* --- Font weights ----------------------------------------- */
+  --font-weight-light: 300;              /* Decisions design uses Light for big headings.
+                                            Not in canonical scale (which defines 400/500/600/700).
+                                            TODO: raise to designer whether Light is intended canon. */
+  --font-weight-body: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-heading: 700;
+
+  /* ============================================================
+   * PART 5 — Shadows (from Decisions Effects node)
+   * ============================================================
+   * 7-level drop-shadow scale. Tailwind v4 does NOT auto-generate
+   * utility classes from --shadow-* by default; use via arbitrary
+   * classes: shadow-[var(--shadow-lg)] OR add a @utility block in
+   * globals.css if shadow-lg-style utility aliases are desired.
+   */
+  --shadow-xs:  0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm:  0 1px 2px -1px rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.10);
+  --shadow-md:  0 2px 4px -2px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.10);
+  --shadow-lg:  0 2px 2px -1px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.03), 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-xl:  0 3px 3px -1.5px rgba(0, 0, 0, 0.04), 0 8px 8px -4px rgba(0, 0, 0, 0.03), 0 20px 24px -4px rgba(0, 0, 0, 0.08);
+  --shadow-2xl: 0 4px 4px -2px rgba(0, 0, 0, 0.04), 0 24px 48px -12px rgba(0, 0, 0, 0.18);
+  --shadow-3xl: 0 5px 5px -2.5px rgba(10, 13, 18, 0.04), 0 32px 64px -12px rgba(10, 13, 18, 0.14);
+
+  /* ============================================================
+   * PART 6 — Spacing + radius + container + breakpoints + z-index
+   * ============================================================
+   * Not tokenised in Decisions design system (MCP returned no dedicated
+   * variables on the Spacing / Radius / Layout / Grid pages). Kept from
+   * placeholder. Update in a separate pass if values are provided.
+   *
+   * Exception: --container-max bumped from 1080px to 1440px to match the
+   * Decisions page-level behavior rule ("1440 content max-width, centered
+   * in 1920 viewport"). This widens every Container use site across the UI.
+   */
+
+  /* --- Spacing base ------------------------------------------ */
   --spacing: 0.25rem;
 
-  /* --- Radius -------------------------------------------------------- */
+  /* --- Radius ------------------------------------------------ */
   --radius-none: 0;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -83,61 +415,18 @@
   --radius-xl: 12px;
   --radius-full: 100px;
 
-  /* --- Typography families ------------------------------------------ */
-  --font-heading: 'Instrument Sans', system-ui, sans-serif;
-  --font-body: 'Lexend', system-ui, sans-serif;
-  --font-code: 'JetBrains Mono', ui-monospace, monospace;
-
-  /* --- Typography sizes (+ paired line-heights) --------------------- */
-  --text-h1: 52px;
-  --text-h1--line-height: 1.2;
-  --text-h2: 32px;
-  --text-h2--line-height: 1.2;
-  --text-h3: 22px;
-  --text-h3--line-height: 1.2;
-  --text-h4: 20px;
-  --text-h4--line-height: 1.3;
-  --text-h5: 18px;
-  --text-h5--line-height: 1.4;
-  --text-h6: 16px;
-  --text-h6--line-height: 1.4;
-
-  --text-body: 16px;
-  --text-body--line-height: 1.7;
-  --text-small: 14px;
-  --text-small--line-height: 1.7;
-  --text-caption: 13px;
-  --text-caption--line-height: 1.7;
-
-  --text-prose-body: 20px;
-  --text-prose-body--line-height: 1.8;
-  --text-prose-small: 18px;
-  --text-prose-small--line-height: 1.8;
-  --text-prose-code: 17px;
-  --text-prose-code--line-height: 1.75;
-
-  --text-code: 14px;
-  --text-code--line-height: 1.75;
-
-  /* --- Font weights -------------------------------------------------- */
-  --font-weight-body: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-heading: 700;
-
-  /* --- Container ----------------------------------------------------- */
-  --container-max: 1080px;
+  /* --- Container --------------------------------------------- */
+  --container-max: 1440px;               /* Decisions page-level behavior: 1440 content max-width */
   --container-padding-desktop: 32px;
   --container-padding-mobile: 20px;
 
-  /* --- Breakpoints --------------------------------------------------- */
-  /* Mapped to Tailwind's standard prefixes so sm:/md:/lg:/xl: work. */
+  /* --- Breakpoints ------------------------------------------- */
   --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
 
-  /* --- Z-index ------------------------------------------------------- */
+  /* --- Z-index ----------------------------------------------- */
   --z-base: 1;
   --z-navbar: 100;
   --z-overlay: 200;
