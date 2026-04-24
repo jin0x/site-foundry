@@ -214,6 +214,14 @@ export interface ComparisonBlock extends BlockBase {
   items?: ComparisonItem[] | null;
 }
 
+export interface VideoContentBlock extends BlockBase {
+  _type: 'block.videoContent';
+  sectionHeading?: SectionHeadingValue | null;
+  videoUrl?: string | null;
+  poster?: ImageWithAltValue | null;
+  caption?: string | null;
+}
+
 export type PageBuilderBlock =
   | HeroSplitBlock
   | HeroCenterBlock
@@ -226,7 +234,8 @@ export type PageBuilderBlock =
   | LogoMarqueeBlock
   | CalloutBlock
   | TestimonialsBlock
-  | ComparisonBlock;
+  | ComparisonBlock
+  | VideoContentBlock;
 
 export interface PageDocument {
   _id: string;

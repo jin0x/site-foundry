@@ -14,6 +14,12 @@ export const pageBySlugQuery = `
           url
         }
       },
+      poster{
+        ...,
+        asset->{
+          url
+        }
+      },
       icon{
         ...,
         asset->{

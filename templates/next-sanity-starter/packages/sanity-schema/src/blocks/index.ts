@@ -12,6 +12,7 @@ export { richText } from './richText';
 export { statGrid } from './statGrid';
 export { tabbedFeatures } from './tabbedFeatures';
 export { testimonials } from './testimonials';
+export { videoContent } from './videoContent';
 
 export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.heroSplit' },
@@ -26,4 +27,5 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.callout' },
   { type: 'block.testimonials' },
   { type: 'block.comparison' },
+  { type: 'block.videoContent' },
 ];

@@ -13,6 +13,7 @@ import type {
   StatGridBlock,
   TabbedFeaturesBlock,
   TestimonialsBlock,
+  VideoContentBlock,
 } from '@site-foundry-template/sanity-types';
 
 export type BlockMap = {
@@ -28,6 +29,7 @@ export type BlockMap = {
   'block.statGrid': StatGridBlock;
   'block.tabbedFeatures': TabbedFeaturesBlock;
   'block.testimonials': TestimonialsBlock;
+  'block.videoContent': VideoContentBlock;
 };
 
 export type BlockComponentMap = {

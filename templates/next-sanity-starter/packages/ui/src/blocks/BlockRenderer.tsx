@@ -12,6 +12,7 @@ import { LogoMarqueeBlock } from './LogoMarqueeBlock/LogoMarqueeBlock';
 import { RichTextBlock } from './RichTextBlock/RichTextBlock';
 import { TabbedFeaturesBlock } from './TabbedFeaturesBlock/TabbedFeaturesBlock';
 import { TestimonialsBlock } from './TestimonialsBlock/TestimonialsBlock';
+import { VideoContentBlock } from './VideoContentBlock/VideoContentBlock';
 
 export const REGISTRY: BlockComponentMap = {
   'block.accordion': AccordionBlock,
@@ -26,6 +27,7 @@ export const REGISTRY: BlockComponentMap = {
   'block.richText': RichTextBlock,
   'block.tabbedFeatures': TabbedFeaturesBlock,
   'block.testimonials': TestimonialsBlock,
+  'block.videoContent': VideoContentBlock,
 };
 
 export interface BlockRendererProps {
