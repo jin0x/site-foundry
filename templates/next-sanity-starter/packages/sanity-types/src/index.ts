@@ -189,7 +189,8 @@ export interface CalloutBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
-export type TestimonialVariant = 'default' | 'featured';
+export type TestimonialVariant = 'default' | 'featured' | 'video';
+export type TestimonialsLayout = 'grid' | 'carousel';
 
 export interface TestimonialItem {
   quote: string;
@@ -197,6 +198,8 @@ export interface TestimonialItem {
   role?: string | null;
   avatar?: ImageWithAltValue | null;
   variant?: TestimonialVariant | null;
+  videoUrl?: string | null;
+  thumbnail?: ImageWithAltValue | null;
 }
 
 export interface TestimonialsBlock extends BlockBase {
@@ -204,6 +207,8 @@ export interface TestimonialsBlock extends BlockBase {
   sectionHeading?: SectionHeadingValue | null;
   items?: TestimonialItem[] | null;
   columns?: 2 | 3 | null;
+  layout?: TestimonialsLayout | null;
+  autoScrollMs?: number | null;
 }
 
 export type ComparisonBulletState = 'positive' | 'negative' | 'neutral';

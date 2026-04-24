@@ -73,6 +73,12 @@ export const pageBySlugQuery = `
             url
           }
         },
+        thumbnail{
+          ...,
+          asset->{
+            url
+          }
+        },
         cta{
           ...,
           link{
@@ -85,6 +91,18 @@ export const pageBySlugQuery = `
               asset->{
                 url
               }
+            }
+          }
+        }
+      },
+      groups[]{
+        ...,
+        content[]{
+          ...,
+          featuredMedia{
+            ...,
+            asset->{
+              url
             }
           }
         }

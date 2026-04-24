@@ -6,6 +6,12 @@ import { featureGridColumnOptions } from '../shared/options';
 const variantOptions = [
   { title: 'Default', value: 'default' },
   { title: 'Featured (fuchsia border + blue glow, larger quote)', value: 'featured' },
+  { title: 'Video (thumbnail + play overlay)', value: 'video' },
+] as const;
+
+const layoutOptions = [
+  { title: 'Grid (static)', value: 'grid' },
+  { title: 'Carousel (auto-scroll + dot indicators)', value: 'carousel' },
 ] as const;
 
 export const testimonials = defineBlockSchema({
@@ -53,6 +59,16 @@ export const testimonials = defineBlockSchema({
               },
               initialValue: 'default',
             }),
+            defineField({
+              name: 'videoUrl',
+              type: 'url',
+              description: 'Video source URL when variant=video. Direct MP4/WebM for now; YouTube/Vimeo embed support is a follow-on.',
+            }),
+            defineField({
+              name: 'thumbnail',
+              type: 'imageWithAlt',
+              description: 'Poster image shown before play on variant=video items.',
+            }),
           ],
           preview: {
             select: {
@@ -73,6 +89,23 @@ export const testimonials = defineBlockSchema({
         layout: 'radio',
       },
       initialValue: 3,
+    }),
+    defineField({
+      name: 'layout',
+      type: 'string',
+      group: 'presentation',
+      options: {
+        list: layoutOptions as unknown as { title: string; value: string }[],
+        layout: 'radio',
+      },
+      initialValue: 'grid',
+    }),
+    defineField({
+      name: 'autoScrollMs',
+      type: 'number',
+      group: 'presentation',
+      description: 'Carousel auto-advance interval in ms. Only applies when layout=carousel. Default 6000.',
+      initialValue: 6000,
     }),
   ],
 });
