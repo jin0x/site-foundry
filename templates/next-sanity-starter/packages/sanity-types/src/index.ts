@@ -202,6 +202,7 @@ export interface LogoMarqueeBlock extends BlockBase {
 }
 
 export type CalloutTone = 'default' | 'frosted' | 'accent';
+export type CalloutLayout = 'stacked' | 'horizontal';
 
 export interface CalloutBlock extends BlockBase {
   _type: 'block.callout';
@@ -209,6 +210,7 @@ export interface CalloutBlock extends BlockBase {
   description?: string | null;
   icon?: ImageWithAltValue | null;
   tone?: CalloutTone | null;
+  layout?: CalloutLayout | null;
   ctas?: CtaValue[] | null;
 }
 

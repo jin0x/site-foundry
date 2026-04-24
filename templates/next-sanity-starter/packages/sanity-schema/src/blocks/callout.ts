@@ -8,6 +8,11 @@ const toneOptions = [
   { title: 'Accent (brand-tinted gradient card)', value: 'accent' },
 ] as const;
 
+const layoutOptions = [
+  { title: 'Stacked (centered heading + body + CTA)', value: 'stacked' },
+  { title: 'Horizontal (left-aligned heading + body, right-aligned CTA)', value: 'horizontal' },
+] as const;
+
 export const callout = defineBlockSchema({
   name: 'block.callout',
   title: 'Callout',
@@ -36,6 +41,16 @@ export const callout = defineBlockSchema({
         layout: 'radio',
       },
       initialValue: 'default',
+    }),
+    defineField({
+      name: 'layout',
+      type: 'string',
+      group: 'presentation',
+      options: {
+        list: layoutOptions as unknown as { title: string; value: string }[],
+        layout: 'radio',
+      },
+      initialValue: 'stacked',
     }),
   ],
 });
