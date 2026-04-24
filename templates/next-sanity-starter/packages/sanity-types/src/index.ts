@@ -134,7 +134,21 @@ export interface CodeSampleBlock extends BlockBase {
   caption?: string | null;
 }
 
-export type TabbedFeaturesContent = AccordionBlock | CodeSampleBlock;
+export type TabbedFeaturesContent = AccordionBlock | CodeSampleBlock | UseCaseListBlock;
+
+export interface UseCaseListItem {
+  label: string;
+  href?: string | null;
+  active?: boolean | null;
+}
+
+export interface UseCaseListBlock extends BlockBase {
+  _type: 'block.useCaseList';
+  items?: UseCaseListItem[] | null;
+  featuredMedia?: ImageWithAltValue | null;
+  featuredTitle?: string | null;
+  featuredBody?: string | null;
+}
 
 export interface TabbedFeaturesGroup {
   label: string;
@@ -235,7 +249,8 @@ export type PageBuilderBlock =
   | CalloutBlock
   | TestimonialsBlock
   | ComparisonBlock
-  | VideoContentBlock;
+  | VideoContentBlock
+  | UseCaseListBlock;
 
 export interface PageDocument {
   _id: string;

@@ -12,6 +12,7 @@ export { richText } from './richText';
 export { statGrid } from './statGrid';
 export { tabbedFeatures } from './tabbedFeatures';
 export { testimonials } from './testimonials';
+export { useCaseList } from './useCaseList';
 export { videoContent } from './videoContent';
 
 export const pageBuilderBlocks: ArrayOfType[] = [
@@ -28,4 +29,5 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.testimonials' },
   { type: 'block.comparison' },
   { type: 'block.videoContent' },
+  { type: 'block.useCaseList' },
 ];

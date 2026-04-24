@@ -20,6 +20,12 @@ export const pageBySlugQuery = `
           url
         }
       },
+      featuredMedia{
+        ...,
+        asset->{
+          url
+        }
+      },
       icon{
         ...,
         asset->{

@@ -32,4 +32,5 @@ export * from './blocks/LogoMarqueeBlock/LogoMarqueeBlock';
 export * from './blocks/RichTextBlock/RichTextBlock';
 export * from './blocks/TabbedFeaturesBlock/TabbedFeaturesBlock';
 export * from './blocks/TestimonialsBlock/TestimonialsBlock';
+export * from './blocks/UseCaseListBlock/UseCaseListBlock';
 export * from './blocks/VideoContentBlock/VideoContentBlock';
