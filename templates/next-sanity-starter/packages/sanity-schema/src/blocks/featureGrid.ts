@@ -42,6 +42,21 @@ export const featureGrid = defineBlockSchema({
               name: 'cta',
               type: 'cta',
             }),
+            defineField({
+              name: 'backgroundTone',
+              type: 'string',
+              description:
+                'Per-item background tone. "inverse" uses a dark surface with light text (for dark tiles in an audience-split pattern). Defaults to "none" (same surface as the block).',
+              options: {
+                list: [
+                  { title: 'None (default surface)', value: 'none' },
+                  { title: 'Subtle (subtle raised)', value: 'subtle' },
+                  { title: 'Inverse (dark tile with white text)', value: 'inverse' },
+                ],
+                layout: 'radio',
+              },
+              initialValue: 'none',
+            }),
           ],
           preview: {
             select: {

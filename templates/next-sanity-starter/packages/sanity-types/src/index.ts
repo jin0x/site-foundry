@@ -77,6 +77,8 @@ export interface HeroCenterBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
+export type FeatureGridItemTone = 'none' | 'subtle' | 'inverse';
+
 export interface FeatureGridItem {
   eyebrow?: string | null;
   title: string;
@@ -84,6 +86,7 @@ export interface FeatureGridItem {
   icon?: ImageWithAltValue | null;
   media?: ImageWithAltValue | null;
   cta?: CtaValue | null;
+  backgroundTone?: FeatureGridItemTone | null;
 }
 
 export interface FeatureGridBlock extends BlockBase {
