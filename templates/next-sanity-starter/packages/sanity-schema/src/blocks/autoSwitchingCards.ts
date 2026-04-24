@@ -1,4 +1,4 @@
-import { SwitchHorizontalIcon } from '@sanity/icons';
+import { StackIcon } from '@sanity/icons';
 import { defineArrayMember, defineField } from 'sanity';
 import { defineBlockSchema } from '../shared/defineBlockSchema';
 
@@ -7,7 +7,7 @@ export const autoSwitchingCards = defineBlockSchema({
   title: 'Auto-Switching Cards',
   description:
     'Pillar section — selectable cards on the left (icon + title + description) with a media panel on the right that swaps to match the active card. Auto-advances on a timer; click to swap; hover pauses. Use for "how it works" / "core pillars" marketing sections that anchor the page with visual interest.',
-  icon: SwitchHorizontalIcon,
+  icon: StackIcon,
   withCtas: true,
   fields: [
     defineField({

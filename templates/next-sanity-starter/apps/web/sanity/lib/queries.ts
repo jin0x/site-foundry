@@ -26,6 +26,30 @@ export const pageBySlugQuery = `
           url
         }
       },
+      sidebar{
+        ...,
+        avatar{
+          ...,
+          asset->{
+            url
+          }
+        },
+        cta{
+          ...,
+          link{
+            ...,
+            page->{
+              _type,
+              "slug": slug.current
+            },
+            file{
+              asset->{
+                url
+              }
+            }
+          }
+        }
+      },
       icon{
         ...,
         asset->{

@@ -119,10 +119,18 @@ export interface AccordionItemValue {
   defaultOpen?: boolean | null;
 }
 
+export interface AccordionSidebar {
+  heading?: string | null;
+  description?: string | null;
+  avatar?: ImageWithAltValue | null;
+  cta?: CtaValue | null;
+}
+
 export interface AccordionBlock extends BlockBase {
   _type: 'block.accordion';
   sectionHeading?: SectionHeadingValue | null;
   items?: AccordionItemValue[] | null;
+  sidebar?: AccordionSidebar | null;
 }
 
 export interface CodeSampleBlock extends BlockBase {
