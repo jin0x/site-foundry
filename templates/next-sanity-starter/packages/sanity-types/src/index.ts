@@ -66,11 +66,14 @@ export interface HeroSplitBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
+export type HeroCenterMediaPlacement = 'below' | 'background';
+
 export interface HeroCenterBlock extends BlockBase {
   _type: 'block.heroCenter';
   sectionHeading?: SectionHeadingValue | null;
   description?: string | null;
   media?: ImageWithAltValue | null;
+  mediaPlacement?: HeroCenterMediaPlacement | null;
   ctas?: CtaValue[] | null;
 }
 
