@@ -43,6 +43,12 @@ export const pageBySlugQuery = `
             url
           }
         },
+        media{
+          ...,
+          asset->{
+            url
+          }
+        },
         logo{
           ...,
           asset->{

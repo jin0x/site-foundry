@@ -82,6 +82,7 @@ export interface FeatureGridItem {
   title: string;
   description?: string | null;
   icon?: ImageWithAltValue | null;
+  media?: ImageWithAltValue | null;
   cta?: CtaValue | null;
 }
 

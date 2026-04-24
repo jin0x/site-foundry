@@ -8,7 +8,7 @@ import { GridGap } from '../../primitives/Grid/grid-types';
 import { Heading } from '../../primitives/Heading';
 import { HeadingSize } from '../../primitives/Heading/heading-types';
 import { Image } from '../../primitives/Image';
-import { ImageFit } from '../../primitives/Image/image-types';
+import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
 import { StackGap } from '../../primitives/Stack/stack-types';
 import { Text } from '../../primitives/Text';
@@ -34,6 +34,14 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
                 <Text size={TextSize.BASE} color={TextColor.MUTED}>
                   {item.description}
                 </Text>
+              ) : null}
+              {item.media?.asset?.url ? (
+                <Image
+                  source={item.media}
+                  fit={ImageFit.CONTAIN}
+                  rounded={ImageRadius.MD}
+                  className="mt-2 w-full"
+                />
               ) : null}
               {item.cta ? <CtaButton value={item.cta} /> : null}
             </Stack>

@@ -31,6 +31,12 @@ export const featureGrid = defineBlockSchema({
             defineField({
               name: 'icon',
               type: 'imageWithAlt',
+              description: 'Small icon/mark (48×48 slot) rendered above the title.',
+            }),
+            defineField({
+              name: 'media',
+              type: 'imageWithAlt',
+              description: 'Larger per-item image/diagram (e.g. flowchart, screenshot) rendered below the description.',
             }),
             defineField({
               name: 'cta',
