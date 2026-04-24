@@ -9,6 +9,7 @@ export { heroCenter } from './heroCenter';
 export { heroSplit } from './heroSplit';
 export { logoMarquee } from './logoMarquee';
 export { richText } from './richText';
+export { statGrid } from './statGrid';
 export { tabbedFeatures } from './tabbedFeatures';
 export { testimonials } from './testimonials';
 
@@ -16,6 +17,7 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.heroSplit' },
   { type: 'block.heroCenter' },
   { type: 'block.featureGrid' },
+  { type: 'block.statGrid' },
   { type: 'block.richText' },
   { type: 'block.tabbedFeatures' },
   { type: 'block.accordion' },

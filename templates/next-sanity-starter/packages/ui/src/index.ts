@@ -25,6 +25,7 @@ export * from './blocks/CalloutBlock/CalloutBlock';
 export * from './blocks/CodeSampleBlock/CodeSampleBlock';
 export * from './blocks/ComparisonBlock/ComparisonBlock';
 export * from './blocks/FeatureGridBlock/FeatureGridBlock';
+export * from './blocks/StatGridBlock/StatGridBlock';
 export * from './blocks/HeroCenterBlock/HeroCenterBlock';
 export * from './blocks/HeroSplitBlock/HeroSplitBlock';
 export * from './blocks/LogoMarqueeBlock/LogoMarqueeBlock';

@@ -92,6 +92,19 @@ export interface FeatureGridBlock extends BlockBase {
   columns?: 2 | 3 | null;
 }
 
+export interface StatGridItem {
+  number: string;
+  numberSuffix?: string | null;
+  description?: string | null;
+}
+
+export interface StatGridBlock extends BlockBase {
+  _type: 'block.statGrid';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: StatGridItem[] | null;
+  columns?: 2 | 3 | null;
+}
+
 export interface RichTextBlock extends BlockBase {
   _type: 'block.richText';
   sectionHeading?: SectionHeadingValue | null;
@@ -204,6 +217,7 @@ export type PageBuilderBlock =
   | HeroSplitBlock
   | HeroCenterBlock
   | FeatureGridBlock
+  | StatGridBlock
   | RichTextBlock
   | AccordionBlock
   | CodeSampleBlock

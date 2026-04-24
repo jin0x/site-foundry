@@ -7,6 +7,7 @@ import { ComparisonBlock } from './ComparisonBlock/ComparisonBlock';
 import { HeroSplitBlock } from './HeroSplitBlock/HeroSplitBlock';
 import { HeroCenterBlock } from './HeroCenterBlock/HeroCenterBlock';
 import { FeatureGridBlock } from './FeatureGridBlock/FeatureGridBlock';
+import { StatGridBlock } from './StatGridBlock/StatGridBlock';
 import { LogoMarqueeBlock } from './LogoMarqueeBlock/LogoMarqueeBlock';
 import { RichTextBlock } from './RichTextBlock/RichTextBlock';
 import { TabbedFeaturesBlock } from './TabbedFeaturesBlock/TabbedFeaturesBlock';
@@ -20,6 +21,7 @@ export const REGISTRY: BlockComponentMap = {
   'block.heroSplit': HeroSplitBlock,
   'block.heroCenter': HeroCenterBlock,
   'block.featureGrid': FeatureGridBlock,
+  'block.statGrid': StatGridBlock,
   'block.logoMarquee': LogoMarqueeBlock,
   'block.richText': RichTextBlock,
   'block.tabbedFeatures': TabbedFeaturesBlock,
