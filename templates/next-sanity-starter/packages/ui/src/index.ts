@@ -21,6 +21,7 @@ export * from './components/SectionCta';
 export * from './components/SectionHeading';
 export * from './blocks/BlockRenderer';
 export * from './blocks/AccordionBlock/AccordionBlock';
+export * from './blocks/AutoSwitchingCardsBlock/AutoSwitchingCardsBlock';
 export * from './blocks/CalloutBlock/CalloutBlock';
 export * from './blocks/CodeSampleBlock/CodeSampleBlock';
 export * from './blocks/ComparisonBlock/ComparisonBlock';

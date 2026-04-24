@@ -1,6 +1,7 @@
 import type { ArrayOfType } from 'sanity';
 
 export { accordion } from './accordion';
+export { autoSwitchingCards } from './autoSwitchingCards';
 export { callout } from './callout';
 export { codeSample } from './codeSample';
 export { comparison } from './comparison';
@@ -30,4 +31,5 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.comparison' },
   { type: 'block.videoContent' },
   { type: 'block.useCaseList' },
+  { type: 'block.autoSwitchingCards' },
 ];

@@ -150,6 +150,21 @@ export interface UseCaseListBlock extends BlockBase {
   featuredBody?: string | null;
 }
 
+export interface AutoSwitchingCardItem {
+  title: string;
+  description?: string | null;
+  icon?: ImageWithAltValue | null;
+  media?: ImageWithAltValue | null;
+}
+
+export interface AutoSwitchingCardsBlock extends BlockBase {
+  _type: 'block.autoSwitchingCards';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: AutoSwitchingCardItem[] | null;
+  autoAdvanceMs?: number | null;
+  ctas?: CtaValue[] | null;
+}
+
 export interface TabbedFeaturesGroup {
   label: string;
   content?: TabbedFeaturesContent[] | null;
@@ -255,7 +270,8 @@ export type PageBuilderBlock =
   | TestimonialsBlock
   | ComparisonBlock
   | VideoContentBlock
-  | UseCaseListBlock;
+  | UseCaseListBlock
+  | AutoSwitchingCardsBlock;
 
 export interface PageDocument {
   _id: string;

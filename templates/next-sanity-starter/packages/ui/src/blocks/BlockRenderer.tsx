@@ -1,6 +1,7 @@
 import { Fragment, type ReactNode } from 'react';
 import type { AnyBlock, BlockComponentMap } from './types';
 import { AccordionBlock } from './AccordionBlock/AccordionBlock';
+import { AutoSwitchingCardsBlock } from './AutoSwitchingCardsBlock/AutoSwitchingCardsBlock';
 import { CalloutBlock } from './CalloutBlock/CalloutBlock';
 import { CodeSampleBlock } from './CodeSampleBlock/CodeSampleBlock';
 import { ComparisonBlock } from './ComparisonBlock/ComparisonBlock';
@@ -17,6 +18,7 @@ import { VideoContentBlock } from './VideoContentBlock/VideoContentBlock';
 
 export const REGISTRY: BlockComponentMap = {
   'block.accordion': AccordionBlock,
+  'block.autoSwitchingCards': AutoSwitchingCardsBlock,
   'block.callout': CalloutBlock,
   'block.codeSample': CodeSampleBlock,
   'block.comparison': ComparisonBlock,

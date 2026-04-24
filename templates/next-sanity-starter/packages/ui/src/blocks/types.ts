@@ -1,6 +1,7 @@
 import type { JSX } from 'react';
 import type {
   AccordionBlock,
+  AutoSwitchingCardsBlock,
   CalloutBlock,
   CodeSampleBlock,
   ComparisonBlock,
@@ -19,6 +20,7 @@ import type {
 
 export type BlockMap = {
   'block.accordion': AccordionBlock;
+  'block.autoSwitchingCards': AutoSwitchingCardsBlock;
   'block.callout': CalloutBlock;
   'block.codeSample': CodeSampleBlock;
   'block.comparison': ComparisonBlock;
