@@ -18,6 +18,17 @@ export const StackAlign = {
 } as const;
 export type StackAlign = (typeof StackAlign)[keyof typeof StackAlign];
 
+export const StackDirection = {
+  COLUMN: 'column',
+  ROW: 'row',
+} as const;
+export type StackDirection = (typeof StackDirection)[keyof typeof StackDirection];
+
+export const STACK_DIRECTION_CLASSES: Record<StackDirection, string> = {
+  column: 'flex flex-col',
+  row: 'flex flex-row',
+};
+
 export const STACK_GAP_CLASSES: Record<StackGap, string> = {
   none: 'gap-0',
   xs: 'gap-1',

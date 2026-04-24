@@ -20,7 +20,10 @@
     "sf": "corepack pnpm --filter @site-foundry/cli exec tsx src/index.ts",
     "smoke:registry": "corepack pnpm --filter @site-foundry/cli exec tsx src/index.ts registry list",
     "smoke:generate": "corepack pnpm --filter @site-foundry/cli exec tsx src/index.ts generate figma demo://landing-page",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "apply": "tsx packages/connector-sanity/src/cli.ts",
+    "bootstrap-page": "tsx packages/connector-sanity/src/cli-bootstrap.ts",
+    "verify": "tsx packages/connector-sanity/src/cli.ts --verify"
   },
   "devDependencies": {
     "prettier": "catalog:",

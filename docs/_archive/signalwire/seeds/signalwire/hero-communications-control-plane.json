@@ -1,0 +1,40 @@
+{
+  "figmaNodeId": "893:36599",
+  "figmaFileKey": "ox8M7KAx62v6GmQPriJBmO",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.heroCenter",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "The communications control plane",
+      "align": "center"
+    },
+    "description": "Compose AI agents, human agents, and real-time communications into one system you control in code. One programmable platform for everything that happens on a call. Built by the creators of FreeSWITCH.",
+    "media": {
+      "figmaNodeId": "893:36615",
+      "alt": "SignalWire agent code editor with multiple tabs showing Python agent setup."
+    },
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Start Building",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      },
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Talk to an expert",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "transparent"
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "images": { "topLevel": ["media"] }
+}

@@ -1,0 +1,43 @@
+{
+  "figmaNodeId": "893:7139",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.comparison",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Production is a Costly Place to Discover Architectural Mistakes",
+      "subheading": "In staging, webhooks arrive fast and in order. Production is less polite. On SignalWire, state lives inside the call so that your code defines logic instead of managing event timing. The same architecture that works at 10 calls works at 10,000.",
+      "align": "center"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "Traditional CPaaS",
+        "variant": "default",
+        "bullets": [
+          { "_type": "object", "label": "Telephony vendor + WebRTC vendor + AI vendor", "state": "negative" },
+          { "_type": "object", "label": "Your responsibility to rebuild state from events", "state": "negative" },
+          { "_type": "object", "label": "Endless race conditions", "state": "negative" },
+          { "_type": "object", "label": "Rogue AI that won't stay on task", "state": "negative" },
+          { "_type": "object", "label": "Bolted-on AI adds latency", "state": "negative" }
+        ]
+      },
+      {
+        "_type": "object",
+        "title": "SignalWire Platform",
+        "variant": "featured",
+        "bullets": [
+          { "_type": "object", "label": "One Programmable Unified Communications platform", "state": "positive" },
+          { "_type": "object", "label": "Calls are first-class objects with state attached", "state": "positive" },
+          { "_type": "object", "label": "Developer is in full control of call behavior", "state": "positive" },
+          { "_type": "object", "label": "AI Agents follow code logic and stay on task", "state": "positive" },
+          { "_type": "object", "label": "AI Kernel directly in the media stack for lowest latency", "state": "positive" }
+        ]
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "richText": ["sectionHeading.subheading"]
+}

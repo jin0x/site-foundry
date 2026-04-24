@@ -14,6 +14,12 @@ export const pageBySlugQuery = `
           url
         }
       },
+      icon{
+        ...,
+        asset->{
+          url
+        }
+      },
       ctas[]{
         ...,
         link{
@@ -25,6 +31,42 @@ export const pageBySlugQuery = `
           file{
             asset->{
               url
+            }
+          }
+        }
+      },
+      items[]{
+        ...,
+        icon{
+          ...,
+          asset->{
+            url
+          }
+        },
+        logo{
+          ...,
+          asset->{
+            url
+          }
+        },
+        avatar{
+          ...,
+          asset->{
+            url
+          }
+        },
+        cta{
+          ...,
+          link{
+            ...,
+            page->{
+              _type,
+              "slug": slug.current
+            },
+            file{
+              asset->{
+                url
+              }
             }
           }
         }

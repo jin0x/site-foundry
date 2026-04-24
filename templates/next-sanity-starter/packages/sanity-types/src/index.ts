@@ -66,10 +66,20 @@ export interface HeroSplitBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
+export interface HeroCenterBlock extends BlockBase {
+  _type: 'block.heroCenter';
+  sectionHeading?: SectionHeadingValue | null;
+  description?: string | null;
+  media?: ImageWithAltValue | null;
+  ctas?: CtaValue[] | null;
+}
+
 export interface FeatureGridItem {
   eyebrow?: string | null;
   title: string;
   description?: string | null;
+  icon?: ImageWithAltValue | null;
+  cta?: CtaValue | null;
 }
 
 export interface FeatureGridBlock extends BlockBase {
@@ -83,9 +93,122 @@ export interface RichTextBlock extends BlockBase {
   _type: 'block.richText';
   sectionHeading?: SectionHeadingValue | null;
   content?: PortableTextLike | null;
+  ctas?: CtaValue[] | null;
 }
 
-export type PageBuilderBlock = HeroSplitBlock | FeatureGridBlock | RichTextBlock;
+export interface AccordionItemValue {
+  title: string;
+  body?: string | null;
+  defaultOpen?: boolean | null;
+}
+
+export interface AccordionBlock extends BlockBase {
+  _type: 'block.accordion';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: AccordionItemValue[] | null;
+}
+
+export interface CodeSampleBlock extends BlockBase {
+  _type: 'block.codeSample';
+  sectionHeading?: SectionHeadingValue | null;
+  filename?: string | null;
+  language?: string | null;
+  code?: string | null;
+  caption?: string | null;
+}
+
+export type TabbedFeaturesContent = AccordionBlock | CodeSampleBlock;
+
+export interface TabbedFeaturesGroup {
+  label: string;
+  content?: TabbedFeaturesContent[] | null;
+}
+
+export interface TabbedFeaturesBlock extends BlockBase {
+  _type: 'block.tabbedFeatures';
+  sectionHeading?: SectionHeadingValue | null;
+  groups?: TabbedFeaturesGroup[] | null;
+}
+
+export type MarqueeSpeedValue = 'slow' | 'medium' | 'fast';
+
+export interface LogoMarqueeItem {
+  logo: ImageWithAltValue;
+  name?: string | null;
+  href?: string | null;
+}
+
+export interface LogoMarqueeBlock extends BlockBase {
+  _type: 'block.logoMarquee';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: LogoMarqueeItem[] | null;
+  speed?: MarqueeSpeedValue | null;
+  pauseOnHover?: boolean | null;
+  fade?: boolean | null;
+}
+
+export type CalloutTone = 'default' | 'frosted' | 'accent';
+
+export interface CalloutBlock extends BlockBase {
+  _type: 'block.callout';
+  sectionHeading?: SectionHeadingValue | null;
+  description?: string | null;
+  icon?: ImageWithAltValue | null;
+  tone?: CalloutTone | null;
+  ctas?: CtaValue[] | null;
+}
+
+export type TestimonialVariant = 'default' | 'featured';
+
+export interface TestimonialItem {
+  quote: string;
+  name: string;
+  role?: string | null;
+  avatar?: ImageWithAltValue | null;
+  variant?: TestimonialVariant | null;
+}
+
+export interface TestimonialsBlock extends BlockBase {
+  _type: 'block.testimonials';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: TestimonialItem[] | null;
+  columns?: 2 | 3 | null;
+}
+
+export type ComparisonBulletState = 'positive' | 'negative' | 'neutral';
+
+export interface ComparisonBullet {
+  label: string;
+  state?: ComparisonBulletState | null;
+}
+
+export type ComparisonVariant = 'default' | 'featured';
+
+export interface ComparisonItem {
+  title: string;
+  logo?: ImageWithAltValue | null;
+  bullets?: ComparisonBullet[] | null;
+  variant?: ComparisonVariant | null;
+}
+
+export interface ComparisonBlock extends BlockBase {
+  _type: 'block.comparison';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: ComparisonItem[] | null;
+}
+
+export type PageBuilderBlock =
+  | HeroSplitBlock
+  | HeroCenterBlock
+  | FeatureGridBlock
+  | RichTextBlock
+  | AccordionBlock
+  | CodeSampleBlock
+  | TabbedFeaturesBlock
+  | LogoMarqueeBlock
+  | CalloutBlock
+  | TestimonialsBlock
+  | ComparisonBlock;
 
 export interface PageDocument {
   _id: string;

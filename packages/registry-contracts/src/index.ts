@@ -90,6 +90,12 @@ export type SeedImageSpec = {
 
 export type SeedArtifact = {
   figmaNodeId: string;
+  /**
+   * Figma file key for this seed. Required when any `images` entry uses the
+   * Figma REST API path (`{ figmaNodeId, alt }` spec instead of `{ url, alt }`).
+   * Extracted from the Figma URL: `figma.com/design/<fileKey>/...`.
+   */
+  figmaFileKey?: string;
   targetPage: string;
   blockType: string;
   fields: Record<string, unknown>;

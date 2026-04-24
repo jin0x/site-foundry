@@ -1,0 +1,39 @@
+{
+  "figmaNodeId": "893:7450",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.testimonials",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Join the thousands of developers",
+      "align": "center"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "quote": "Lorem ipsum dolor sit amet consectetur. Libero purus a cras cursus id congue aliquam nullam.",
+        "name": "John Doe",
+        "role": "CEO of Company Co.",
+        "variant": "default"
+      },
+      {
+        "_type": "object",
+        "quote": "Lorem ipsum dolor sit amet consectetur. Libero purus a cras cursus id congue aliquam nullam.",
+        "name": "John Doe",
+        "role": "CEO of Company Co.",
+        "variant": "featured"
+      },
+      {
+        "_type": "object",
+        "quote": "Lorem ipsum dolor sit amet consectetur. Libero purus a cras cursus id congue aliquam nullam.",
+        "name": "John Doe",
+        "role": "CEO of Company Co.",
+        "variant": "default"
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  }
+}
