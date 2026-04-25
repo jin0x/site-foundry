@@ -19,8 +19,17 @@ export interface BaseBlockProps {
   stackGap?: StackGap;
   stackClassName?: string;
   className?: string;
+  /* B1: opt-in outer chrome (border #e8e8e8 + bg-white + designed
+   * pt-48 pb-64 px-64 padding). Block authors set framed={true} when their
+   * block is always-framed at section level (e.g., StatGrid, AutoSwitching,
+   * TabbedFeatures, Testimonials). When framed, Section's own SPACING_CLASSES
+   * is suppressed so the chrome controls vertical padding directly. */
+  framed?: boolean;
   children?: ReactNode;
 }
+
+const FRAMED_CHROME_CLASS =
+  'border border-[var(--color-border-default)] bg-[var(--color-surface-page)] pt-12 pb-16 px-16';
 
 export function BaseBlock({
   block,
@@ -28,18 +37,23 @@ export function BaseBlock({
   stackGap = StackGap.XL,
   stackClassName,
   className,
+  framed = false,
   children,
 }: BaseBlockProps) {
+  const inner = (
+    <Stack gap={stackGap} className={stackClassName}>
+      {showHeading ? <HeadingGroup value={block.sectionHeading} /> : null}
+      {children}
+    </Stack>
+  );
   return (
     <Section
       backgroundTone={block.backgroundTone}
       spacing={block.spacing}
+      noPadding={framed}
       className={className}
     >
-      <Stack gap={stackGap} className={stackClassName}>
-        {showHeading ? <HeadingGroup value={block.sectionHeading} /> : null}
-        {children}
-      </Stack>
+      {framed ? <div className={FRAMED_CHROME_CLASS}>{inner}</div> : inner}
     </Section>
   );
 }

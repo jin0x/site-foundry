@@ -37,7 +37,7 @@ export function AutoSwitchingCardsBlock(props: AutoSwitchingCardsBlockProps) {
   const rootKey = props._key ?? props._type;
 
   return (
-    <BaseBlock block={props}>
+    <BaseBlock block={props} framed>
       <Grid
         cols={{ mobile: 1, tablet: 1, desktop: 2 }}
         gap={GridGap.XL}

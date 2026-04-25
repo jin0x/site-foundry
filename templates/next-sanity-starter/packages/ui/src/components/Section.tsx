@@ -32,6 +32,10 @@ export interface SectionProps {
   as?: ElementType;
   backgroundTone?: BackgroundTone | null;
   spacing?: SpacingSize | null;
+  /* B1: when true, suppresses SPACING_CLASSES so a wrapping `framed` chrome
+   * (typically applied by BaseBlock) controls the section's vertical padding
+   * directly — avoids compound padding around the chrome. */
+  noPadding?: boolean;
   className?: string;
   children?: ReactNode;
 }
@@ -40,13 +44,19 @@ export function Section({
   as: Tag = 'section',
   backgroundTone = 'none',
   spacing = 'default',
+  noPadding = false,
   className,
   children,
 }: SectionProps) {
   const tone = backgroundTone ?? 'none';
   return (
     <Tag
-      className={cx('relative', `tone-${tone}`, SPACING_CLASSES[spacing ?? 'default'], className)}
+      className={cx(
+        'relative',
+        `tone-${tone}`,
+        !noPadding && SPACING_CLASSES[spacing ?? 'default'],
+        className,
+      )}
       style={TONE_STYLES[tone]}
     >
       <Container>{children}</Container>

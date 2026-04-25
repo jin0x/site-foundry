@@ -12,8 +12,8 @@ import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
 export function StatGridBlock(props: StatGridBlockProps) {
   return (
-    <BaseBlock block={props}>
-      <Grid cols={props.columns ?? 3} gap={GridGap.NONE}>
+    <BaseBlock block={props} framed>
+      <Grid cols={props.columns ?? 3} gap={GridGap.NONE} className='bg-white'>
         {props.items?.map((item, index) => (
           <Card
             as="article"

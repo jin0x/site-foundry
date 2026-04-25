@@ -31,7 +31,7 @@ export function TabbedFeaturesBlock(props: TabbedFeaturesBlockProps) {
   const rootKey = props._key ?? props._type;
 
   return (
-    <BaseBlock block={props}>
+    <BaseBlock block={props} framed>
       <Tabs defaultValue={groups[0].label}>
         <TabsList>
           {groups.map((group, i) => (

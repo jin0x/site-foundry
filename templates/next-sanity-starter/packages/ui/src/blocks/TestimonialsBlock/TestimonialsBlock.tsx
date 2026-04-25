@@ -207,7 +207,7 @@ export function TestimonialsBlock(props: TestimonialsBlockProps) {
   const autoScrollMs = props.autoScrollMs ?? 6000;
 
   return (
-    <BaseBlock block={props}>
+    <BaseBlock block={props} framed>
       {layout === 'carousel' ? (
         <Carousel items={items} rootKey={rootKey} autoScrollMs={autoScrollMs} />
       ) : (
