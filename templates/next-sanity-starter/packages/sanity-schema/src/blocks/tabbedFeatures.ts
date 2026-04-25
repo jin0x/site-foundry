@@ -30,6 +30,7 @@ export const tabbedFeatures = defineBlockSchema({
               of: [
                 defineArrayMember({ type: 'block.accordion' }),
                 defineArrayMember({ type: 'block.codeSample' }),
+                defineArrayMember({ type: 'block.useCaseList' }),
               ],
             }),
           ],

@@ -14,6 +14,42 @@ export const pageBySlugQuery = `
           url
         }
       },
+      poster{
+        ...,
+        asset->{
+          url
+        }
+      },
+      featuredMedia{
+        ...,
+        asset->{
+          url
+        }
+      },
+      sidebar{
+        ...,
+        avatar{
+          ...,
+          asset->{
+            url
+          }
+        },
+        cta{
+          ...,
+          link{
+            ...,
+            page->{
+              _type,
+              "slug": slug.current
+            },
+            file{
+              asset->{
+                url
+              }
+            }
+          }
+        }
+      },
       icon{
         ...,
         asset->{
@@ -43,6 +79,12 @@ export const pageBySlugQuery = `
             url
           }
         },
+        media{
+          ...,
+          asset->{
+            url
+          }
+        },
         logo{
           ...,
           asset->{
@@ -50,6 +92,12 @@ export const pageBySlugQuery = `
           }
         },
         avatar{
+          ...,
+          asset->{
+            url
+          }
+        },
+        thumbnail{
           ...,
           asset->{
             url
@@ -67,6 +115,18 @@ export const pageBySlugQuery = `
               asset->{
                 url
               }
+            }
+          }
+        }
+      },
+      groups[]{
+        ...,
+        content[]{
+          ...,
+          featuredMedia{
+            ...,
+            asset->{
+              url
             }
           }
         }

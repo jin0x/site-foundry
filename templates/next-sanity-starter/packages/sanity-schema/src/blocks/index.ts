@@ -1,6 +1,7 @@
 import type { ArrayOfType } from 'sanity';
 
 export { accordion } from './accordion';
+export { autoSwitchingCards } from './autoSwitchingCards';
 export { callout } from './callout';
 export { codeSample } from './codeSample';
 export { comparison } from './comparison';
@@ -9,13 +10,17 @@ export { heroCenter } from './heroCenter';
 export { heroSplit } from './heroSplit';
 export { logoMarquee } from './logoMarquee';
 export { richText } from './richText';
+export { statGrid } from './statGrid';
 export { tabbedFeatures } from './tabbedFeatures';
 export { testimonials } from './testimonials';
+export { useCaseList } from './useCaseList';
+export { videoContent } from './videoContent';
 
 export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.heroSplit' },
   { type: 'block.heroCenter' },
   { type: 'block.featureGrid' },
+  { type: 'block.statGrid' },
   { type: 'block.richText' },
   { type: 'block.tabbedFeatures' },
   { type: 'block.accordion' },
@@ -24,4 +29,7 @@ export const pageBuilderBlocks: ArrayOfType[] = [
   { type: 'block.callout' },
   { type: 'block.testimonials' },
   { type: 'block.comparison' },
+  { type: 'block.videoContent' },
+  { type: 'block.useCaseList' },
+  { type: 'block.autoSwitchingCards' },
 ];

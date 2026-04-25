@@ -10,6 +10,7 @@ import { GridGap, type GridCols } from '../../primitives/Grid/grid-types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../primitives/Tabs';
 import { AccordionBlockContent } from '../AccordionBlock/AccordionBlock';
 import { CodeSampleBlockContent } from '../CodeSampleBlock/CodeSampleBlock';
+import { UseCaseListBlockContent } from '../UseCaseListBlock/UseCaseListBlock';
 
 function renderNestedContent(nested: TabbedFeaturesContent, key: string) {
   switch (nested._type) {
@@ -17,6 +18,8 @@ function renderNestedContent(nested: TabbedFeaturesContent, key: string) {
       return <AccordionBlockContent key={key} {...nested} />;
     case 'block.codeSample':
       return <CodeSampleBlockContent key={key} {...nested} />;
+    case 'block.useCaseList':
+      return <UseCaseListBlockContent key={key} {...nested} />;
     default:
       return null;
   }
@@ -39,8 +42,14 @@ export function TabbedFeaturesBlock(props: TabbedFeaturesBlockProps) {
         </TabsList>
         {groups.map((group, groupIdx) => {
           const content = group.content ?? [];
+          // useCaseList already lays out as 2-col internally — don't wrap in another 2-col Grid.
+          const hasUseCaseList = content.some((c) => c._type === 'block.useCaseList');
           const cols: GridCols =
-            content.length > 1 ? { mobile: 1, tablet: 1, desktop: 2 } : 1;
+            hasUseCaseList
+              ? 1
+              : content.length > 1
+                ? { mobile: 1, tablet: 1, desktop: 2 }
+                : 1;
           return (
             <TabsContent key={`${rootKey}-pane-${groupIdx}`} value={group.label}>
               <Grid cols={cols} gap={GridGap.LG} className="items-start">

@@ -66,26 +66,46 @@ export interface HeroSplitBlock extends BlockBase {
   ctas?: CtaValue[] | null;
 }
 
+export type HeroCenterMediaPlacement = 'below' | 'background';
+
 export interface HeroCenterBlock extends BlockBase {
   _type: 'block.heroCenter';
   sectionHeading?: SectionHeadingValue | null;
   description?: string | null;
   media?: ImageWithAltValue | null;
+  mediaPlacement?: HeroCenterMediaPlacement | null;
   ctas?: CtaValue[] | null;
 }
+
+export type FeatureGridItemTone = 'none' | 'subtle' | 'inverse';
 
 export interface FeatureGridItem {
   eyebrow?: string | null;
   title: string;
   description?: string | null;
   icon?: ImageWithAltValue | null;
+  media?: ImageWithAltValue | null;
   cta?: CtaValue | null;
+  backgroundTone?: FeatureGridItemTone | null;
 }
 
 export interface FeatureGridBlock extends BlockBase {
   _type: 'block.featureGrid';
   sectionHeading?: SectionHeadingValue | null;
   items?: FeatureGridItem[] | null;
+  columns?: 2 | 3 | null;
+}
+
+export interface StatGridItem {
+  number: string;
+  numberSuffix?: string | null;
+  description?: string | null;
+}
+
+export interface StatGridBlock extends BlockBase {
+  _type: 'block.statGrid';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: StatGridItem[] | null;
   columns?: 2 | 3 | null;
 }
 
@@ -102,10 +122,18 @@ export interface AccordionItemValue {
   defaultOpen?: boolean | null;
 }
 
+export interface AccordionSidebar {
+  heading?: string | null;
+  description?: string | null;
+  avatar?: ImageWithAltValue | null;
+  cta?: CtaValue | null;
+}
+
 export interface AccordionBlock extends BlockBase {
   _type: 'block.accordion';
   sectionHeading?: SectionHeadingValue | null;
   items?: AccordionItemValue[] | null;
+  sidebar?: AccordionSidebar | null;
 }
 
 export interface CodeSampleBlock extends BlockBase {
@@ -117,7 +145,36 @@ export interface CodeSampleBlock extends BlockBase {
   caption?: string | null;
 }
 
-export type TabbedFeaturesContent = AccordionBlock | CodeSampleBlock;
+export type TabbedFeaturesContent = AccordionBlock | CodeSampleBlock | UseCaseListBlock;
+
+export interface UseCaseListItem {
+  label: string;
+  href?: string | null;
+  active?: boolean | null;
+}
+
+export interface UseCaseListBlock extends BlockBase {
+  _type: 'block.useCaseList';
+  items?: UseCaseListItem[] | null;
+  featuredMedia?: ImageWithAltValue | null;
+  featuredTitle?: string | null;
+  featuredBody?: string | null;
+}
+
+export interface AutoSwitchingCardItem {
+  title: string;
+  description?: string | null;
+  icon?: ImageWithAltValue | null;
+  media?: ImageWithAltValue | null;
+}
+
+export interface AutoSwitchingCardsBlock extends BlockBase {
+  _type: 'block.autoSwitchingCards';
+  sectionHeading?: SectionHeadingValue | null;
+  items?: AutoSwitchingCardItem[] | null;
+  autoAdvanceMs?: number | null;
+  ctas?: CtaValue[] | null;
+}
 
 export interface TabbedFeaturesGroup {
   label: string;
@@ -148,6 +205,7 @@ export interface LogoMarqueeBlock extends BlockBase {
 }
 
 export type CalloutTone = 'default' | 'frosted' | 'accent';
+export type CalloutLayout = 'stacked' | 'horizontal';
 
 export interface CalloutBlock extends BlockBase {
   _type: 'block.callout';
@@ -155,10 +213,12 @@ export interface CalloutBlock extends BlockBase {
   description?: string | null;
   icon?: ImageWithAltValue | null;
   tone?: CalloutTone | null;
+  layout?: CalloutLayout | null;
   ctas?: CtaValue[] | null;
 }
 
-export type TestimonialVariant = 'default' | 'featured';
+export type TestimonialVariant = 'default' | 'featured' | 'video';
+export type TestimonialsLayout = 'grid' | 'carousel';
 
 export interface TestimonialItem {
   quote: string;
@@ -166,6 +226,8 @@ export interface TestimonialItem {
   role?: string | null;
   avatar?: ImageWithAltValue | null;
   variant?: TestimonialVariant | null;
+  videoUrl?: string | null;
+  thumbnail?: ImageWithAltValue | null;
 }
 
 export interface TestimonialsBlock extends BlockBase {
@@ -173,6 +235,8 @@ export interface TestimonialsBlock extends BlockBase {
   sectionHeading?: SectionHeadingValue | null;
   items?: TestimonialItem[] | null;
   columns?: 2 | 3 | null;
+  layout?: TestimonialsLayout | null;
+  autoScrollMs?: number | null;
 }
 
 export type ComparisonBulletState = 'positive' | 'negative' | 'neutral';
@@ -197,10 +261,19 @@ export interface ComparisonBlock extends BlockBase {
   items?: ComparisonItem[] | null;
 }
 
+export interface VideoContentBlock extends BlockBase {
+  _type: 'block.videoContent';
+  sectionHeading?: SectionHeadingValue | null;
+  videoUrl?: string | null;
+  poster?: ImageWithAltValue | null;
+  caption?: string | null;
+}
+
 export type PageBuilderBlock =
   | HeroSplitBlock
   | HeroCenterBlock
   | FeatureGridBlock
+  | StatGridBlock
   | RichTextBlock
   | AccordionBlock
   | CodeSampleBlock
@@ -208,7 +281,10 @@ export type PageBuilderBlock =
   | LogoMarqueeBlock
   | CalloutBlock
   | TestimonialsBlock
-  | ComparisonBlock;
+  | ComparisonBlock
+  | VideoContentBlock
+  | UseCaseListBlock
+  | AutoSwitchingCardsBlock;
 
 export interface PageDocument {
   _id: string;
