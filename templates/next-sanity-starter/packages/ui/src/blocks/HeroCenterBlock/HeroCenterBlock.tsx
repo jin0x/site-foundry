@@ -4,6 +4,7 @@ import { CtaButton } from '../../components/CtaButton';
 import { HeadingGroup } from '../../components/HeadingGroup';
 import { SectionCta } from '../../components/SectionCta';
 import { ButtonVariant } from '../../primitives/Button';
+import { Container } from '../../primitives/Container';
 import { Image } from '../../primitives/Image';
 import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
@@ -17,8 +18,14 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
 
   if (isBackground) {
     const mediaUrl = props.media?.asset?.url ?? '';
+    /* B12: hero is constrained to design's 1440px content width via Container
+     * (set as `--container-max` in theme.css). Previously the outer <section>
+     * had no max-width, causing the bg image to span the full viewport — Figma
+     * design has the photo bound by the section's content frame, not edge-to-
+     * edge. The bg-image div + tint overlay live inside the relative wrapper
+     * so they fill the Container's content box. */
     return (
-      <section className="relative overflow-hidden isolate min-h-[600px] flex items-center justify-center">
+      <Container as="section" className="relative overflow-hidden isolate min-h-[600px] flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center -z-10"
           style={{ backgroundImage: `url(${mediaUrl})` }}
@@ -48,7 +55,7 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
             ) : null}
           </Stack>
         </div>
-      </section>
+      </Container>
     );
   }
 
