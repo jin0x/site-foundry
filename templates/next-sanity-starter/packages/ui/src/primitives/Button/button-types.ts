@@ -3,6 +3,10 @@ export const ButtonVariant = {
   OUTLINE: 'outline',
   GHOST: 'ghost',
   INVERSE_PRIMARY: 'inverse-primary',
+  /* inverse-secondary: white-bg-with-border + dark text, designed for use on
+   * inverse-toned (Navy) surfaces where the contrast pattern flips — e.g.
+   * audience-split LEFT tile per Decisions design. */
+  INVERSE_SECONDARY: 'inverse-secondary',
 } as const;
 export type ButtonVariant = (typeof ButtonVariant)[keyof typeof ButtonVariant];
 
@@ -45,6 +49,7 @@ export const DEFAULT_SHAPE_BY_VARIANT: Record<ButtonVariant, ButtonShape> = {
   outline: 'pill',
   ghost: 'pill',
   'inverse-primary': 'rectangular',
+  'inverse-secondary': 'rectangular',
 };
 
 const solidColors: Record<ButtonColor, string> = {
@@ -80,6 +85,17 @@ const inversePrimaryColors: Record<ButtonColor, string> = {
   light: inversePrimaryClasses,
 };
 
+/* inverse-secondary: white bg + dark text + #e8e8e8 border. Same color-axis
+ * collapse as inverse-primary — variant intent dominates the color prop. */
+const inverseSecondaryClasses =
+  'bg-[var(--color-surface-page)] text-[var(--color-primary)] border border-[var(--color-border-default)] hover:opacity-90';
+
+const inverseSecondaryColors: Record<ButtonColor, string> = {
+  primary: inverseSecondaryClasses,
+  secondary: inverseSecondaryClasses,
+  light: inverseSecondaryClasses,
+};
+
 export const BUTTON_VARIANT_COLOR_CLASSES: Record<
   ButtonVariant,
   Record<ButtonColor, string>
@@ -88,4 +104,5 @@ export const BUTTON_VARIANT_COLOR_CLASSES: Record<
   outline: outlineColors,
   ghost: ghostColors,
   'inverse-primary': inversePrimaryColors,
+  'inverse-secondary': inverseSecondaryColors,
 };

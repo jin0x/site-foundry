@@ -4,6 +4,7 @@ import type {
 } from '@site-foundry-template/sanity-types';
 import { BaseBlock } from '../../components/BaseBlock';
 import { CtaButton } from '../../components/CtaButton';
+import { ButtonVariant } from '../../primitives/Button';
 import { Card } from '../../primitives/Card';
 import { CardPadding } from '../../primitives/Card/card-types';
 import { Eyebrow } from '../../primitives/Eyebrow';
@@ -26,6 +27,14 @@ const TONE_CARD_CLASSES: Record<FeatureGridItemTone, string> = {
 };
 
 export function FeatureGridBlock(props: FeatureGridBlockProps) {
+  /* Audience-split detection: 2-column 2-item layout where one tile is
+   * inverse-toned (Navy bg) and the other isn't. Per Decisions design,
+   * the inverse tile gets a white-with-border CTA (inverse-secondary)
+   * and the light tile gets a Navy CTA (inverse-primary). Other featureGrid
+   * layouts (3-col card grids, numbered features 2x2) don't trigger this. */
+  const isAudienceSplit =
+    (props.columns ?? 3) === 2 && (props.items?.length ?? 0) === 2;
+
   return (
     <BaseBlock block={props} framed={!!props.framed}>
       <Grid cols={props.columns ?? 3} gap={GridGap.SM}>
@@ -34,6 +43,11 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
           const isInverse = tone === 'inverse';
           const headingColor = isInverse ? HeadingColor.WHITE : undefined;
           const bodyColor = isInverse ? TextColor.WHITE : TextColor.MUTED;
+          const ctaVariant = isAudienceSplit
+            ? isInverse
+              ? ButtonVariant.INVERSE_SECONDARY
+              : ButtonVariant.INVERSE_PRIMARY
+            : undefined;
 
           return (
             <Card
@@ -68,7 +82,7 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
               </Stack>
               {item.cta ? (
                 <div className="mt-6">
-                  <CtaButton value={item.cta} />
+                  <CtaButton value={item.cta} variant={ctaVariant} />
                 </div>
               ) : null}
             </Card>
