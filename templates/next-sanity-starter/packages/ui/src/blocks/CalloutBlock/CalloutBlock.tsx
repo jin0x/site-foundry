@@ -31,8 +31,14 @@ const TONE_CLASSES: Record<CalloutTone, string> = {
 export function CalloutBlock(props: CalloutBlockProps) {
   const tone: CalloutTone = props.tone ?? 'default';
   const layout: CalloutLayout = props.layout ?? 'stacked';
-  /* P5: lime-bg accent callouts use Navy CTAs in the design (Hp 13, Pl 11). */
-  const ctaVariant = tone === 'accent' ? ButtonVariant.INVERSE_PRIMARY : undefined;
+  /* Navy CTA contexts:
+   *  - tone='accent' (lime-bg callouts: Hp 13, Pl 11) — P5
+   *  - layout='horizontal' (compare-row pattern: Hp 5b) — design has all
+   *    horizontal callouts use Navy primary CTAs regardless of section tone */
+  const ctaVariant =
+    tone === 'accent' || layout === 'horizontal'
+      ? ButtonVariant.INVERSE_PRIMARY
+      : undefined;
 
   if (layout === 'horizontal') {
     return (

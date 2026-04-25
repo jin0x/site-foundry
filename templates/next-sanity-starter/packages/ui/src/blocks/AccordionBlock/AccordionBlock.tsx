@@ -10,6 +10,7 @@ import {
 } from '../../primitives/Accordion';
 import { Avatar } from '../../primitives/Avatar';
 import { AvatarSize } from '../../primitives/Avatar/avatar-types';
+import { ButtonVariant } from '../../primitives/Button';
 import { Card } from '../../primitives/Card';
 import { CardPadding, CardRadius, CardVariant } from '../../primitives/Card/card-types';
 import { Grid } from '../../primitives/Grid';
@@ -75,7 +76,11 @@ function AccordionSidebarCard({ sidebar }: { sidebar: NonNullable<AccordionBlock
                 </Text>
               </Stack>
             ) : null}
-            {sidebar.cta ? <CtaButton value={sidebar.cta} /> : null}
+            {/* Design pattern: accordion sidebar's "support" CTA always
+             * renders as a Navy rect primary across both pages. */}
+            {sidebar.cta ? (
+              <CtaButton value={sidebar.cta} variant={ButtonVariant.INVERSE_PRIMARY} />
+            ) : null}
           </Stack>
         </Card>
       ) : null}
