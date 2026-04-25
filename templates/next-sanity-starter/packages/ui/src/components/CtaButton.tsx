@@ -15,7 +15,7 @@ export interface CtaButtonProps {
 
 function resolveHref(link?: LinkValue | null): string {
   if (!link) {
-    return '#';
+    return 'http://localhost:3000/';
   }
 
   if (link.kind === 'page') {
@@ -24,14 +24,14 @@ function resolveHref(link?: LinkValue | null): string {
   }
 
   if (link.kind === 'email') {
-    return link.email ? `mailto:${link.email}` : '#';
+    return link.email ? `mailto:${link.email}` : 'http://localhost:3000/';
   }
 
   if (link.kind === 'file') {
-    return link.file?.url || '#';
+    return link.file?.url || 'http://localhost:3000/';
   }
 
-  return link.href || '#';
+  return link.href || 'http://localhost:3000/';
 }
 
 const VARIANT_MAP: Record<NonNullable<CtaValue['variant']>, ButtonVariant> = {
