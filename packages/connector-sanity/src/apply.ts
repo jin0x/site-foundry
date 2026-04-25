@@ -371,15 +371,15 @@ export async function applySeedArtifact(opts: ApplySeedOptions): Promise<ApplySe
 
   if (existingKey) {
     log(`Updating existing block (key: ${blockKey})`);
+    /* S1: in-place replace at the existing key's array index. The prior
+     * implementation did `unset` then `append`, which moved the block to the
+     * end of `pageBuilder[]` on every re-apply — progressively scrambling
+     * page order across iterative seed applies. `insert('replace', ...)` is
+     * Sanity's canonical pattern for replacing an array item at a path, and
+     * it preserves the item's existing index. */
     await client
       .patch(targetPage)
-      .unset([`${PAGE_BUILDER_FIELD}[_key == "${blockKey}"]`])
-      .commit();
-
-    await client
-      .patch(targetPage)
-      .setIfMissing({ [PAGE_BUILDER_FIELD]: [] })
-      .append(PAGE_BUILDER_FIELD, [block])
+      .insert('replace', `${PAGE_BUILDER_FIELD}[_key=="${blockKey}"]`, [block])
       .commit();
 
     return {
