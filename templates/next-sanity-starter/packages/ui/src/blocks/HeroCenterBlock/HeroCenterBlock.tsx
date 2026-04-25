@@ -5,6 +5,7 @@ import { HeadingGroup } from '../../components/HeadingGroup';
 import { SectionCta } from '../../components/SectionCta';
 import { ButtonVariant } from '../../primitives/Button';
 import { Container } from '../../primitives/Container';
+import { HeadingSize, HeadingTag } from '../../primitives/Heading/heading-types';
 import { Image } from '../../primitives/Image';
 import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
@@ -35,7 +36,11 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
         <div className="relative w-full max-w-5xl mx-auto px-6 py-24 text-center text-white">
           <Stack gap={StackGap.LG} align={StackAlign.CENTER}>
             {props.sectionHeading ? (
-              <HeadingGroup value={{ ...props.sectionHeading, align: 'center' }} />
+              <HeadingGroup
+                value={{ ...props.sectionHeading, align: 'center' }}
+                headingAs={HeadingTag.H1}
+                headingSize={HeadingSize.H1}
+              />
             ) : null}
             {props.description ? (
               <Text size={TextSize.LG} className="max-w-2xl text-white/90">
@@ -70,7 +75,11 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
     <BaseBlock block={props} showHeading={false}>
       <Stack gap={StackGap.LG} align={StackAlign.CENTER} className="text-center">
         {props.sectionHeading ? (
-          <HeadingGroup value={{ ...props.sectionHeading, align: 'center' }} />
+          <HeadingGroup
+            value={{ ...props.sectionHeading, align: 'center' }}
+            headingAs={HeadingTag.H1}
+            headingSize={HeadingSize.H1}
+          />
         ) : null}
         {props.description ? (
           <Text size={TextSize.BASE} color={TextColor.MUTED} className="max-w-2xl">
