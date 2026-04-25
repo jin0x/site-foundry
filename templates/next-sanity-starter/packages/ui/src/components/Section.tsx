@@ -5,7 +5,7 @@ import { Container } from '../primitives/Container';
 
 const SPACING_CLASSES: Record<SpacingSize, string> = {
   compact: 'py-16',
-  default: 'py-24',
+  default: 'py-4',
   roomy: 'py-32',
 };
 
@@ -43,7 +43,7 @@ export function Section({
   const tone = backgroundTone ?? 'none';
   return (
     <Tag
-      className={cx('relative', SPACING_CLASSES[spacing ?? 'default'], className)}
+      className={cx('relative', `tone-${tone}`, SPACING_CLASSES[spacing ?? 'default'], className)}
       style={TONE_STYLES[tone]}
     >
       <Container>{children}</Container>
