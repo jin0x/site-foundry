@@ -48,7 +48,14 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
                   <CtaButton
                     key={`${props._key || props._type}-${index}`}
                     value={cta}
-                    variant={ButtonVariant.INVERSE_PRIMARY}
+                    /* Per-CTA variant via cta.color signal:
+                     *  - color='light' (Hp 1 secondary, Pl 1 single CTA) → white-with-border
+                     *  - else (color='primary'/'accent') → Navy primary */
+                    variant={
+                      cta.color === 'light'
+                        ? ButtonVariant.INVERSE_SECONDARY
+                        : ButtonVariant.INVERSE_PRIMARY
+                    }
                   />
                 ))}
               </SectionCta>
