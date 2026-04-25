@@ -27,7 +27,7 @@ const TONE_CARD_CLASSES: Record<FeatureGridItemTone, string> = {
 
 export function FeatureGridBlock(props: FeatureGridBlockProps) {
   return (
-    <BaseBlock block={props}>
+    <BaseBlock block={props} framed={!!props.framed}>
       <Grid cols={props.columns ?? 3} gap={GridGap.SM}>
         {props.items?.map((item, index) => {
           const tone: FeatureGridItemTone = item.backgroundTone ?? 'none';

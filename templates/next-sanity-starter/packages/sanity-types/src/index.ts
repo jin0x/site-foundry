@@ -94,6 +94,11 @@ export interface FeatureGridBlock extends BlockBase {
   sectionHeading?: SectionHeadingValue | null;
   items?: FeatureGridItem[] | null;
   columns?: 2 | 3 | null;
+  /* B1 follow-up: opt into BaseBlock's framed chrome (border + bg-white + designed
+   * padding). Used by sections like Pl 4 numbered-features + Pl 6 core-capabilities.
+   * Audience-split layouts (Hp 7, Pl 7) leave this falsy — they have per-tile chrome
+   * instead of section-level. Default unframed. */
+  framed?: boolean | null;
 }
 
 export interface StatGridItem {
