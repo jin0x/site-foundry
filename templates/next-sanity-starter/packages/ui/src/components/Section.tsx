@@ -15,8 +15,7 @@ const TONE_STYLES: Record<BackgroundTone, CSSProperties> = {
     background: 'color-mix(in srgb, var(--color-surface-raised) 80%, transparent)',
   },
   accent: {
-    background:
-      'linear-gradient(135deg, color-mix(in srgb, var(--color-brand-turquoise) 22%, var(--color-surface-page) 78%), var(--color-surface-raised))',
+    background: 'var(--color-surface-accent)',
   },
   inverse: {
     color: 'var(--color-inverse)',

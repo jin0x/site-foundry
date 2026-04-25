@@ -267,12 +267,14 @@
   --color-tertiary: var(--color-gray-60);                /* subtle / tertiary text */
   --color-disabled: var(--color-gray-40);                /* disabled state */
   --color-inverse: #ffffff;                              /* text on dark/navy surfaces */
+  --color-text-on-accent: var(--color-navy-100);         /* T7 — text on accent (lime) surfaces; navy reads on lime per Decisions */
 
   /* --- Surface (background, light-mode-first) ----------------- */
   --color-surface-page: #ffffff;                         /* white page bg */
   --color-surface-raised: #fafafa;                       /* subtle raised (card on page) */
   --color-surface-elevated: #f5f5f7;                     /* more raised (estimated — not in design system) */
   --color-surface-inverse: var(--color-navy-100);        /* dark navy inverse bg */
+  --color-surface-accent: #a6f252;                       /* B3 — Decisions lime-callout bg ("Light/Text/Primary" in design — misleading name, paint-as-bg only). Off-canon vs --color-lime-100 #b1fc5f; design value preserved for fidelity. */
 
   /* ============================================================
    * PART 3 — Syntax + code-block chrome (unchanged from placeholder)
@@ -450,11 +452,24 @@
  * value — without renaming the token or touching consumers.
  *
  * Section.tsx applies `tone-${tone}` as a class alongside the existing inline
- * `style={TONE_STYLES[tone]}`. Only `.tone-inverse` is rebound here; accent
- * tone is deferred until the lime-bg block fix lands (Tier 3 / B3).
+ * `style={TONE_STYLES[tone]}`. `.tone-inverse` rebinds for dark navy bg;
+ * `.tone-accent` (B3) rebinds for lime-callout bg — both flip text colors
+ * via cascade so descendants reading `var(--color-secondary)` resolve correctly.
  */
 
 .tone-inverse {
   --color-secondary: rgba(255, 255, 255, 0.7);
   --color-tertiary: rgba(255, 255, 255, 0.5);
+}
+
+.tone-accent {
+  --color-primary: var(--color-text-on-accent);
+  --color-secondary: var(--color-text-on-accent);
+  --color-tertiary: rgba(0, 39, 77, 0.7);
+}
+/* Scope heading color to h1-h6 to avoid bleeding into descendants like
+ * inverse-primary buttons (which set their own `text-[var(--color-inverse)]`
+ * that would otherwise be shadowed by an unlayered `color:` on .tone-accent). */
+.tone-accent :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--color-text-on-accent);
 }

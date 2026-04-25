@@ -22,8 +22,10 @@ const TONE_CLASSES: Record<CalloutTone, string> = {
     'border border-[var(--color-code-border)] bg-[var(--color-surface-raised)]',
   frosted:
     'border border-white/10 bg-[color-mix(in_srgb,var(--color-surface-page)_60%,transparent)] backdrop-blur-xl',
-  accent:
-    'border border-[var(--color-brand-turquoise)]/30 bg-gradient-to-br from-[color-mix(in_srgb,var(--color-brand-turquoise)_10%,transparent)] to-[color-mix(in_srgb,var(--color-brand-fuchsia)_5%,transparent)]',
+  /* B3: accent renders edge-to-edge over the section's lime bg (set via
+   * Section TONE_STYLES.accent + .tone-accent cascade). Card chrome cleared
+   * so the lime shows through under heading + description + CTA. */
+  accent: 'border-0 bg-transparent',
 };
 
 export function CalloutBlock(props: CalloutBlockProps) {

@@ -39,8 +39,14 @@ body {
     );
 }
 
-a {
-  color: inherit;
+/* Anchor reset in @layer base so Tailwind text-* utilities (in @layer utilities)
+ * can override per-element. Without this, unlayered `a { color: inherit }` beat
+ * `text-[var(--color-inverse)]` on Button render-as-anchor — visible on the
+ * lime callout where no parent text-* wrapper happened to set inheritance. */
+@layer base {
+  a {
+    color: inherit;
+  }
 }
 
 .sf-page-shell {
