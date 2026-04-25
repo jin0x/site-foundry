@@ -7,6 +7,7 @@ import { BaseBlock } from '../../components/BaseBlock';
 import { CtaButton } from '../../components/CtaButton';
 import { HeadingGroup } from '../../components/HeadingGroup';
 import { SectionCta } from '../../components/SectionCta';
+import { ButtonVariant } from '../../primitives/Button';
 import { Card } from '../../primitives/Card';
 import { CardPadding, CardRadius, CardVariant } from '../../primitives/Card/card-types';
 import { IconBadge } from '../../primitives/IconBadge';
@@ -28,6 +29,8 @@ const TONE_CLASSES: Record<CalloutTone, string> = {
 export function CalloutBlock(props: CalloutBlockProps) {
   const tone: CalloutTone = props.tone ?? 'default';
   const layout: CalloutLayout = props.layout ?? 'stacked';
+  /* P5: lime-bg accent callouts use Navy CTAs in the design (Hp 13, Pl 11). */
+  const ctaVariant = tone === 'accent' ? ButtonVariant.INVERSE_PRIMARY : undefined;
 
   if (layout === 'horizontal') {
     return (
@@ -57,7 +60,11 @@ export function CalloutBlock(props: CalloutBlockProps) {
             {props.ctas?.length ? (
               <SectionCta>
                 {props.ctas.map((cta, index) => (
-                  <CtaButton key={`${props._key ?? props._type}-${index}`} value={cta} />
+                  <CtaButton
+                    key={`${props._key ?? props._type}-${index}`}
+                    value={cta}
+                    variant={ctaVariant}
+                  />
                 ))}
               </SectionCta>
             ) : null}
@@ -90,7 +97,11 @@ export function CalloutBlock(props: CalloutBlockProps) {
           {props.ctas?.length ? (
             <SectionCta>
               {props.ctas.map((cta, index) => (
-                <CtaButton key={`${props._key ?? props._type}-${index}`} value={cta} />
+                <CtaButton
+                  key={`${props._key ?? props._type}-${index}`}
+                  value={cta}
+                  variant={ctaVariant}
+                />
               ))}
             </SectionCta>
           ) : null}

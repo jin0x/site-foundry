@@ -3,6 +3,7 @@ import { BaseBlock } from '../../components/BaseBlock';
 import { CtaButton } from '../../components/CtaButton';
 import { HeadingGroup } from '../../components/HeadingGroup';
 import { SectionCta } from '../../components/SectionCta';
+import { ButtonVariant } from '../../primitives/Button';
 import { Image } from '../../primitives/Image';
 import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
@@ -37,7 +38,11 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
             {props.ctas?.length ? (
               <SectionCta>
                 {props.ctas.map((cta, index) => (
-                  <CtaButton key={`${props._key || props._type}-${index}`} value={cta} />
+                  <CtaButton
+                    key={`${props._key || props._type}-${index}`}
+                    value={cta}
+                    variant={ButtonVariant.INVERSE_PRIMARY}
+                  />
                 ))}
               </SectionCta>
             ) : null}
