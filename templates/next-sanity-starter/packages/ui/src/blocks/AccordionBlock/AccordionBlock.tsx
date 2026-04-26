@@ -64,7 +64,16 @@ function AccordionSidebarCard({ sidebar }: { sidebar: NonNullable<AccordionBlock
         >
           <Stack gap={StackGap.MD}>
             {sidebar.avatar?.asset?.url ? (
-              <Avatar source={sidebar.avatar} size={AvatarSize.MD} />
+              <div className="relative inline-flex">
+                <Avatar source={sidebar.avatar} size={AvatarSize.MD} />
+                {/* Online status dot — Decisions design has a 10px green
+                 * indicator at top-right of the support avatar (~29px,0
+                 * offset from avatar center per Hp 12 evidence). */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 right-0 size-[10px] rounded-full bg-[var(--color-success-100)] ring-2 ring-[var(--color-surface-page)]"
+                />
+              </div>
             ) : null}
             {sidebar.description ? (
               <Stack gap={StackGap.XS}>
