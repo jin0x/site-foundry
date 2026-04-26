@@ -1,0 +1,29 @@
+{
+  "figmaNodeId": "7876:39019",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.callout",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Compare Decisions with competitors.",
+      "align": "left"
+    },
+    "description": "Decisions Compared to Alternative Platforms: A Buyer's Guide in the Age of Process and AI Orchestration.",
+    "tone": "default",
+    "layout": "horizontal",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Download the eBook",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "compact"
+  }
+}

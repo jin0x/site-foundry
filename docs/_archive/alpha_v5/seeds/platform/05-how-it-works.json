@@ -1,0 +1,50 @@
+{
+  "figmaNodeId": "7908:130564",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.autoSwitchingCards",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "How it works",
+      "subheading": "A unified platform designed to run your business—No silos, No handoffs, No guesswork.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "Design",
+        "description": "Model and execute complex logic with an enterprise rules engine."
+      },
+      {
+        "_type": "object",
+        "title": "Automate",
+        "description": "Build workflows across people, systems, and AI."
+      },
+      {
+        "_type": "object",
+        "title": "Orchestrate",
+        "description": "Coordinate everything in real time."
+      },
+      {
+        "_type": "object",
+        "title": "Optimize",
+        "description": "Continuously improve with process intelligence."
+      }
+    ],
+    "autoAdvanceMs": 10000,
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Schedule a demo",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "light",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "inverse",
+    "spacing": "default"
+  }
+}

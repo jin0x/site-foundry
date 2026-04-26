@@ -1,0 +1,60 @@
+{
+  "figmaNodeId": "7876:58254",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "framed": true,
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Recognized as a category leader",
+      "subheading": "Decisions ranked in the top five across all four evaluated use cases, including #1 in Decision Stewardship. Gartner® Critical Capabilities for Decision Intelligence Platforms report 2026.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "AI orchestration in the enterprise",
+        "description": "How governed automation is evolving beyond isolated tools.",
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Download Report",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "link"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "Why business rules still matter",
+        "description": "The case for structure, visibility, and control in automation.",
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Download Report",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "link"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "From workflows to decision intelligence",
+        "description": "How enterprises are modernizing core operations.",
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Download Report",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "link"
+        }
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "default"
+  }
+}

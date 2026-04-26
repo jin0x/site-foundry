@@ -1,0 +1,24 @@
+{
+  "figmaNodeId": "7876:42408",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.videoContent",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Lorem ipsum dor sit amet.",
+      "align": "center"
+    },
+    "poster": {
+      "figmaNodeId": "7876:42422",
+      "figmaFormat": "png",
+      "figmaScale": 2,
+      "alt": "Video testimonial — library interview scene."
+    },
+    "caption": "Placeholder video testimonial — designer will supply the MP4 source and final thumbnail.",
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "topLevel": ["poster"] }
+}

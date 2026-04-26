@@ -1,0 +1,52 @@
+{
+  "figmaNodeId": "7876:38976",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "framed": true,
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Your systems run the business. Decisions runs what they can't.",
+      "subheading": "Core systems weren't built for every workflow, decision, exception, approval, or AI action. Decisions automates, orchestrates, and governs that work—and builds what core platforms lack.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "More than workflows",
+        "description": "Do more than automate tasks. Orchestrate the workflows, rules, systems, people, and AI that real business operations depend on.",
+        "icon": {
+          "figmaNodeId": "7876:38998",
+          "figmaFormat": "svg",
+          "alt": "Watsonx governance icon"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "One unified control plane",
+        "description": "Coordinate long-running processes, cross-system work, business logic, and governed AI in one platform instead of stitching tools together.",
+        "icon": {
+          "figmaNodeId": "7876:39006",
+          "figmaFormat": "svg",
+          "alt": "Event automation icon"
+        }
+      },
+      {
+        "_type": "object",
+        "title": "Business-owned logic",
+        "description": "Give business and technical teams a safer, faster way to define, change, test, and govern rules without constant code rewrites.",
+        "icon": {
+          "figmaNodeId": "7876:39014",
+          "figmaFormat": "svg",
+          "alt": "Network icon"
+        }
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "nested": [{ "arrayField": "items", "imageFields": ["icon"] }] }
+}

@@ -1,0 +1,55 @@
+{
+  "figmaNodeId": "7908:136870",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.testimonials",
+  "images": { "nested": [{ "arrayField": "items", "imageFields": ["thumbnail"] }] },
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Trusted by organizations solving dynamic problems.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "quote": "By leveraging the Decisions platform our organization is able to compete in an ever-changing technology world at the speed of business.",
+        "name": "Darris Hampton",
+        "role": "VP, MidFirst Bank",
+        "variant": "video",
+        "thumbnail": {
+          "figmaNodeId": "7876:58366",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Darris Hampton, VP MidFirst Bank — video testimonial thumbnail"
+        }
+      },
+      {
+        "_type": "object",
+        "quote": "Decisions helped us modernize our workflow — cleaning out bottlenecks that used to slow every decision down.",
+        "name": "Paul Jones",
+        "role": "IT, Pantheon",
+        "variant": "video",
+        "thumbnail": {
+          "figmaNodeId": "7876:58426",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Paul Jones / Pantheon video testimonial thumbnail"
+        }
+      },
+      {
+        "_type": "object",
+        "quote": "Based on our experience investing in the Decisions platform to improve workflow and process automation, we don't have bottlenecks anymore — problems that Decisions solves.",
+        "name": "Henry Espinosa",
+        "role": "City of Miami Parking Authority",
+        "variant": "featured"
+      }
+    ],
+    "columns": 3,
+    "layout": "carousel",
+    "autoScrollMs": 6000,
+    "backgroundTone": "none",
+    "spacing": "default"
+  }
+}

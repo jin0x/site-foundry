@@ -1,0 +1,28 @@
+{
+  "figmaNodeId": "7876:58620",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.callout",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Ready to explore the platform?",
+      "align": "center"
+    },
+    "description": "Build and orchestrate the processes, rules, and AI that keep your business moving beyond the limits of core systems.",
+    "tone": "accent",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Schedule a demo",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "accent",
+    "spacing": "roomy"
+  }
+}

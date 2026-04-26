@@ -1,0 +1,57 @@
+{
+  "figmaNodeId": "7900:116272",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "framed": true,
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Core capabilities that set you up for success",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "Agentic orchestration",
+        "description": "Coordinate AI agents, people, workflows, and systems in real time.",
+        "icon": { "figmaNodeId": "7908:137274", "figmaFormat": "svg", "alt": "Network icon" }
+      },
+      {
+        "_type": "object",
+        "title": "Enterprise rules engine",
+        "description": "Centrally design, test, and run all the rules that govern your business, regardless of complexity or length of the process.",
+        "icon": { "figmaNodeId": "7908:137282", "figmaFormat": "svg", "alt": "Rule icon" }
+      },
+      {
+        "_type": "object",
+        "title": "Workflow & process automation",
+        "description": "Connect the dots and transitions to streamline workflows across your organization.",
+        "icon": { "figmaNodeId": "7908:137288", "figmaFormat": "svg", "alt": "Flow connection icon" }
+      },
+      {
+        "_type": "object",
+        "title": "Application development",
+        "description": "Design, test, and deploy applications, forms, dashboards, and more. Low-code brings the business and IT together, and reusable components accelerate time-to-value.",
+        "icon": { "figmaNodeId": "7908:137292", "figmaFormat": "svg", "alt": "App connectivity icon" }
+      },
+      {
+        "_type": "object",
+        "title": "Process intelligence",
+        "description": "Map all your tasks and processes, and AI agent activities to identify, optimize, and trust every outcome.",
+        "icon": { "figmaNodeId": "7908:137296", "figmaFormat": "svg", "alt": "Watson discovery icon" }
+      },
+      {
+        "_type": "object",
+        "title": "Integrations",
+        "description": "Hundreds of out-of-the-box connectors and a suite of integrations enable legacy and modern systems to communicate seamlessly.",
+        "icon": { "figmaNodeId": "7908:137306", "figmaFormat": "svg", "alt": "Connect source icon" }
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "nested": [{ "arrayField": "items", "imageFields": ["icon"] }] }
+}

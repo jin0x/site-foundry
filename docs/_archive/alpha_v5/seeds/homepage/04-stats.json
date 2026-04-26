@@ -1,0 +1,37 @@
+{
+  "figmaNodeId": "7926:30002",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.statGrid",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "How will AI reshape your enterprise?",
+      "subheading": "[Read Forrester's report](#): How agentic AI reshapes your enterprise. A framework for evaluating impact, readiness, and risk.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "number": "50%",
+        "description": "of enterprise organizations will focus on automation and AI over the next 12 months."
+      },
+      {
+        "_type": "object",
+        "number": "5x",
+        "numberSuffix": "More trusted",
+        "description": "By 2030, explicitly modeled business decisions will be five times more trusted and 80% faster than ungoverned decisions, enabled by decision intelligence platform adoption."
+      },
+      {
+        "_type": "object",
+        "number": "XX",
+        "description": "Lorem ipsum dolor sit amet consectetur. Convallis orci ullamcorper nunc nunc. Faucibus vulputate mauris sagittis neque interdum."
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "richText": ["sectionHeading.subheading"]
+}

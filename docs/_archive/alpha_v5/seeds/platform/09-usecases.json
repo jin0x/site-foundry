@@ -1,0 +1,42 @@
+{
+  "figmaNodeId": "7924:6144",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.tabbedFeatures",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Decisions handles hundreds of diverse use cases. If you imagine it, Decisions can build it.",
+      "align": "left"
+    },
+    "groups": [
+      {
+        "_type": "object",
+        "label": "By Industry",
+        "featuredMedia": {
+          "figmaNodeId": "7876:58239",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Healthcare scene — clinician and patient in a clinical room."
+        },
+        "content": [
+          {
+            "_type": "block.useCaseList",
+            "items": [
+              { "_type": "object", "label": "Financial Service", "href": "#", "active": true },
+              { "_type": "object", "label": "Insurance", "href": "#" },
+              { "_type": "object", "label": "Higher Education", "href": "#" },
+              { "_type": "object", "label": "Supply Chain Management", "href": "#" }
+            ],
+            "featuredTitle": "Affiliate Lending",
+            "featuredBody": "Decisions automated loan application processing, enabling rules-based routing, document management, faster approvals, and a seamless user experience. This innovative approach not only reduces processing time but also enhances accuracy, ensuring that applicants receive timely feedback and support throughout their journey."
+          }
+        ]
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "nested": [{ "arrayField": "groups", "imageFields": ["featuredMedia"] }] }
+}

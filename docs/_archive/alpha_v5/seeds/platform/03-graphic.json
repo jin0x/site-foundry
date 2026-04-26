@@ -1,0 +1,27 @@
+{
+  "figmaNodeId": "7900:117922",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.heroCenter",
+  "fields": {
+    "framed": true,
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "One platform. Fully orchestrated.",
+      "subheading": "We bring together everything that drives your business into a single, coordinated state.",
+      "align": "left"
+    },
+    "media": {
+      "figmaNodeId": "7900:117922",
+      "figmaFormat": "png",
+      "figmaScale": 2,
+      "alt": "Composed graphic — Decisions central logo with source cards (AI Agents, Business rules, Workflows, Systems) feeding in on the left and outcome cards (Predictable outcomes, Faster execution, Continuous adaptation) emerging on the right."
+    },
+    "mediaPlacement": "below",
+    "ctas": [],
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "topLevel": ["media"] }
+}

@@ -1,0 +1,38 @@
+{
+  "figmaNodeId": "757:5430",
+  "targetPage": "staging-homepage",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "AI Voice Agents",
+      "subheading": "Porttitor imperdiet iaculis velit sed nibh blandit. Laoreet lorem placerat molestie massa ut. Urna pretium pulvinar nisi elit dignissim sollicitudin vivamus. Feugiat eget risus ullamcorper posuere aliquam. Lorem vitae.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "eyebrow": "Lorem ipsum dolor sit",
+        "title": "340 ms",
+        "description": "Lorem ipsum dolor sit amet consectetur. Nibh phasellus."
+      },
+      {
+        "_type": "object",
+        "eyebrow": "Lorem ipsum dolor sit",
+        "title": "18",
+        "description": "Lorem ipsum dolor sit amet consectetur. Nibh phasellus."
+      },
+      {
+        "_type": "object",
+        "eyebrow": "Lorem ipsum dolor sit",
+        "title": "2.5 Mb",
+        "description": "Lorem ipsum dolor sit amet consectetur. Nibh phasellus."
+      }
+    ],
+    "columns": 3,
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "richText": ["sectionHeading.subheading"]
+}
