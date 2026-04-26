@@ -8,6 +8,7 @@ import { Image } from '../../primitives/Image';
 import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
 import { StackGap } from '../../primitives/Stack/stack-types';
+import { cx } from '../../lib/cx';
 import { Text } from '../../primitives/Text';
 import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
@@ -23,8 +24,13 @@ export function UseCaseListBlockContent(props: UseCaseListBlockProps) {
     <Grid cols={{ mobile: 1, tablet: 1, desktop: 2 }} gap={GridGap.XL} className="items-start">
       <Stack gap={StackGap.NONE}>
         {items.map((item, index) => {
-          const rowClass = 'flex items-center justify-between py-3 border-b border-[var(--color-surface-raised)]';
-          const labelClass = item.active ? 'font-semibold' : 'text-[color:var(--color-secondary)]';
+          /* P6 row sizing: design wants 24px Regular per Hp 9 evidence
+           * ("Industry list row 24px (H4)"). text-h4 token resolves to
+           * 24px after Tier 1 retargeting. */
+          const rowClass = 'flex items-center justify-between py-3 border-b border-[var(--color-border-default)]';
+          const labelClass = item.active
+            ? 'text-[var(--color-primary)] font-medium'
+            : 'text-[var(--color-secondary)]';
           const arrowSvg = (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -32,9 +38,9 @@ export function UseCaseListBlockContent(props: UseCaseListBlockProps) {
           );
           const content = (
             <>
-              <Text as="span" size={TextSize.LG} className={labelClass}>
+              <span className={cx('text-h4 font-normal', labelClass)}>
                 {item.label}
-              </Text>
+              </span>
               <span aria-hidden="true" className="opacity-70">
                 {arrowSvg}
               </span>
