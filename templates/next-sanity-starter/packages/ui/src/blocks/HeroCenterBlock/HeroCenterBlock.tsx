@@ -73,7 +73,7 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
   }
 
   return (
-    <BaseBlock block={props} showHeading={false}>
+    <BaseBlock block={props} showHeading={false} framed={!!props.framed}>
       <Stack gap={StackGap.LG} align={StackAlign.CENTER} className="text-center">
         {props.sectionHeading ? (
           <HeadingGroup

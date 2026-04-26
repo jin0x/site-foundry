@@ -80,6 +80,12 @@ export interface HeroCenterBlock extends BlockBase {
    * existing heroes continue to render at H1. Used by Hp 1 splash hero
    * per Decisions "Heading/Small" 80px design token. */
   displayHeading?: boolean | null;
+  /* Opt into BaseBlock's framed chrome (border + bg-white + designed
+   * pt-48 pb-64 px-64 padding). Used by Pl 3 hero-orchestrated which
+   * pairs a heading card + composed-graphic diagram inside a chrome
+   * wrapper. Only applies to the default (non-background) branch;
+   * background-mode heroes use their own width-constrained Container. */
+  framed?: boolean | null;
 }
 
 export type FeatureGridItemTone = 'none' | 'subtle' | 'inverse';

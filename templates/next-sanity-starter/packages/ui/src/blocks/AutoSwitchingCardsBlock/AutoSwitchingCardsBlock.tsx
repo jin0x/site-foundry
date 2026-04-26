@@ -7,7 +7,7 @@ import { cx } from '../../lib/cx';
 import { Grid } from '../../primitives/Grid';
 import { GridGap } from '../../primitives/Grid/grid-types';
 import { Heading } from '../../primitives/Heading';
-import { HeadingSize } from '../../primitives/Heading/heading-types';
+import { HeadingSize, HeadingTag } from '../../primitives/Heading/heading-types';
 import { Image } from '../../primitives/Image';
 import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
@@ -37,7 +37,7 @@ export function AutoSwitchingCardsBlock(props: AutoSwitchingCardsBlockProps) {
   const rootKey = props._key ?? props._type;
 
   return (
-    <BaseBlock block={props} framed>
+    <BaseBlock block={props} framed headingSize={HeadingSize.H1} headingAs={HeadingTag.H1}>
       <Grid
         cols={{ mobile: 1, tablet: 1, desktop: 2 }}
         gap={GridGap.XL}
