@@ -57,10 +57,14 @@ export function AutoSwitchingCardsBlock(props: AutoSwitchingCardsBlockProps) {
                 onClick={() => setActive(i)}
                 aria-current={isActive}
                 className={cx(
-                  'relative w-full text-left px-6 py-6 border-b border-[var(--color-code-border)] transition-colors',
+                  /* P7: active-state metaphor per Pl 5/Hp 8 design.
+                   * Inactive cards have a 1px dim-navy border-b (#2b4b6b);
+                   * active card swaps to deeper-navy bg + the 4px lime
+                   * progress bar visually replaces the bottom border. */
+                  'relative w-full text-left px-6 py-6 border-b transition-colors',
                   isActive
-                    ? 'bg-[var(--color-surface-elevated)]'
-                    : 'bg-transparent hover:bg-[var(--color-surface-raised)]',
+                    ? 'bg-[var(--color-navy-active-bg)] border-transparent'
+                    : 'bg-transparent border-[var(--color-navy-inactive-border)] hover:bg-[var(--color-navy-active-bg)]/40',
                 )}
               >
                 <Stack
@@ -74,11 +78,18 @@ export function AutoSwitchingCardsBlock(props: AutoSwitchingCardsBlockProps) {
                     </div>
                   ) : null}
                   <Stack gap={StackGap.XS} className="flex-1">
-                    <Heading as="h3" size={HeadingSize.H4}>
+                    <Heading as="h3" size={HeadingSize.H3}>
                       {item.title}
                     </Heading>
                     {item.description ? (
-                      <Text size={TextSize.SM} color={TextColor.MUTED}>
+                      <Text
+                        size={TextSize.LG}
+                        className={
+                          isActive
+                            ? 'text-[var(--color-navy-active-desc)]'
+                            : 'text-[var(--color-navy-inactive-desc)]'
+                        }
+                      >
                         {item.description}
                       </Text>
                     ) : null}
@@ -88,7 +99,11 @@ export function AutoSwitchingCardsBlock(props: AutoSwitchingCardsBlockProps) {
                   <span
                     key={`progress-${active}-${hovered ? 'paused' : 'running'}`}
                     className={cx(
-                      'absolute left-0 bottom-0 h-[2px] bg-[var(--color-lime-100)]',
+                      /* 4px lime progress bar = active-state indicator per
+                       * Decisions. Animates to full width when active; sits
+                       * over the (transparent) card border-b so it reads as
+                       * the "underline" for the active tab. */
+                      'absolute left-0 bottom-0 h-1 bg-[var(--color-lime-100)]',
                       hovered ? '' : 'animate-[progressBar_var(--advance-ms)_linear_forwards]',
                     )}
                     style={

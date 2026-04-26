@@ -270,6 +270,14 @@
   --color-text-on-accent: var(--color-navy-100);         /* T7 — text on accent (lime) surfaces; navy reads on lime per Decisions */
   --color-border-default: #e8e8e8;                       /* B1 — Light/Border/Default per Decisions; outer chrome borders, divider lines */
 
+  /* T5 — Navy active-state ramp for autoSwitching cards (Hp 8 + Pl 5) per
+   * Decisions design. Distinct from --color-navy-{N} alpha-tinted ramp;
+   * these are flat custom blues for the active/inactive tab metaphor. */
+  --color-navy-active-bg: #001c36;                       /* deeper navy active card bg */
+  --color-navy-inactive-border: #2b4b6b;                 /* dim navy inactive border-b */
+  --color-navy-active-desc: #9ac4ec;                     /* light periwinkle active description */
+  --color-navy-inactive-desc: #3d6c9a;                   /* dim navy inactive description */
+
   /* --- Surface (background, light-mode-first) ----------------- */
   --color-surface-page: #ffffff;                         /* white page bg */
   --color-surface-raised: #fafafa;                       /* subtle raised (card on page) */
