@@ -1,0 +1,29 @@
+{
+  "figmaNodeId": "7876:38958",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.logoMarquee",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Trusted by organizations running complex, high-stakes operations.",
+      "align": "left"
+    },
+    "items": [
+      { "_type": "object", "name": "Coca-Cola", "logo": { "figmaNodeId": "7876:38963", "figmaFormat": "png", "alt": "Coca-Cola logo" } },
+      { "_type": "object", "name": "Genentech", "logo": { "figmaNodeId": "7876:38965", "figmaFormat": "png", "alt": "Genentech logo" } },
+      { "_type": "object", "name": "Bridgestone", "logo": { "figmaNodeId": "7876:38967", "figmaFormat": "png", "alt": "Bridgestone logo" } },
+      { "_type": "object", "name": "Sony Music", "logo": { "figmaNodeId": "7876:38969", "figmaFormat": "png", "alt": "Sony Music logo" } },
+      { "_type": "object", "name": "University of Virginia", "logo": { "figmaNodeId": "7876:38971", "figmaFormat": "png", "alt": "University of Virginia logo" } },
+      { "_type": "object", "name": "Corning", "logo": { "figmaNodeId": "7876:38973", "figmaFormat": "png", "alt": "Corning logo" } },
+      { "_type": "object", "name": "Lockheed Martin", "logo": { "figmaNodeId": "7876:38975", "figmaFormat": "png", "alt": "Lockheed Martin logo" } }
+    ],
+    "speed": "slow",
+    "pauseOnHover": true,
+    "fade": true,
+    "backgroundTone": "none",
+    "spacing": "compact"
+  },
+  "images": { "nested": [{ "arrayField": "items", "imageFields": ["logo"] }] }
+}

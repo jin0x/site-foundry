@@ -1,0 +1,45 @@
+{
+  "figmaNodeId": "7876:38920",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.heroCenter",
+  "fields": {
+    "displayHeading": true,
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Orchestrate instantly. Innovate endlessly.",
+      "subheading": "Built to master complexity. Orchestrate workflows, systems, and AI at a moment's notice. Turn constant change into your greatest competitive advantage.",
+      "align": "center"
+    },
+    "media": {
+      "figmaNodeId": "7876:38921",
+      "figmaFormat": "png",
+      "figmaScale": 2,
+      "alt": "Team collaborating in a modern conference room with decorative logo-grid overlay."
+    },
+    "mediaPlacement": "background",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Download eBook",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      },
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Request a demo",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "light",
+        "variant": "outline"
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "images": { "topLevel": ["media"] },
+  "richText": ["sectionHeading.subheading"]
+}

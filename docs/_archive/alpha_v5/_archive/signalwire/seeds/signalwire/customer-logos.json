@@ -1,0 +1,56 @@
+{
+  "figmaNodeId": "893:7069",
+  "figmaFileKey": "ox8M7KAx62v6GmQPriJBmO",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.logoMarquee",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Trusted by forward-thinking companies",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "logo": { "figmaNodeId": "893:7072", "alt": "Customer logo 1" },
+        "name": "Customer 1"
+      },
+      {
+        "_type": "object",
+        "logo": { "figmaNodeId": "893:7076", "alt": "Customer logo 2" },
+        "name": "Customer 2"
+      },
+      {
+        "_type": "object",
+        "logo": { "figmaNodeId": "893:7086", "alt": "Customer logo 3" },
+        "name": "Customer 3"
+      },
+      {
+        "_type": "object",
+        "logo": { "figmaNodeId": "893:7092", "alt": "Customer logo 4" },
+        "name": "Customer 4"
+      },
+      {
+        "_type": "object",
+        "logo": { "figmaNodeId": "893:7101", "alt": "Customer logo 5" },
+        "name": "Customer 5"
+      },
+      {
+        "_type": "object",
+        "logo": { "figmaNodeId": "893:7122", "alt": "Customer logo 6" },
+        "name": "Customer 6"
+      }
+    ],
+    "speed": "medium",
+    "pauseOnHover": true,
+    "fade": true,
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": {
+    "nested": [
+      { "arrayField": "items", "imageFields": ["logo"] }
+    ]
+  }
+}

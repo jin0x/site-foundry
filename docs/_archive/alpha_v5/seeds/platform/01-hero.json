@@ -1,0 +1,35 @@
+{
+  "figmaNodeId": "7900:116212",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.heroCenter",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "The agentic orchestration platform that simplifies complexity.",
+      "align": "center"
+    },
+    "description": "Automation streamlines processes. AI makes decisions. Integrations connect your systems. We bring it all together so your business runs better, at scale.",
+    "media": {
+      "figmaNodeId": "7900:116213",
+      "figmaFormat": "png",
+      "figmaScale": 2,
+      "alt": "Aerial view of a logistics terminal with trucks arrayed at loading bays."
+    },
+    "mediaPlacement": "background",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Request a demo",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "light",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "images": { "topLevel": ["media"] }
+}

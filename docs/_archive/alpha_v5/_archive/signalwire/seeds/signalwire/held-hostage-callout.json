@@ -1,0 +1,32 @@
+{
+  "figmaNodeId": "893:7165",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.callout",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Held Hostage by Vendor Roadmaps?",
+      "align": "center"
+    },
+    "description": "Every hour debugging vendor connections is an hour not spent on your actual product. Traditional platforms mean 5 vendors, 5 APIs, 5 points of failure and your sprint planning becoming their support tickets.",
+    "icon": {
+      "url": "https://cdn.sanity.io/images/puqewi35/site-foundry-dev/766912e1e2fb8e192cc408607a269309f930adac-24x24.svg",
+      "alt": "Warning icon"
+    },
+    "tone": "default",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Try SignalWire for Free",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  },
+  "images": { "topLevel": ["icon"] }
+}

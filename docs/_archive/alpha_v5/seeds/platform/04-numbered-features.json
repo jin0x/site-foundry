@@ -1,0 +1,70 @@
+{
+  "figmaNodeId": "7900:118180",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-platform",
+  "blockType": "block.featureGrid",
+  "images": { "nested": [{ "arrayField": "items", "imageFields": ["media"] }] },
+  "fields": {
+    "framed": true,
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "We stand apart",
+      "subheading": "Odio semper amet eget gravida amet a at cursus. Porttitor blandit auctor egestas at.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "eyebrow": "01.",
+        "title": "Orchestration, not just automation",
+        "description": "Automation handles tasks. We coordinate entire end-to-end operations.",
+        "media": {
+          "figmaNodeId": "7900:118045",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Flowchart — multiple sources converging into a central coordinator with downstream flow highlighted in green."
+        }
+      },
+      {
+        "_type": "object",
+        "eyebrow": "02.",
+        "title": "AI that actually works in production",
+        "description": "Deploying AI isn't the advantage. Centrally orchestrating AI agents within governed workflows is.",
+        "media": {
+          "figmaNodeId": "7900:118190",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Diagram — AI agents feeding into a governed central block highlighted in green."
+        }
+      },
+      {
+        "_type": "object",
+        "eyebrow": "03.",
+        "title": "Do it your way",
+        "description": "Every action, human or AI, is governed by a centralized rules engine. Consistent. Auditable. Explainable.",
+        "media": {
+          "figmaNodeId": "7900:118210",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Flowchart — branching paths governed by a shield/rules gate."
+        }
+      },
+      {
+        "_type": "object",
+        "eyebrow": "04.",
+        "title": "Build for real-world complexity",
+        "description": "From simple workflows to enterprise-scale operations. One platform that adapts instantly, while leveraging all your existing technology investments.",
+        "media": {
+          "figmaNodeId": "7900:118222",
+          "figmaFormat": "png",
+          "figmaScale": 2,
+          "alt": "Integration diagram — ERP, WMS, DB sources connecting through a central orchestrator to CRM and API endpoints."
+        }
+      }
+    ],
+    "columns": 2,
+    "backgroundTone": "none",
+    "spacing": "default"
+  }
+}

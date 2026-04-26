@@ -1,0 +1,27 @@
+{
+  "figmaNodeId": "893:7487",
+  "targetPage": "signalwire-homepage-v2",
+  "blockType": "block.callout",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "The Communications Stack for What's Next",
+      "align": "center"
+    },
+    "description": "APIs built for speed. Infrastructure built for scale. AI built in from day one.",
+    "tone": "frosted",
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Try SignalWire for Free",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "none",
+    "spacing": "roomy"
+  }
+}

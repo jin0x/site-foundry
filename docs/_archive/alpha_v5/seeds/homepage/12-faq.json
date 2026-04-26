@@ -1,0 +1,65 @@
+{
+  "figmaNodeId": "7876:58478",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.accordion",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Questions?",
+      "headingMuted": "We've got answers.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "How is Decisions different from a workflow tool or integration platform?",
+        "body": "Most workflow tools automate isolated tasks, and most integration tools simply connect systems. Decisions orchestrates the work between systems, manages exception-heavy rules and exceptions, and provides a layer to govern both human and AI-driven actions.",
+        "defaultOpen": true
+      },
+      {
+        "_type": "object",
+        "title": "Can Decisions work with our existing systems and legacy technology?",
+        "body": "Yes. Decisions integrates with enterprise systems of record through a library of pre-built connectors and an extensible integration framework."
+      },
+      {
+        "_type": "object",
+        "title": "Is Decisions only for enterprise organizations?",
+        "body": "No. Decisions scales from mid-market deployments to global enterprise footprints."
+      },
+      {
+        "_type": "object",
+        "title": "How does Decisions help with AI governance?",
+        "body": "Decisions enforces policy guardrails around agentic AI actions — every agent decision runs through the rules engine and is auditable end-to-end."
+      },
+      {
+        "_type": "object",
+        "title": "Is Decisions built for complex enterprise use cases?",
+        "body": "Yes. Decisions was purpose-built for exception-heavy, long-running, cross-system workflows that core platforms cannot express cleanly."
+      }
+    ],
+    "sidebar": {
+      "heading": "Questions?",
+      "headingMuted": "We've got answers.",
+      "description": "Nec consectetur euismod ante hendrerit metus placerat.",
+      "avatar": {
+        "figmaNodeId": "7876:58483",
+        "figmaFormat": "png",
+        "figmaScale": 2,
+        "alt": "Decisions support team — chat with support avatar."
+      },
+      "cta": {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Chat with support",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "primary",
+        "variant": "solid"
+      }
+    },
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "objectFields": [{ "objectField": "sidebar", "imageFields": ["avatar"] }] }
+}

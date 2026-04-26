@@ -1,0 +1,50 @@
+{
+  "figmaNodeId": "7876:51954",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.autoSwitchingCards",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "You've got \"next.\"",
+      "subheading": "Change is constant. You never know what's coming next. Only that it will. Set your business apart with the control and flexibility to adapt in real time, ensuring you're ready for both today's demands and tomorrow's opportunities—without rebuilding your systems.",
+      "align": "left"
+    },
+    "items": [
+      {
+        "_type": "object",
+        "title": "Agentic Orchestration",
+        "description": "Build, deploy, orchestrate, and govern agents. Deploying the most AI won't help you win. Orchestrating it will."
+      },
+      {
+        "_type": "object",
+        "title": "Enterprise Rules Engine",
+        "description": "Design, test, and automate sophisticated business logic with precision, speed, and full visibility across systems."
+      },
+      {
+        "_type": "object",
+        "title": "Process Automation",
+        "description": "Streamline workflows across systems with powerful automation and enterprise integrations."
+      },
+      {
+        "_type": "object",
+        "title": "Process Intelligence",
+        "description": "Gain visibility into operations and bring clarity and accountability to AI-driven outcomes."
+      }
+    ],
+    "autoAdvanceMs": 10000,
+    "ctas": [
+      {
+        "_type": "cta",
+        "enabled": true,
+        "text": "Schedule a demo",
+        "link": { "kind": "href", "href": "#", "openInNewTab": false },
+        "color": "light",
+        "variant": "solid"
+      }
+    ],
+    "backgroundTone": "inverse",
+    "spacing": "default"
+  }
+}

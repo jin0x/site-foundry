@@ -1,0 +1,14 @@
+{
+  "name": "alpha_v3",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Figma-to-Sanity working set targeting Site Foundry's next-sanity-starter. Apply/bootstrap scripts are thin wrappers over @site-foundry/connector-sanity.",
+  "scripts": {
+    "apply": "tsx ../project/site-foundry/packages/connector-sanity/src/cli.ts",
+    "bootstrap-page": "tsx ../project/site-foundry/packages/connector-sanity/src/cli-bootstrap.ts",
+    "verify": "tsx ../project/site-foundry/packages/connector-sanity/src/cli.ts --verify"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "figmaNodeId": "7876:39024",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.heroSplit",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": true,
+      "heading": "Design, deploy, and govern AI agents with confidence.",
+      "align": "left"
+    },
+    "description": "Build and manage intelligent 1st-party and 3rd-party agents at scale—visual tools to design agent actions, agent rules engine to govern decisions, process intelligence to observe granular agent workflows.",
+    "media": {
+      "figmaNodeId": "7876:39024",
+      "figmaFormat": "png",
+      "figmaScale": 2,
+      "alt": "Green and navy geometric agent network diagram graphic."
+    },
+    "mediaPlacement": "left",
+    "ctas": [],
+    "backgroundTone": "none",
+    "spacing": "default"
+  },
+  "images": { "topLevel": ["media"] }
+}

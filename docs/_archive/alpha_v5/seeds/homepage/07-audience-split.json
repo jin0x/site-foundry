@@ -1,0 +1,47 @@
+{
+  "figmaNodeId": "7876:42445",
+  "figmaFileKey": "Kd4MoDaQreiazP75Ujy8kt",
+  "targetPage": "new-project-homepage",
+  "blockType": "block.featureGrid",
+  "fields": {
+    "sectionHeading": {
+      "_type": "sectionHeading",
+      "enabled": false
+    },
+    "items": [
+      {
+        "_type": "object",
+        "eyebrow": "Mid-Market",
+        "title": "Simplify and scale",
+        "description": "Automate time-consuming workflows with the flexibility to grow—without unnecessary overhead.",
+        "backgroundTone": "inverse",
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Explore mid-market offering",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "light",
+          "variant": "solid"
+        }
+      },
+      {
+        "_type": "object",
+        "eyebrow": "Enterprise",
+        "title": "Operate at full scale",
+        "description": "Unify processes, systems, AI, and compliance across your organization—no matter how dynamic your environment.",
+        "backgroundTone": "none",
+        "cta": {
+          "_type": "cta",
+          "enabled": true,
+          "text": "Explore enterprise offering",
+          "link": { "kind": "href", "href": "#", "openInNewTab": false },
+          "color": "primary",
+          "variant": "solid"
+        }
+      }
+    ],
+    "columns": 2,
+    "backgroundTone": "none",
+    "spacing": "default"
+  }
+}
