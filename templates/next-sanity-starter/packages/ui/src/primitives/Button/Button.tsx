@@ -5,6 +5,7 @@ import type {
 } from 'react';
 import { cx } from '../../lib/cx';
 import {
+  BUTTON_PILL_PX_BY_SIZE,
   BUTTON_SHAPE_CLASSES,
   BUTTON_SIZE_CLASSES,
   BUTTON_VARIANT_COLOR_CLASSES,
@@ -41,9 +42,14 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const effectiveShape = shape ?? DEFAULT_SHAPE_BY_VARIANT[variant];
+  /* Pill uses size-dependent horizontal padding; rectangular has its own
+   * fixed px-5 in BUTTON_SHAPE_CLASSES. Conditional avoids size px-N
+   * shadowing rectangular's px-5 in compiled CSS. */
+  const horizontalPx = effectiveShape === 'pill' ? BUTTON_PILL_PX_BY_SIZE[size] : '';
   const classes = cx(
     BASE_CLASSES,
     BUTTON_SIZE_CLASSES[size],
+    horizontalPx,
     BUTTON_VARIANT_COLOR_CLASSES[variant][color],
     BUTTON_SHAPE_CLASSES[effectiveShape],
     className,

@@ -27,14 +27,20 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
      * edge. The bg-image div + tint overlay live inside the relative wrapper
      * so they fill the Container's content box. */
     return (
-      <Container as="section" className="relative overflow-hidden isolate min-h-[600px] flex items-center justify-center">
+      <Container
+        as="section"
+        className="relative overflow-hidden isolate min-h-[600px] flex items-center justify-center lg:!px-20 lg:!py-24"
+      >
         <div
           className="absolute inset-0 bg-cover bg-center -z-10"
           style={{ backgroundImage: `url(${mediaUrl})` }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-black/40 -z-10" aria-hidden="true" />
-        <div className="relative w-full max-w-5xl mx-auto px-6 py-24 text-center text-white">
+        {/* Drop-shadow on the content wrapper lifts hero text off the photo bg
+         * per Hp 1 design ("0 4px 30px black" on heading wrapper). Applied at
+         * the wrapper level so heading + description + CTAs all benefit. */}
+        <div className="relative w-full max-w-5xl mx-auto px-6 py-24 text-center text-white drop-shadow-[0_4px_30px_rgba(0,0,0,1)]">
           <Stack gap={StackGap.LG} align={StackAlign.CENTER}>
             {props.sectionHeading ? (
               <HeadingGroup

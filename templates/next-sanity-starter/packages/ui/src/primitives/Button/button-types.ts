@@ -30,10 +30,22 @@ export const ButtonShape = {
 } as const;
 export type ButtonShape = (typeof ButtonShape)[keyof typeof ButtonShape];
 
+/* Vertical sizing only (min-h, text-size). Horizontal padding is shape-
+ * dependent: pill uses BUTTON_PILL_PX_BY_SIZE (varies with size); rectangular
+ * uses BUTTON_SHAPE_CLASSES.rectangular's own px (fixed at design's px-5 = 20px).
+ * Splitting these prevents the size's px-N from shadowing the rectangular
+ * shape's px-5 in the compiled CSS (smaller spacing values come earlier in
+ * Tailwind's output, so px-6 was winning over px-5 on rectangular CTAs). */
 export const BUTTON_SIZE_CLASSES: Record<ButtonSize, string> = {
-  sm: 'min-h-9 text-small px-4',
-  md: 'min-h-12 text-body px-6',
-  lg: 'min-h-14 text-prose-body px-8',
+  sm: 'min-h-9 text-small',
+  md: 'min-h-12 text-body',
+  lg: 'min-h-14 text-prose-body',
+};
+
+export const BUTTON_PILL_PX_BY_SIZE: Record<ButtonSize, string> = {
+  sm: 'px-4',
+  md: 'px-6',
+  lg: 'px-8',
 };
 
 export const BUTTON_SHAPE_CLASSES: Record<ButtonShape, string> = {

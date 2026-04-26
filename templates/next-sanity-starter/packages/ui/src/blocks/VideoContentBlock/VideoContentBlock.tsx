@@ -44,13 +44,13 @@ export function VideoContentBlock(props: VideoContentBlockProps) {
                 aria-hidden="true"
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
-                <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                <div className="size-[132px] rounded-full bg-white/90 flex items-center justify-center shadow-lg">
                   <svg
-                    width="32"
-                    height="32"
+                    width="52"
+                    height="52"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="text-black ml-1"
+                    className="text-black ml-1.5"
                   >
                     <path d="M8 5v14l11-7z" />
                   </svg>
