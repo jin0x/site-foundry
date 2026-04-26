@@ -86,6 +86,13 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
                     <span className="self-start inline-block bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] px-2 py-1.5 text-base text-[var(--color-primary)]">
                       {item.eyebrow}
                     </span>
+                  ) : /^\s*\d{1,2}\.?\s*$/.test(item.eyebrow) ? (
+                    /* P8: numbered-feature eyebrow renders as a 44×44 navy
+                     * square with lime text per Decisions design (Pl 4
+                     * "We stand apart" — items eyebrow="01.", "02.", ...). */
+                    <span className="inline-flex items-center justify-center size-11 bg-[var(--color-navy-100)] text-[var(--color-lime-100)] text-base font-medium">
+                      {item.eyebrow}
+                    </span>
                   ) : (
                     <Eyebrow>{item.eyebrow}</Eyebrow>
                   )

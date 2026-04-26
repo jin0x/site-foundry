@@ -52,6 +52,12 @@ function AccordionSidebarCard({ sidebar }: { sidebar: NonNullable<AccordionBlock
       {sidebar.heading ? (
         <Heading as="h3" size={HeadingSize.H2}>
           {sidebar.heading}
+          {sidebar.headingMuted ? (
+            <>
+              <br />
+              <span className="text-[var(--color-secondary)]">{sidebar.headingMuted}</span>
+            </>
+          ) : null}
         </Heading>
       ) : null}
       {(sidebar.avatar || sidebar.description || sidebar.cta) ? (

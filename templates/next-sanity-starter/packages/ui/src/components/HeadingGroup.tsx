@@ -15,10 +15,24 @@ export function HeadingGroup({ value, className, headingSize, headingAs }: Headi
     return null;
   }
 
+  /* P4: when headingMuted is set, compose a two-tone heading — line 1 in
+   * default color, line 2 wrapped in a muted span. Used by Hp 12 + Pl 10
+   * accordion sections ("Questions? \n We've got answers.") where the
+   * design splits a single semantic heading into a primary + softer line. */
+  const headingNode = value.headingMuted ? (
+    <>
+      {value.heading}
+      <br />
+      <span className="text-[var(--color-secondary)]">{value.headingMuted}</span>
+    </>
+  ) : (
+    value.heading
+  );
+
   return (
     <SectionHeading
       eyebrow={value.eyebrow}
-      heading={value.heading}
+      heading={headingNode}
       subheading={
         value.subheading?.length ? (
           <PortableText value={value.subheading as PortableTextLike} />

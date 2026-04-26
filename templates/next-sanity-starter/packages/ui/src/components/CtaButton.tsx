@@ -38,6 +38,7 @@ const VARIANT_MAP: Record<NonNullable<CtaValue['variant']>, ButtonVariant> = {
   solid: ButtonVariant.SOLID,
   outline: ButtonVariant.OUTLINE,
   transparent: ButtonVariant.GHOST,
+  link: ButtonVariant.LINK,
 };
 
 const COLOR_MAP: Record<NonNullable<CtaValue['color']>, ButtonColor> = {

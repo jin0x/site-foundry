@@ -28,7 +28,7 @@ import {
 const ALLOWED_BACKGROUND_TONES = new Set(['none', 'subtle', 'accent', 'inverse']);
 const ALLOWED_SPACINGS = new Set(['compact', 'default', 'roomy']);
 const ALLOWED_CTA_COLORS = new Set(['primary', 'accent', 'light']);
-const ALLOWED_CTA_VARIANTS = new Set(['solid', 'outline', 'transparent']);
+const ALLOWED_CTA_VARIANTS = new Set(['solid', 'outline', 'transparent', 'link']);
 const ALLOWED_LINK_KINDS = new Set(['page', 'href', 'email', 'file']);
 
 const PAGE_BUILDER_FIELD = 'pageBuilder';

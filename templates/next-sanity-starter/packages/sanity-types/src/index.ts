@@ -5,7 +5,7 @@ export type SpacingSize = 'compact' | 'default' | 'roomy';
 export type Alignment = 'left' | 'center';
 export type LinkKind = 'page' | 'href' | 'email' | 'file';
 export type CtaColor = 'primary' | 'accent' | 'light';
-export type CtaVariant = 'solid' | 'outline' | 'transparent';
+export type CtaVariant = 'solid' | 'outline' | 'transparent' | 'link';
 export type MediaPlacement = 'left' | 'right';
 
 export interface SlugReference {
@@ -38,6 +38,11 @@ export interface SectionHeadingValue {
   enabled: boolean;
   eyebrow?: string | null;
   heading?: string | null;
+  /* P4 — optional second line of the heading, rendered after a line break
+   * with muted color (var(--color-secondary)). Used by Decisions two-tone
+   * headings where line 2 is design-specified to be visually softer
+   * (Hp 12 + Pl 10 "Questions? \n We've got answers."). */
+  headingMuted?: string | null;
   subheading?: PortableTextLike | null;
   align?: Alignment | null;
 }
@@ -140,6 +145,11 @@ export interface AccordionItemValue {
 
 export interface AccordionSidebar {
   heading?: string | null;
+  /* P4 — optional second line of the sidebar heading, rendered after a
+   * line break with muted color. Mirrors SectionHeadingValue.headingMuted
+   * but lives on the sidebar object (Hp 12 + Pl 10 render their two-tone
+   * heading inside the sidebar layout, not at the section level). */
+  headingMuted?: string | null;
   description?: string | null;
   avatar?: ImageWithAltValue | null;
   cta?: CtaValue | null;

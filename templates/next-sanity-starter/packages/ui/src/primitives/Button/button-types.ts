@@ -7,6 +7,10 @@ export const ButtonVariant = {
    * inverse-toned (Navy) surfaces where the contrast pattern flips — e.g.
    * audience-split LEFT tile per Decisions design. */
   INVERSE_SECONDARY: 'inverse-secondary',
+  /* link: text + underline, no fill, no padding, no rounded shape. P9 — used
+   * for "Download Report" / inline-link-style CTAs (Hp 10 resource cards).
+   * Skips BASE/SIZE/SHAPE classes entirely; renders minimal inline anchor. */
+  LINK: 'link',
 } as const;
 export type ButtonVariant = (typeof ButtonVariant)[keyof typeof ButtonVariant];
 
@@ -62,6 +66,8 @@ export const DEFAULT_SHAPE_BY_VARIANT: Record<ButtonVariant, ButtonShape> = {
   ghost: 'pill',
   'inverse-primary': 'rectangular',
   'inverse-secondary': 'rectangular',
+  /* link variant ignores shape — see Button.tsx isLink branch. */
+  link: 'rectangular',
 };
 
 const solidColors: Record<ButtonColor, string> = {
@@ -108,6 +114,18 @@ const inverseSecondaryColors: Record<ButtonColor, string> = {
   light: inverseSecondaryClasses,
 };
 
+/* link variant: inline text + underline, no fill / no padding / no shape.
+ * The variant collapses the color axis like the inverse-* variants —
+ * rendering style is fixed per design (Decisions inline-link with arrow). */
+const linkClasses =
+  'inline-flex items-center gap-1 text-[var(--color-brand-turquoise)] underline underline-offset-4 hover:opacity-80 cursor-pointer';
+
+const linkColors: Record<ButtonColor, string> = {
+  primary: linkClasses,
+  secondary: linkClasses,
+  light: linkClasses,
+};
+
 export const BUTTON_VARIANT_COLOR_CLASSES: Record<
   ButtonVariant,
   Record<ButtonColor, string>
@@ -117,4 +135,5 @@ export const BUTTON_VARIANT_COLOR_CLASSES: Record<
   ghost: ghostColors,
   'inverse-primary': inversePrimaryColors,
   'inverse-secondary': inverseSecondaryColors,
+  link: linkColors,
 };
