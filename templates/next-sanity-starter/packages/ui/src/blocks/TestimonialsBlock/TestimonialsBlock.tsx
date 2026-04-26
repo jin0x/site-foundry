@@ -21,11 +21,15 @@ import { StackAlign, StackDirection, StackGap } from '../../primitives/Stack/sta
 import { Text } from '../../primitives/Text';
 import { TextColor, TextSize } from '../../primitives/Text/text-types';
 
+/* Decisions design: 3 testimonial card variants per Hp 11 / Pl 8 evidence:
+ *  - default: white card with subtle border (rare; carousel currently uses video for cards 1-2 and featured for card 3)
+ *  - video: full-bleed photo bg + dark gradient overlay; play button + author block at bottom-left
+ *  - featured: Navy bg + white text, no photo (the "highlight quote" card)
+ * The featured Navy-bg variant is the canonical design treatment for the card-3 quote slot. */
 const VARIANT_CLASSES: Record<TestimonialVariant, string> = {
-  default: 'border border-[var(--color-code-border)] bg-[var(--color-surface-elevated)]',
-  featured:
-    'border border-[var(--color-brand-fuchsia)]/60 bg-[var(--color-surface-elevated)] shadow-[0_0_120px_0_color-mix(in_srgb,var(--color-brand-blue)_40%,transparent)]',
-  video: 'border border-[var(--color-code-border)] bg-[var(--color-surface-elevated)] overflow-hidden p-0',
+  default: 'border border-[var(--color-border-default)] bg-[var(--color-surface-page)]',
+  featured: 'border-0 bg-[var(--color-navy-100)] text-[var(--color-inverse)]',
+  video: 'border border-[var(--color-border-default)] bg-[var(--color-surface-elevated)] overflow-hidden p-0',
 };
 
 function VideoCard({ item }: { item: TestimonialItem }) {
@@ -103,7 +107,7 @@ function TextCard({ item }: { item: TestimonialItem }) {
       <Stack gap={StackGap.LG} className="h-full">
         <Text
           size={isFeatured ? TextSize.LG : TextSize.BASE}
-          color={isFeatured ? TextColor.FOREGROUND : TextColor.MUTED}
+          color={isFeatured ? TextColor.WHITE : TextColor.MUTED}
           className="flex-1"
         >
           {`"${item.quote}"`}
@@ -111,11 +115,11 @@ function TextCard({ item }: { item: TestimonialItem }) {
         <Stack direction={StackDirection.ROW} align={StackAlign.CENTER} gap={StackGap.SM}>
           <Avatar source={item.avatar} name={item.name} size={AvatarSize.MD} />
           <Stack gap={StackGap.NONE}>
-            <Text size={TextSize.BASE} color={TextColor.FOREGROUND}>
+            <Text size={TextSize.BASE} color={isFeatured ? TextColor.WHITE : TextColor.FOREGROUND}>
               {item.name}
             </Text>
             {item.role ? (
-              <Text size={TextSize.SM} color={TextColor.MUTED}>
+              <Text size={TextSize.SM} color={isFeatured ? TextColor.WHITE : TextColor.MUTED}>
                 {item.role}
               </Text>
             ) : null}
