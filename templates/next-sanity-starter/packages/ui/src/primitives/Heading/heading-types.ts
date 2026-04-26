@@ -10,6 +10,9 @@ export const HeadingTag = {
 export type HeadingTag = (typeof HeadingTag)[keyof typeof HeadingTag];
 
 export const HeadingSize = {
+  /* Display tier above H1 — Decisions "Heading/Small" 80px hero token.
+   * Use for splash heroes that need to break out of the H1 ceiling. */
+  DISPLAY: 'display',
   H1: 'h1',
   H2: 'h2',
   H3: 'h3',
@@ -42,6 +45,7 @@ export const HeadingWeight = {
 export type HeadingWeight = (typeof HeadingWeight)[keyof typeof HeadingWeight];
 
 export const HEADING_SIZE_CLASSES: Record<HeadingSize, string> = {
+  display: 'text-display-1',
   h1: 'text-h1',
   h2: 'text-h2',
   h3: 'text-h3',
@@ -62,6 +66,7 @@ export const HEADING_WEIGHT_CLASSES: Record<HeadingWeight, string> = {
  * Regular 400 on text-tier (h4-h6). Consumers can override via the `weight`
  * prop; default-by-size keeps Tier 1 scope to the primitive only. */
 export const DEFAULT_WEIGHT_BY_SIZE: Record<HeadingSize, HeadingWeight> = {
+  display: 'light',
   h1: 'light',
   h2: 'light',
   h3: 'light',

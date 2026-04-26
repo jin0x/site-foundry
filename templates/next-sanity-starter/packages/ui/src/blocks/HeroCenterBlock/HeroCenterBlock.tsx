@@ -16,6 +16,7 @@ import { TextColor, TextSize } from '../../primitives/Text/text-types';
 export function HeroCenterBlock(props: HeroCenterBlockProps) {
   const placement = props.mediaPlacement ?? 'below';
   const isBackground = placement === 'background' && !!props.media?.asset?.url;
+  const heroHeadingSize = props.displayHeading ? HeadingSize.DISPLAY : HeadingSize.H1;
 
   if (isBackground) {
     const mediaUrl = props.media?.asset?.url ?? '';
@@ -39,7 +40,7 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
               <HeadingGroup
                 value={{ ...props.sectionHeading, align: 'center' }}
                 headingAs={HeadingTag.H1}
-                headingSize={HeadingSize.H1}
+                headingSize={heroHeadingSize}
               />
             ) : null}
             {props.description ? (
@@ -78,7 +79,7 @@ export function HeroCenterBlock(props: HeroCenterBlockProps) {
           <HeadingGroup
             value={{ ...props.sectionHeading, align: 'center' }}
             headingAs={HeadingTag.H1}
-            headingSize={HeadingSize.H1}
+            headingSize={heroHeadingSize}
           />
         ) : null}
         {props.description ? (

@@ -75,6 +75,11 @@ export interface HeroCenterBlock extends BlockBase {
   media?: ImageWithAltValue | null;
   mediaPlacement?: HeroCenterMediaPlacement | null;
   ctas?: CtaValue[] | null;
+  /* Opt into Display tier (--text-display-1 = 80px) for splash heroes
+   * that need to break out of the H1 64px ceiling. Defaults falsy so
+   * existing heroes continue to render at H1. Used by Hp 1 splash hero
+   * per Decisions "Heading/Small" 80px design token. */
+  displayHeading?: boolean | null;
 }
 
 export type FeatureGridItemTone = 'none' | 'subtle' | 'inverse';

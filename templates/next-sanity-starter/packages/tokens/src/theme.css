@@ -322,8 +322,13 @@
 
   /* --- Display headings (Site Foundry h1-h6 mapped to Decisions Heading/H{n} scale) -- */
   /* Decisions has TWO typo scales: Display (huge marketing) + Heading/H{n}.
-   * h1-h6 below maps to Heading/H{n}, which is what section headings use across
-   * the audit. Display sizes >64px (e.g. hero 80px) are tracked separately as T3. */
+   * h1-h6 below maps to Heading/H{n}. Display sizes >64px (e.g. hero 80px,
+   * the Decisions "Heading/Small" token) live in --text-display-N — used by
+   * heroes that need to break out of the H1 ceiling for marketing impact. */
+  --text-display-1: 80px;                /* Decisions Heading/Small — splash hero */
+  --text-display-1--line-height: 1.0;
+  --text-display-1--letter-spacing: -0.02em;
+
   --text-h1: 64px;                       /* Heading/H1 */
   --text-h1--line-height: 1.1;
   --text-h1--letter-spacing: -0.02em;
