@@ -195,6 +195,11 @@ export interface AutoSwitchingCardsBlock extends BlockBase {
 export interface TabbedFeaturesGroup {
   label: string;
   content?: TabbedFeaturesContent[] | null;
+  /* Optional per-group featured media for the right-card area in the
+   * tabbedUseCases pattern (Hp 9 / Pl 9). Lives on the group rather than
+   * inside content[0].featuredMedia so the seed-apply pipeline's
+   * `arrayField: 'groups'` image-resolution can reach it. */
+  featuredMedia?: ImageWithAltValue | null;
 }
 
 export interface TabbedFeaturesBlock extends BlockBase {

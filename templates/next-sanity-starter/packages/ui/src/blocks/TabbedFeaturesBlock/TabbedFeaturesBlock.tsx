@@ -1,6 +1,7 @@
 'use client';
 
 import type {
+  ImageWithAltValue,
   TabbedFeaturesBlock as TabbedFeaturesBlockProps,
   TabbedFeaturesContent,
 } from '@site-foundry-template/sanity-types';
@@ -12,14 +13,28 @@ import { AccordionBlockContent } from '../AccordionBlock/AccordionBlock';
 import { CodeSampleBlockContent } from '../CodeSampleBlock/CodeSampleBlock';
 import { UseCaseListBlockContent } from '../UseCaseListBlock/UseCaseListBlock';
 
-function renderNestedContent(nested: TabbedFeaturesContent, key: string) {
+function renderNestedContent(
+  nested: TabbedFeaturesContent,
+  key: string,
+  groupFeaturedMedia?: ImageWithAltValue | null,
+) {
   switch (nested._type) {
     case 'block.accordion':
       return <AccordionBlockContent key={key} {...nested} />;
     case 'block.codeSample':
       return <CodeSampleBlockContent key={key} {...nested} />;
     case 'block.useCaseList':
-      return <UseCaseListBlockContent key={key} {...nested} />;
+      /* Group-level featuredMedia (set on the tabbedFeatures group) takes
+       * priority over any nested useCaseList.featuredMedia. Lives on the
+       * group so the seed-apply pipeline's `arrayField: 'groups'` image
+       * resolution can reach it. */
+      return (
+        <UseCaseListBlockContent
+          key={key}
+          {...nested}
+          featuredMedia={groupFeaturedMedia ?? nested.featuredMedia}
+        />
+      );
     default:
       return null;
   }
@@ -54,7 +69,11 @@ export function TabbedFeaturesBlock(props: TabbedFeaturesBlockProps) {
             <TabsContent key={`${rootKey}-pane-${groupIdx}`} value={group.label}>
               <Grid cols={cols} gap={GridGap.LG} className="items-start">
                 {content.map((nested, i) =>
-                  renderNestedContent(nested, `${rootKey}-pane-${groupIdx}-${i}`),
+                  renderNestedContent(
+                    nested,
+                    `${rootKey}-pane-${groupIdx}-${i}`,
+                    group.featuredMedia,
+                  ),
                 )}
               </Grid>
             </TabsContent>

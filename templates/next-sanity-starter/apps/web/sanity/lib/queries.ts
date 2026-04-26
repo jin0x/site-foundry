@@ -121,6 +121,12 @@ export const pageBySlugQuery = `
       },
       groups[]{
         ...,
+        featuredMedia{
+          ...,
+          asset->{
+            url
+          }
+        },
         content[]{
           ...,
           featuredMedia{

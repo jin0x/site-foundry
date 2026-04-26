@@ -86,6 +86,13 @@ export type SeedCta = {
 export type SeedImageSpec = {
   topLevel?: string[];
   nested?: Array<{ arrayField: string; imageFields: string[] }>;
+  /**
+   * Image fields nested inside a single object (one level deep). E.g.,
+   * `{ objectField: 'sidebar', imageFields: ['avatar'] }` resolves
+   * `seed.fields.sidebar.avatar`. For deeper nesting or arrays, use
+   * `nested` (one-level array) or restructure the seed.
+   */
+  objectFields?: Array<{ objectField: string; imageFields: string[] }>;
 };
 
 export type SeedArtifact = {

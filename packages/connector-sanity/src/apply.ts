@@ -326,6 +326,23 @@ export async function applySeedArtifact(opts: ApplySeedOptions): Promise<ApplySe
       }
     }
   }
+  if (seed.images?.objectFields) {
+    for (const objSpec of seed.images.objectFields) {
+      const obj = seed.fields[objSpec.objectField];
+      if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+        if (opts.dryRun) {
+          mockImageFields(obj as Record<string, unknown>, objSpec.imageFields);
+        } else {
+          await resolveImageFields(
+            client,
+            obj as Record<string, unknown>,
+            objSpec.imageFields,
+            imageResolveOptions,
+          );
+        }
+      }
+    }
+  }
 
   normalizeCtas(seed.fields);
   if (!opts.dryRun) {
