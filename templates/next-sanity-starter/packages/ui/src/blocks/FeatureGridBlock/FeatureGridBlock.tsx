@@ -35,9 +35,18 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
   const isAudienceSplit =
     (props.columns ?? 3) === 2 && (props.items?.length ?? 0) === 2;
 
+  /* B10: framed multi-card grids (Pl 4 numbered, Pl 6 core-capabilities,
+   * Hp 5 feature-grid-callout, Hp 10 resource-cards) have border-t between
+   * rows + border-l between cards per design. Audience-split has its own
+   * per-tile chrome and skips dividers. Per-item border classes computed
+   * from index + columns count so first-in-row drops border-l and first-row
+   * drops border-t (CSS grid divide-* doesn't handle this correctly). */
+  const cols = props.columns ?? 3;
+  const useDividers = !!props.framed && !isAudienceSplit;
+
   return (
     <BaseBlock block={props} framed={!!props.framed}>
-      <Grid cols={props.columns ?? 3} gap={GridGap.SM}>
+      <Grid cols={cols} gap={useDividers ? GridGap.NONE : GridGap.SM}>
         {props.items?.map((item, index) => {
           const tone: FeatureGridItemTone = item.backgroundTone ?? 'none';
           const isInverse = tone === 'inverse';
@@ -49,12 +58,19 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
               : ButtonVariant.INVERSE_PRIMARY
             : undefined;
 
+          const dividerClasses = useDividers
+            ? cx(
+                index % cols !== 0 && 'border-l border-[var(--color-border-default)]',
+                index >= cols && 'border-t border-[var(--color-border-default)]',
+              )
+            : '';
+
           return (
             <Card
               as="article"
               key={`${props._key || props._type}-${index}`}
               padding={CardPadding.LG}
-              className={cx('h-full flex flex-col', TONE_CARD_CLASSES[tone])}
+              className={cx('h-full flex flex-col', TONE_CARD_CLASSES[tone], dividerClasses)}
             >
               <Stack gap={StackGap.SM} className="flex-1">
                 {item.icon?.asset?.url ? (
@@ -62,7 +78,18 @@ export function FeatureGridBlock(props: FeatureGridBlockProps) {
                     <Image source={item.icon} fit={ImageFit.CONTAIN} />
                   </div>
                 ) : null}
-                {item.eyebrow ? <Eyebrow>{item.eyebrow}</Eyebrow> : null}
+                {item.eyebrow ? (
+                  isAudienceSplit ? (
+                    /* B11: design has the audience-split eyebrow as a
+                     * solid chip — light bg + border + dark text — distinct
+                     * from the standard uppercase Eyebrow treatment. */
+                    <span className="self-start inline-block bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] px-2 py-1.5 text-base text-[var(--color-primary)]">
+                      {item.eyebrow}
+                    </span>
+                  ) : (
+                    <Eyebrow>{item.eyebrow}</Eyebrow>
+                  )
+                ) : null}
                 <Heading as="h3" size={HeadingSize.H3} color={headingColor}>
                   {item.title}
                 </Heading>

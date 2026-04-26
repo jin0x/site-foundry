@@ -88,7 +88,7 @@ export function AutoSwitchingCardsBlock(props: AutoSwitchingCardsBlockProps) {
                   <span
                     key={`progress-${active}-${hovered ? 'paused' : 'running'}`}
                     className={cx(
-                      'absolute left-0 bottom-0 h-[2px] bg-[var(--color-brand-fuchsia)]',
+                      'absolute left-0 bottom-0 h-[2px] bg-[var(--color-lime-100)]',
                       hovered ? '' : 'animate-[progressBar_var(--advance-ms)_linear_forwards]',
                     )}
                     style={

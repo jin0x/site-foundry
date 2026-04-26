@@ -248,7 +248,7 @@
   /* --- Brand (semantic) ---------------------------------------- */
   /* Names preserved for downstream compat. See header for mismatch notes. */
   --color-brand-turquoise: var(--color-bright-blue-100); /* primary CTA */
-  --color-brand-fuchsia: var(--color-lime-100);          /* accent (name mismatch — preserved for compat) */
+  --color-brand-fuchsia: #e03b71;                        /* T4 — Decisions Brand/Raspberry. Was previously aliased to lime-100 as a "compat" workaround for the name mismatch; corrected here to match the semantic the name promises. Stat numbers (StatGridBlock) + Text/Heading 'secondary' + 'rose' variants + Badge primary + Button secondary all now render the design's raspberry. AutoSwitching progress bar updated to reference --color-lime-100 directly. */
   --color-brand-blue: var(--color-navy-100);             /* emphasis */
   --color-brand-purple: var(--color-soft-blue-100);      /* subtle tint (name mismatch) */
   --color-brand-gold: var(--color-warning-100);          /* no Decisions gold (name mismatch) */
