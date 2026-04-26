@@ -1,5 +1,6 @@
 import type { VideoContentBlock as VideoContentBlockProps } from '@site-foundry-template/sanity-types';
 import { BaseBlock } from '../../components/BaseBlock';
+import { HeadingSize, HeadingTag } from '../../primitives/Heading/heading-types';
 import { Image } from '../../primitives/Image';
 import { ImageFit, ImageRadius } from '../../primitives/Image/image-types';
 import { Stack } from '../../primitives/Stack';
@@ -12,7 +13,12 @@ export function VideoContentBlock(props: VideoContentBlockProps) {
   const videoUrl = props.videoUrl ?? undefined;
 
   return (
-    <BaseBlock block={props}>
+    <BaseBlock
+      block={props}
+      framed
+      headingSize={HeadingSize.H1}
+      headingAs={HeadingTag.H1}
+    >
       <Stack gap={StackGap.LG} align={StackAlign.CENTER}>
         <div className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden">
           {videoUrl ? (

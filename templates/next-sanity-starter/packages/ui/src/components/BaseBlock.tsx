@@ -6,6 +6,7 @@ import type {
 } from '@site-foundry-template/sanity-types';
 import { Section } from './Section';
 import { HeadingGroup } from './HeadingGroup';
+import type { HeadingSize, HeadingTag } from '../primitives/Heading/heading-types';
 import { Stack } from '../primitives/Stack';
 import { StackGap } from '../primitives/Stack/stack-types';
 
@@ -25,6 +26,12 @@ export interface BaseBlockProps {
    * TabbedFeatures, Testimonials). When framed, Section's own SPACING_CLASSES
    * is suppressed so the chrome controls vertical padding directly. */
   framed?: boolean;
+  /* Optional heading size/tag override forwarded to HeadingGroup. Default
+   * (undefined) lets SectionHeading apply its H2 fallback. Block authors
+   * pass these when their section needs a non-default heading (e.g.,
+   * VideoContentBlock with H1 64px design). */
+  headingSize?: HeadingSize;
+  headingAs?: HeadingTag;
   children?: ReactNode;
 }
 
@@ -38,11 +45,19 @@ export function BaseBlock({
   stackClassName,
   className,
   framed = false,
+  headingSize,
+  headingAs,
   children,
 }: BaseBlockProps) {
   const inner = (
     <Stack gap={stackGap} className={stackClassName}>
-      {showHeading ? <HeadingGroup value={block.sectionHeading} /> : null}
+      {showHeading ? (
+        <HeadingGroup
+          value={block.sectionHeading}
+          headingSize={headingSize}
+          headingAs={headingAs}
+        />
+      ) : null}
       {children}
     </Stack>
   );
