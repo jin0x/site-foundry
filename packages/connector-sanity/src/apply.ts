@@ -28,7 +28,7 @@ import {
 const ALLOWED_BACKGROUND_TONES = new Set(['none', 'subtle', 'accent', 'inverse']);
 const ALLOWED_SPACINGS = new Set(['compact', 'default', 'roomy']);
 const ALLOWED_CTA_COLORS = new Set(['primary', 'accent', 'light']);
-const ALLOWED_CTA_VARIANTS = new Set(['solid', 'outline', 'transparent']);
+const ALLOWED_CTA_VARIANTS = new Set(['solid', 'outline', 'transparent', 'link']);
 const ALLOWED_LINK_KINDS = new Set(['page', 'href', 'email', 'file']);
 
 const PAGE_BUILDER_FIELD = 'pageBuilder';
@@ -326,6 +326,23 @@ export async function applySeedArtifact(opts: ApplySeedOptions): Promise<ApplySe
       }
     }
   }
+  if (seed.images?.objectFields) {
+    for (const objSpec of seed.images.objectFields) {
+      const obj = seed.fields[objSpec.objectField];
+      if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+        if (opts.dryRun) {
+          mockImageFields(obj as Record<string, unknown>, objSpec.imageFields);
+        } else {
+          await resolveImageFields(
+            client,
+            obj as Record<string, unknown>,
+            objSpec.imageFields,
+            imageResolveOptions,
+          );
+        }
+      }
+    }
+  }
 
   normalizeCtas(seed.fields);
   if (!opts.dryRun) {
@@ -371,15 +388,15 @@ export async function applySeedArtifact(opts: ApplySeedOptions): Promise<ApplySe
 
   if (existingKey) {
     log(`Updating existing block (key: ${blockKey})`);
+    /* S1: in-place replace at the existing key's array index. The prior
+     * implementation did `unset` then `append`, which moved the block to the
+     * end of `pageBuilder[]` on every re-apply — progressively scrambling
+     * page order across iterative seed applies. `insert('replace', ...)` is
+     * Sanity's canonical pattern for replacing an array item at a path, and
+     * it preserves the item's existing index. */
     await client
       .patch(targetPage)
-      .unset([`${PAGE_BUILDER_FIELD}[_key == "${blockKey}"]`])
-      .commit();
-
-    await client
-      .patch(targetPage)
-      .setIfMissing({ [PAGE_BUILDER_FIELD]: [] })
-      .append(PAGE_BUILDER_FIELD, [block])
+      .insert('replace', `${PAGE_BUILDER_FIELD}[_key=="${blockKey}"]`, [block])
       .commit();
 
     return {

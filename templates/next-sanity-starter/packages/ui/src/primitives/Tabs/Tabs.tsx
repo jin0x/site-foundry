@@ -14,7 +14,7 @@ import {
   type ReactNode,
 } from 'react';
 import { cx } from '../../lib/cx';
-import type { TabsContextValue } from './tabs-types';
+import type { TabsContextValue, TabsVariant } from './tabs-types';
 
 const TabsContext = createContext<TabsContextValue | null>(null);
 
@@ -30,6 +30,10 @@ export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
+  /* P6: 'pill' (default — black-pill active state) or 'underline'
+   * (Decisions tabbed-use-cases pattern: 18px text, 4px brand-turquoise
+   * underline on active, full-width divider line below the row). */
+  variant?: TabsVariant;
   children?: ReactNode;
 }
 
@@ -37,6 +41,7 @@ export function Tabs({
   defaultValue,
   value: controlledValue,
   onValueChange,
+  variant = 'pill',
   className,
   children,
   ...rest
@@ -89,8 +94,8 @@ export function Tabs({
   );
 
   const contextValue = useMemo<TabsContextValue>(
-    () => ({ value, setValue, baseId, registerTrigger, focusTriggerByOffset }),
-    [value, setValue, baseId, registerTrigger, focusTriggerByOffset],
+    () => ({ value, setValue, baseId, variant, registerTrigger, focusTriggerByOffset }),
+    [value, setValue, baseId, variant, registerTrigger, focusTriggerByOffset],
   );
 
   return (
@@ -105,11 +110,17 @@ export function Tabs({
 export interface TabsListProps extends HTMLAttributes<HTMLDivElement> {}
 
 export function TabsList({ className, ...rest }: TabsListProps) {
+  const ctx = useTabsContext('TabsList');
   return (
     <div
       role="tablist"
       className={cx(
-        'inline-flex gap-1 rounded-full border border-[var(--color-code-border)] bg-[var(--color-surface-raised)] p-1',
+        ctx.variant === 'underline'
+          ? /* underline metaphor: full-width row with bottom divider line;
+             * tabs sit flush at the bottom and overlap the divider with
+             * their own border-b-4 when active (per Hp 9 design). */
+            'flex w-full gap-8 border-b border-[var(--color-border-default)]'
+          : 'inline-flex gap-1 rounded-full border border-[var(--color-code-border)] bg-[var(--color-surface-raised)] p-1',
         className,
       )}
       {...rest}
@@ -175,10 +186,24 @@ export function TabsTrigger({
       }}
       onKeyDown={handleKeyDown}
       className={cx(
-        'px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-brand-turquoise)] focus-visible:outline-offset-2',
-        selected
-          ? 'bg-[var(--color-primary)] text-[var(--color-inverse)]'
-          : 'text-[var(--color-tertiary)] hover:text-[var(--color-primary)]',
+        'transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-brand-turquoise)] focus-visible:outline-offset-2',
+        ctx.variant === 'underline'
+          ? cx(
+              /* 18px text + bottom-aligned 4px underline. -mb-px pulls the
+               * 4px border down to overlap TabsList's 1px divider so the
+               * indicator visually replaces the divider segment under the
+               * active tab. */
+              'pb-3 -mb-px border-b-4 border-transparent text-h5 font-normal',
+              selected
+                ? 'text-[var(--color-brand-turquoise)] border-[var(--color-brand-turquoise)]'
+                : 'text-[var(--color-secondary)] hover:text-[var(--color-primary)]',
+            )
+          : cx(
+              'px-4 py-2 rounded-full text-sm font-medium',
+              selected
+                ? 'bg-[var(--color-primary)] text-[var(--color-inverse)]'
+                : 'text-[var(--color-tertiary)] hover:text-[var(--color-primary)]',
+            ),
         className,
       )}
       {...rest}

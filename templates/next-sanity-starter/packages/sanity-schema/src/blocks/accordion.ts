@@ -42,5 +42,21 @@ export const accordion = defineBlockSchema({
         }),
       ],
     }),
+    defineField({
+      name: 'sidebar',
+      type: 'object',
+      description:
+        'Optional left-side support card rendered alongside the accordion. When present, the block renders in a 2-col layout with the sidebar on the left and the accordion on the right. Use for FAQ-style "Questions? Chat with support." layouts.',
+      fields: [
+        defineField({ name: 'heading', type: 'string' }),
+        defineField({ name: 'description', type: 'text', rows: 2 }),
+        defineField({
+          name: 'avatar',
+          type: 'imageWithAlt',
+          description: 'Optional support-rep photo (48×48 circle).',
+        }),
+        defineField({ name: 'cta', type: 'cta' }),
+      ],
+    }),
   ],
 });

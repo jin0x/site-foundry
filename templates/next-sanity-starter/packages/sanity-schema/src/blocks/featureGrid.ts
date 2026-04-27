@@ -31,10 +31,31 @@ export const featureGrid = defineBlockSchema({
             defineField({
               name: 'icon',
               type: 'imageWithAlt',
+              description: 'Small icon/mark (48×48 slot) rendered above the title.',
+            }),
+            defineField({
+              name: 'media',
+              type: 'imageWithAlt',
+              description: 'Larger per-item image/diagram (e.g. flowchart, screenshot) rendered below the description.',
             }),
             defineField({
               name: 'cta',
               type: 'cta',
+            }),
+            defineField({
+              name: 'backgroundTone',
+              type: 'string',
+              description:
+                'Per-item background tone. "inverse" uses a dark surface with light text (for dark tiles in an audience-split pattern). Defaults to "none" (same surface as the block).',
+              options: {
+                list: [
+                  { title: 'None (default surface)', value: 'none' },
+                  { title: 'Subtle (subtle raised)', value: 'subtle' },
+                  { title: 'Inverse (dark tile with white text)', value: 'inverse' },
+                ],
+                layout: 'radio',
+              },
+              initialValue: 'none',
             }),
           ],
           preview: {

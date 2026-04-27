@@ -5,9 +5,13 @@ import type {
 } from 'react';
 import { cx } from '../../lib/cx';
 import {
+  BUTTON_PILL_PX_BY_SIZE,
+  BUTTON_SHAPE_CLASSES,
   BUTTON_SIZE_CLASSES,
   BUTTON_VARIANT_COLOR_CLASSES,
+  DEFAULT_SHAPE_BY_VARIANT,
   type ButtonColor,
+  type ButtonShape,
   type ButtonSize,
   type ButtonVariant,
 } from './button-types';
@@ -20,27 +24,42 @@ export interface ButtonProps
   variant?: ButtonVariant;
   size?: ButtonSize;
   color?: ButtonColor;
+  shape?: ButtonShape;
   children?: ReactNode;
 }
 
 const BASE_CLASSES =
-  'inline-flex items-center justify-center gap-2 relative overflow-hidden rounded-full font-heading font-medium transition-all duration-200 cursor-pointer no-underline';
+  'inline-flex items-center justify-center gap-2 relative overflow-hidden font-heading font-medium transition-all duration-200 cursor-pointer no-underline';
 
 export function Button({
   variant = 'solid',
   size = 'md',
   color = 'primary',
+  shape,
   href,
   className,
   children,
   ...rest
 }: ButtonProps) {
-  const classes = cx(
-    BASE_CLASSES,
-    BUTTON_SIZE_CLASSES[size],
-    BUTTON_VARIANT_COLOR_CLASSES[variant][color],
-    className,
-  );
+  const effectiveShape = shape ?? DEFAULT_SHAPE_BY_VARIANT[variant];
+  /* Link variant renders as an inline text link — skip BASE/SIZE/SHAPE
+   * classes that imply a button shape (min-h, padding, rounded, font-medium,
+   * no-underline). The variant's own classes carry the inline-anchor styling. */
+  const isLink = variant === 'link';
+  /* Pill uses size-dependent horizontal padding; rectangular has its own
+   * fixed px-5 in BUTTON_SHAPE_CLASSES. Conditional avoids size px-N
+   * shadowing rectangular's px-5 in compiled CSS. */
+  const horizontalPx = effectiveShape === 'pill' ? BUTTON_PILL_PX_BY_SIZE[size] : '';
+  const classes = isLink
+    ? cx(BUTTON_VARIANT_COLOR_CLASSES[variant][color], className)
+    : cx(
+        BASE_CLASSES,
+        BUTTON_SIZE_CLASSES[size],
+        horizontalPx,
+        BUTTON_VARIANT_COLOR_CLASSES[variant][color],
+        BUTTON_SHAPE_CLASSES[effectiveShape],
+        className,
+      );
 
   if (href) {
     return (

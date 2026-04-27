@@ -145,7 +145,7 @@ export function AccordionItem({ value, className, children, ...rest }: Accordion
       <div
         data-state={isOpen ? 'open' : 'closed'}
         className={cx(
-          'group overflow-hidden rounded-xl border border-[var(--color-code-border)] bg-[color-mix(in_srgb,var(--color-surface-elevated)_88%,transparent)]',
+          'group overflow-hidden border border-[var(--color-border-default)] bg-[var(--color-surface-page)]',
           className,
         )}
         {...rest}
@@ -204,23 +204,30 @@ export function AccordionTrigger({
       className={cx(
         'flex w-full items-center justify-between gap-4 px-5 py-5 text-left font-medium',
         'transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-brand-turquoise)] focus-visible:outline-offset-2',
-        '[&[data-state=open]>svg]:rotate-90',
         className,
       )}
       {...rest}
     >
       {children}
+      {/* Plus / minus toggle: vertical line hides when open. Mirrors the
+       * Phosphor ph:plus / ph:minus pair Decisions uses on accordion headers. */}
       <svg
         aria-hidden="true"
         viewBox="0 0 24 24"
-        className="size-5 shrink-0 transition-transform duration-200"
+        className="size-5 shrink-0"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round"
       >
-        <path d="m9 18 6-6-6-6" />
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <line
+          x1="12"
+          y1="5"
+          x2="12"
+          y2="19"
+          className={cx('transition-opacity duration-200', isOpen && 'opacity-0')}
+        />
       </svg>
     </button>
   );
